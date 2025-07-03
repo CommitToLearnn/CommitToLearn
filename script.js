@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const languagesContainer = document.getElementById('languages-container');
     const articlesContainer = document.getElementById('articles-container');
     const notesContainer = document.getElementById('notes-container');
+    notesContainer.innerHTML = ''; // Limpa o conteúdo anterior
     const converter = new showdown.Converter({ tables: true, strikethrough: true });
     let languagesData = null;
 
@@ -250,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="note-title">${note.title}</div>
             `;
             
-            noteItem.addEventListener('click', () => showNote(note));
+            noteItem.addEventListener('click', () => showNote({ ...note, languageObj: language }));
             notesList.appendChild(noteItem);
         });
     }
@@ -264,8 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 articlesContainer.style.display = 'none';
                 notesContainer.style.display = 'block';
                 
+                const language = note.languageObj;
+                const backButtonOnClick = `window.showLanguageNotes(${JSON.stringify(language)})`;
+
                 notesContainer.innerHTML = `
-                    <button class="back-button" onclick="window.showStudies()">← Voltar para Estudos</button>
+                    <button class="back-button" onclick='${backButtonOnClick.replace(/'/g, "\'")}'>← Voltar para ${language.name}</button>
                     <div class="note">${converter.makeHtml(text)}</div>
                 `;
 
