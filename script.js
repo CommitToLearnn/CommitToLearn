@@ -27,16 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Load languages data
     fetch('data/languages.json')
         .then(response => response.json())
         .then(data => {
             languagesData = data;
-            showHome(); // Start with home page
+            showHome();
         })
         .catch(error => {
             console.error('Erro ao carregar dados das linguagens:', error);
-            showHome(); // Show fallback even if JSON fails
+            showHome();
         });
 
     function showHome() {
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         articlesContainer.style.display = 'none';
         notesContainer.style.display = 'none';
         
-        // Update navigation - remove active from all when on home
         document.getElementById('nav-estudos').classList.remove('active');
         document.getElementById('nav-artigos').classList.remove('active');
         
@@ -58,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         articlesContainer.style.display = 'none';
         notesContainer.style.display = 'none';
         
-        // Update navigation
         document.getElementById('nav-estudos').classList.add('active');
         document.getElementById('nav-artigos').classList.remove('active');
         
@@ -71,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         articlesContainer.style.display = 'block';
         notesContainer.style.display = 'none';
         
-        // Update navigation
         document.getElementById('nav-estudos').classList.remove('active');
         document.getElementById('nav-artigos').classList.add('active');
         
@@ -93,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Collect all notes with dates
         const allNotes = [];
         languagesData.languages.forEach(language => {
             language.notes.forEach(note => {
@@ -106,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Sort by date (newest first)
         allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         if (allNotes.length === 0) {
@@ -114,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Create publications list
         allNotes.forEach(note => {
             const noteDate = new Date(note.date);
             const day = noteDate.getDate();
@@ -160,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Add algorithms card first
         const algorithmsCard = document.createElement('div');
         algorithmsCard.className = 'language-card';
         algorithmsCard.innerHTML = `
@@ -169,13 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="language-notes-count">Em breve...</div>
         `;
         
-        // For now, just show a message when clicked
         algorithmsCard.addEventListener('click', () => {
             alert('Conteúdo de algoritmos em desenvolvimento! 🚧');
         });
         languagesGrid.appendChild(algorithmsCard);
 
-        // Add language cards
         languagesData.languages.forEach(language => {
             const languageCard = document.createElement('div');
             languageCard.className = 'language-card';
@@ -211,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Add article cards
         languagesData.articles.forEach(article => {
             const articleCard = document.createElement('div');
             articleCard.className = 'language-card article-card';
@@ -280,13 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="note">${converter.makeHtml(text)}</div>
                 `;
 
-                // Apply syntax highlighting to code blocks
                 const codeBlocks = notesContainer.querySelectorAll('pre code');
                 codeBlocks.forEach(codeBlock => {
                     hljs.highlightElement(codeBlock);
                 });
 
-                // Add copy buttons to code blocks
                 addCopyButtons(notesContainer);
             });
     }
@@ -305,18 +292,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="note">${converter.makeHtml(text)}</div>
                 `;
 
-                // Apply syntax highlighting to code blocks
                 const codeBlocks = notesContainer.querySelectorAll('pre code');
                 codeBlocks.forEach(codeBlock => {
                     hljs.highlightElement(codeBlock);
                 });
 
-                // Add copy buttons to code blocks
                 addCopyButtons(notesContainer);
             });
     }
 
-    // Make functions globally available
     window.showHome = showHome;
     window.showStudies = showStudies;
     window.showArticles = showArticles;
