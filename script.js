@@ -110,10 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         allNotes.forEach(note => {
-            const noteDate = new Date(note.date);
-            const day = noteDate.getDate();
-            const month = noteDate.toLocaleDateString('pt-BR', { month: 'long' });
-            const year = noteDate.getFullYear();
+            const parts = note.date.split('-');
+            const noteDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+
+            const day = noteDate.getUTCDate();
+            const month = noteDate.toLocaleDateString('pt-BR', { month: 'long', timeZone: 'UTC' });
+            const year = noteDate.getUTCFullYear();
             const formattedDate = `${day} de ${month} de ${year}`;
 
             publicationsList.innerHTML += `
@@ -153,19 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
             languagesGrid.innerHTML = '<p>Carregando estudos...</p>';
             return;
         }
-
-        const algorithmsCard = document.createElement('div');
-        algorithmsCard.className = 'language-card';
-        algorithmsCard.innerHTML = `
-            <div class="language-icon">🧠</div>
-            <div class="language-name">Algoritmos</div>
-            <div class="language-notes-count">Em breve...</div>
-        `;
-        
-        algorithmsCard.addEventListener('click', () => {
-            alert('Conteúdo de algoritmos em desenvolvimento! 🚧');
-        });
-        languagesGrid.appendChild(algorithmsCard);
 
         languagesData.languages.forEach(language => {
             const languageCard = document.createElement('div');
