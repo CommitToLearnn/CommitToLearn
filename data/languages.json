@@ -1,0 +1,20 @@
+{
+  "languages": [
+    {
+      "name": "Go",
+      "id": "go",
+      "color": "#00ADD8",
+      "icon": "🐹",
+      "notes": [
+        {
+          "title": "O Operador de Declaração Curta (:=)",
+          "file": "notes/go/go-operador-declaracao-curta.md",
+          "slug": "go-operador-declaracao-curta",
+          "date": "2025-07-03",
+          "description": "Entenda o atalho de criação de variáveis em Go e quando usar := vs var, com exemplos práticos e regras importantes."
+        }
+      ]
+    }
+  ],
+  "articles": []
+}
