@@ -10,8 +10,44 @@
           "title": "O Operador de Declaração Curta (:=)",
           "file": "notes/go/go-operador-declaracao-curta.md",
           "slug": "go-operador-declaracao-curta",
-          "date": "2025-07-03",
+          "date": "2025-07-02",
           "description": "Entenda o atalho de criação de variáveis em Go e quando usar := vs var, com exemplos práticos e regras importantes."
+        },
+        {
+          "title": "Slices em Go",
+          "file": "notes/go/slice.md",
+          "slug": "go-slice",
+          "date": "2025-07-03",
+          "description": "Aprenda a usar slices em Go, uma estrutura de dados flexível para trabalhar com sequências."
+        },
+        {
+          "title": "Pesquisa Binária em Go",
+          "file": "notes/go/binary-search-go.md",
+          "slug": "go-binary-search",
+          "date": "2025-07-03",
+          "description": "Uma implementação prática da pesquisa binária em Go, com exemplos de código e explicações."
+        }
+      ]
+    },
+    {
+      "name": "Algoritmos",
+      "id": "algoritmos",
+      "color": "#F1DE47",
+      "icon": "🧠",
+      "notes": [
+        {
+          "title": "Pesquisa Binária (Binary Search)",
+          "file": "notes/algoritmos/binary-search.md",
+          "slug": "algoritmos-binary-search",
+          "date": "2025-07-03",
+          "description": "Um guia sobre o algoritmo de pesquisa binária, sua implementação e complexidade."
+        },
+        {
+          "title": "Notação Big O",
+          "file": "notes/algoritmos/big-o.md",
+          "slug": "algoritmos-big-o",
+          "date": "2025-07-03",
+          "description": "Entenda a notação Big O para analisar a eficiência e o desempenho de algoritmos."
         }
       ]
     }
