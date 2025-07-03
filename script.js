@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             languagesData = data;
-            showStudies(); // Start with studies page
+            showHome(); // Start with home page
         })
         .catch(error => {
             console.error('Erro ao carregar dados das linguagens:', error);
-            showStudies(); // Show fallback even if JSON fails
+            showHome(); // Show fallback even if JSON fails
         });
 
     function showHome() {
@@ -237,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function showLanguageNotes(language) {
         homeContainer.style.display = 'none';
         languagesContainer.style.display = 'none';
-        challengesContainer.style.display = 'none';
         articlesContainer.style.display = 'none';
         notesContainer.style.display = 'block';
         
@@ -273,7 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(text => {
                 homeContainer.style.display = 'none';
                 languagesContainer.style.display = 'none';
-                challengesContainer.style.display = 'none';
                 articlesContainer.style.display = 'none';
                 notesContainer.style.display = 'block';
                 
