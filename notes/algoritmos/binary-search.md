@@ -28,28 +28,28 @@ Vamos aplicar a um exemplo prático. Queremos encontrar o número `23` na seguin
 
 `[2, 5, 8, 12, 16, 23, 38, 56, 72, 91]`
 
-1.  **Passo 1: Encontrar o Meio**
-    * A lista tem 10 itens. O elemento do meio é o 5º, que é o `16`.
-    * Comparamos nosso alvo (`23`) com o elemento do meio (`16`).
+**Passo 1: Encontrar o Meio**
+* A lista tem 10 itens. O elemento do meio é o 5º, que é o `16`.
+* Comparamos nosso alvo (`23`) com o elemento do meio (`16`).
 
-2.  **Passo 2: Comparar e Descartar**
-    * `23` é maior que `16`.
-    * Como a lista está ordenada, sabemos que o `23` (se existir) **só pode estar na metade direita**.
-    * Descartamos a primeira metade, incluindo o `16`. Nossa nova lista de busca é:
-        `[23, 38, 56, 72, 91]`
+**Passo 2: Comparar e Descartar**
+* `23` é maior que `16`.
+* Como a lista está ordenada, sabemos que o `23` (se existir) **só pode estar na metade direita**.
+* Descartamos a primeira metade, incluindo o `16`. Nossa nova lista de busca é:
+    `[23, 38, 56, 72, 91]`
 
-3.  **Passo 3: Repetir o Processo**
-    * Agora, encontramos o meio da nova lista. O elemento do meio é o `56`.
-    * Comparamos nosso alvo (`23`) com o `56`.
-    * `23` é menor que `56`.
-    * Sabemos que o `23` (se existir) **só pode estar na metade esquerda** da lista atual.
-    * Descartamos a metade direita. Nossa nova lista de busca é:
-        `[23, 38]`
+**Passo 3: Repetir o Processo**
+* Agora, encontramos o meio da nova lista. O elemento do meio é o `56`.
+* Comparamos nosso alvo (`23`) com o `56`.
+* `23` é menor que `56`.
+* Sabemos que o `23` (se existir) **só pode estar na metade esquerda** da lista atual.
+* Descartamos a metade direita. Nossa nova lista de busca é:
+    `[23, 38]`
 
-4.  **Passo 4: Repetir Novamente**
-    * Encontramos o meio da nova lista. Vamos pegar o primeiro elemento, `23`.
-    * Comparamos nosso alvo (`23`) com o `23`.
-    * `23 == 23`. **Encontramos o item!** A busca termina com sucesso.
+**Passo 4: Repetir Novamente**
+* Encontramos o meio da nova lista. Vamos pegar o primeiro elemento, `23`.
+* Comparamos nosso alvo (`23`) com o `23`.
+* `23 == 23`. **Encontramos o item!** A busca termina com sucesso.
 
 Se a lista de busca se esgotar e não encontrarmos o item, sabemos que ele não existe na lista original.
 
@@ -68,5 +68,7 @@ Vamos ver o que isso significa na prática:
 | 1.000               | 1.000 passos                | ~10 passos                    |
 | 1.000.000           | 1 milhão de passos          | ~20 passos                    |
 | 1.000.000.000       | 1 bilhão de passos          | ~30 passos                    |
+
+<br>
 
 Como você pode ver, mesmo para uma lista com um bilhão de itens, a pesquisa binária encontra qualquer elemento em cerca de 30 comparações. É por isso que ela é um algoritmo essencial para bancos de dados, sistemas de busca e qualquer aplicação que precise encontrar dados rapidamente em grandes conjuntos ordenados.
