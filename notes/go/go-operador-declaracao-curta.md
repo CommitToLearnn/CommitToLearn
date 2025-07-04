@@ -1,13 +1,15 @@
-### **O Operador de Declaração Curta `:=`**
+### O Operador de Declaração Curta `:=`
 
 **Analogia:** Pense no `:=` como um **atalho de criação**. É como chegar em um balcão de café e dizer "Me vê um expresso!", em vez de dizer formalmente "Eu gostaria de registrar um novo pedido, do tipo 'café', com a especificação 'expresso'". O atendente já entende tudo e te entrega o café.
 
 **O que faz?**
 O `:=` faz duas coisas ao mesmo tempo:
 
-1.  **Declara** uma nova variável.
-2.  **Atribui** um valor inicial a ela.
-    A parte mais "mágica" é que o Go **infere** (adivinha) o tipo da variável com base no valor que você está atribuindo.
+**Declara** uma nova variável.
+
+**Atribui** um valor inicial a ela.
+
+A parte mais "mágica" é que o Go **infere** (adivinha) o tipo da variável com base no valor que você está atribuindo.
 
 **A Regra Principal:**
 Você só pode usar `:=` se a variável do lado esquerdo da operação ainda **não existir** naquele escopo (ou se, em uma atribuição múltipla, pelo menos uma das variáveis for nova).
