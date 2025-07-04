@@ -1,81 +1,126 @@
+/* ===== INICIALIZAÇÃO E CONFIGURAÇÃO ===== */
+
+// Aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // Elementos principais do DOM
     const homeContainer = document.getElementById('home-container');
     const languagesContainer = document.getElementById('languages-container');
     const articlesContainer = document.getElementById('articles-container');
     const notesContainer = document.getElementById('notes-container');
-    notesContainer.innerHTML = ''; // Limpa o conteúdo anterior
-    const converter = new showdown.Converter({ tables: true, strikethrough: true });
+    
+    // Limpa o conteúdo anterior das anotações
+    notesContainer.innerHTML = '';
+    
+    // Configuração do conversor Markdown
+    const converter = new showdown.Converter({ 
+        tables: true, 
+        strikethrough: true 
+    });
+    
+    // Variável global para dados das linguagens
     let languagesData = null;
 
+    /* ===== FUNCIONALIDADES DE INTERFACE ===== */
+
+    // Adiciona botões de copiar aos blocos de código
     function addCopyButtons(container) {
         const preBlocks = container.querySelectorAll('pre');
+        
         preBlocks.forEach(preBlock => {
+            // Cria o botão de copiar
             const copyButton = document.createElement('button');
             copyButton.className = 'copy-btn';
             copyButton.innerText = 'Copiar';
             
+            // Adiciona funcionalidade de cópia
             copyButton.addEventListener('click', () => {
                 const codeElement = preBlock.querySelector('code');
                 const codeToCopy = codeElement.innerText;
+                
+                // Copia para a área de transferência
                 navigator.clipboard.writeText(codeToCopy).then(() => {
+                    // Feedback visual temporário
                     copyButton.innerText = 'Copiado!';
                     setTimeout(() => {
                         copyButton.innerText = 'Copiar';
                     }, 2000);
                 });
             });
+            
+            // Adiciona o botão ao bloco de código
             preBlock.appendChild(copyButton);
         });
     }
 
+    /* ===== CARREGAMENTO DE DADOS ===== */
+
+    // Carrega dados das linguagens do arquivo JSON
     fetch('data/languages.json')
         .then(response => response.json())
         .then(data => {
             languagesData = data;
-            showHome();
+            showHome(); // Exibe a página inicial
         })
         .catch(error => {
             console.error('Erro ao carregar dados das linguagens:', error);
-            showHome();
+            showHome(); // Exibe a página inicial mesmo em caso de erro
         });
 
+    /* ===== FUNÇÕES DE NAVEGAÇÃO ===== */
+
+    // Exibe a página inicial
     function showHome() {
+        // Controla visibilidade dos containers
         homeContainer.style.display = 'block';
         languagesContainer.style.display = 'none';
         articlesContainer.style.display = 'none';
         notesContainer.style.display = 'none';
         
+        // Remove classes ativas da navegação
         document.getElementById('nav-estudos').classList.remove('active');
         document.getElementById('nav-artigos').classList.remove('active');
         
+        // Cria a timeline de publicações
         createTimeline();
     }
 
+    // Exibe a página de estudos (linguagens)
     function showStudies() {
+        // Controla visibilidade dos containers
         homeContainer.style.display = 'none';
         languagesContainer.style.display = 'block';
         articlesContainer.style.display = 'none';
         notesContainer.style.display = 'none';
         
+        // Atualiza navegação ativa
         document.getElementById('nav-estudos').classList.add('active');
         document.getElementById('nav-artigos').classList.remove('active');
         
+        // Cria os cards das linguagens
         createLanguageCards();
     }
 
+    // Exibe a página de artigos
     function showArticles() {
+        // Controla visibilidade dos containers
         homeContainer.style.display = 'none';
         languagesContainer.style.display = 'none';
         articlesContainer.style.display = 'block';
         notesContainer.style.display = 'none';
         
+        // Atualiza navegação ativa
         document.getElementById('nav-estudos').classList.remove('active');
         document.getElementById('nav-artigos').classList.add('active');
         
+        // Cria os cards dos artigos
         createArticleCards();
     }
 
+    /* ===== CRIAÇÃO DE INTERFACE ===== */
+
+    // Cria a timeline de publicações na página inicial
     function createTimeline() {
+        // HTML da estrutura da timeline
         homeContainer.innerHTML = `
             <div class="publications-header">
                 <h2>Jornada do Conhecimento</h2>
@@ -83,13 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="publications-list" id="publications-list"></div>
         `;
+        
         const publicationsList = document.getElementById('publications-list');
         
+        // Verifica se os dados foram carregados
         if (!languagesData) {
             publicationsList.innerHTML = '<p>Carregando publicações...</p>';
             return;
         }
 
+        // Coleta todas as anotações de todas as linguagens
         const allNotes = [];
         languagesData.languages.forEach(language => {
             language.notes.forEach(note => {
@@ -102,14 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Ordena por data (mais recente primeiro)
         allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+        // Verifica se há anotações para exibir
         if (allNotes.length === 0) {
             publicationsList.innerHTML = '<p class="no-notes">Nenhuma publicação ainda.</p>';
             return;
         }
 
+        // Cria os cards para cada anotação
         allNotes.forEach(note => {
+            // Formatação da data em português
             const parts = note.date.split('-');
             const noteDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
 
@@ -118,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const year = noteDate.getUTCFullYear();
             const formattedDate = `${day} de ${month} de ${year}`;
 
+            // Cria o HTML do card da publicação
             publicationsList.innerHTML += `
                 <article class="publication-item" onclick="window.showNote(${JSON.stringify(note).replace(/"/g, '&quot;')})">
                     <div class="publication-date">
@@ -141,7 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Cria os cards das linguagens de programação
     function createLanguageCards() {
+        // HTML da estrutura da página de estudos
         languagesContainer.innerHTML = `
             <div class="studies-header">
                 <h2>Área de Estudos</h2>
@@ -213,12 +268,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* ===== FUNÇÕES DE EXIBIÇÃO DE CONTEÚDO ===== */
+
+    // Exibe as anotações de uma linguagem específica
     function showLanguageNotes(language) {
+        // Controla visibilidade dos containers
         homeContainer.style.display = 'none';
         languagesContainer.style.display = 'none';
         articlesContainer.style.display = 'none';
         notesContainer.style.display = 'block';
         
+        // Cria a estrutura da página de anotações
         notesContainer.innerHTML = `
             <button class="back-button" onclick="window.showStudies()">← Voltar para Estudos</button>
             <div class="language-notes-header">
@@ -226,13 +286,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="notes-list" id="language-notes-list"></div>
         `;
+        
         const notesList = document.getElementById('language-notes-list');
         
+        // Verifica se há anotações disponíveis
         if (language.notes.length === 0) {
             notesList.innerHTML = '<p>Nenhuma anotação disponível ainda para esta linguagem.</p>';
             return;
         }
 
+        // Cria um item para cada anotação
         language.notes.forEach(note => {
             const noteItem = document.createElement('div');
             noteItem.className = 'note-item';
@@ -240,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="note-title">${note.title}</div>
             `;
             
+            // Adiciona evento de clique para exibir a anotação
             noteItem.addEventListener('click', () => showNote({ ...note, languageObj: language }));
             notesList.appendChild(noteItem);
         });
@@ -262,38 +326,89 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="note">${converter.makeHtml(text)}</div>
                 `;
 
+                // Aplicar syntax highlighting apenas para blocos com linguagem específica
                 const codeBlocks = notesContainer.querySelectorAll('pre code');
                 codeBlocks.forEach(codeBlock => {
-                    hljs.highlightElement(codeBlock);
+                    // Verifica se o bloco tem uma linguagem específica
+                    const hasLanguageClass = codeBlock.classList.length > 0 && 
+                        Array.from(codeBlock.classList).some(cls => cls.startsWith('language-'));
+                    
+                    if (hasLanguageClass) {
+                        // Para blocos com linguagem específica, aplica syntax highlighting
+                        if (typeof hljs !== 'undefined') {
+                            // Remove qualquer highlight anterior
+                            codeBlock.removeAttribute('data-highlighted');
+                            hljs.highlightElement(codeBlock);
+                        }
+                    } else {
+                        // Para blocos genéricos, remove qualquer highlight e força estilo neutro
+                        codeBlock.className = '';
+                        codeBlock.removeAttribute('data-highlighted');
+                        codeBlock.style.color = 'var(--text-primary)';
+                        codeBlock.style.background = 'transparent';
+                        // Remove qualquer HTML de syntax highlighting
+                        const originalText = codeBlock.textContent;
+                        codeBlock.innerHTML = originalText;
+                    }
                 });
 
+                // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
             });
     }
 
+    // Exibe um artigo específico
     function showArticle(article) {
+        // Carrega o conteúdo do arquivo do artigo
         fetch(article.file)
             .then(response => response.text())
             .then(text => {
+                // Controla visibilidade dos containers
                 homeContainer.style.display = 'none';
                 languagesContainer.style.display = 'none';
                 articlesContainer.style.display = 'none';
                 notesContainer.style.display = 'block';
                 
+                // Cria a estrutura do artigo
                 notesContainer.innerHTML = `
                     <button class="back-button" onclick="window.showArticles()">← Voltar para Artigos</button>
                     <div class="note">${converter.makeHtml(text)}</div>
                 `;
 
+                // Aplicar syntax highlighting apenas para blocos com linguagem específica
                 const codeBlocks = notesContainer.querySelectorAll('pre code');
                 codeBlocks.forEach(codeBlock => {
-                    hljs.highlightElement(codeBlock);
+                    // Verifica se o bloco tem uma linguagem específica
+                    const hasLanguageClass = codeBlock.classList.length > 0 && 
+                        Array.from(codeBlock.classList).some(cls => cls.startsWith('language-'));
+                    
+                    if (hasLanguageClass) {
+                        // Para blocos com linguagem específica, aplica syntax highlighting
+                        if (typeof hljs !== 'undefined') {
+                            // Remove qualquer highlight anterior
+                            codeBlock.removeAttribute('data-highlighted');
+                            hljs.highlightElement(codeBlock);
+                        }
+                    } else {
+                        // Para blocos genéricos, remove qualquer highlight e força estilo neutro
+                        codeBlock.className = '';
+                        codeBlock.removeAttribute('data-highlighted');
+                        codeBlock.style.color = 'var(--text-primary)';
+                        codeBlock.style.background = 'transparent';
+                        // Remove qualquer HTML de syntax highlighting
+                        const originalText = codeBlock.textContent;
+                        codeBlock.innerHTML = originalText;
+                    }
                 });
 
+                // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
             });
     }
 
+    /* ===== EXPOSIÇÃO DE FUNÇÕES GLOBAIS ===== */
+    
+    // Torna as funções acessíveis globalmente para uso em onclick
     window.showHome = showHome;
     window.showStudies = showStudies;
     window.showArticles = showArticles;
