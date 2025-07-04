@@ -26,6 +26,27 @@
           "slug": "go-binary-search",
           "date": "2025-07-03",
           "description": "Uma implementação prática da pesquisa binária em Go, com exemplos de código e explicações."
+        },
+        {
+          "title": "Funções em Go - Chamando com e sem Parâmetros",
+          "file": "notes/go/como-chamar-uma-funcao.md",
+          "slug": "go-como-chamar-uma-funcao",
+          "date": "2025-07-04",
+          "description": "Aprenda como definir e chamar funções em Go, com e sem parâmetros, incluindo funções que retornam valores."
+        },
+        {
+          "title": "Biblioteca fmt em Go",
+          "file": "notes/go/biblioteca_fmt.md",
+          "slug": "go-biblioteca-fmt",
+          "date": "2025-07-04",
+          "description": "Explore a biblioteca fmt do Go para formatação e impressão de dados."
+        },
+        {
+          "title": "Package main em Go",
+          "file": "notes/go/package_main.md",
+          "slug": "go-package-main",
+          "date": "2025-07-04",
+          "description": "Entenda o conceito de package main e como estruturar programas em Go."
         }
       ]
     },
@@ -50,7 +71,151 @@
           "description": "Entenda a notação Big O para analisar a eficiência e o desempenho de algoritmos."
         }
       ]
+    },
+    {
+      "name": "SQL",
+      "id": "sql",
+      "color": "#4479A1",
+      "icon": "🗄️",
+      "notes": [
+        {
+          "title": "SELECT e FROM - Os Fundamentos das Consultas SQL",
+          "file": "notes/SQL/select-from-basico.md",
+          "slug": "sql-select-from-basico",
+          "date": "2025-07-04",
+          "description": "Aprenda os comandos básicos SELECT e FROM para fazer suas primeiras consultas SQL."
+        },
+        {
+          "title": "WHERE - Filtrando Dados com Precisão",
+          "file": "notes/SQL/where-filtros.md",
+          "slug": "sql-where-filtros",
+          "date": "2025-07-04",
+          "description": "Domine a cláusula WHERE para filtrar dados usando operadores de comparação e condições."
+        },
+        {
+          "title": "AND, OR e IN - Combinando Condições",
+          "file": "notes/SQL/and-or-in.md",
+          "slug": "sql-and-or-in",
+          "date": "2025-07-04",
+          "description": "Combine múltiplas condições usando AND, OR e IN para consultas mais precisas."
+        },
+        {
+          "title": "LIKE % e IS NULL - Busca por Padrões e Valores Ausentes",
+          "file": "notes/SQL/like-is-null.md",
+          "slug": "sql-like-is-null",
+          "date": "2025-07-04",
+          "description": "Busque por padrões de texto com LIKE e wildcards, e trabalhe com valores NULL."
+        },
+        {
+          "title": "COALESCE - Lidando com Valores NULL",
+          "file": "notes/SQL/coalesce.md",
+          "slug": "sql-coalesce",
+          "date": "2025-07-04",
+          "description": "Use COALESCE para tratar valores NULL de forma elegante e criar consultas mais robustas."
+        },
+        {
+          "title": "Funções de Agregação - SUM, COUNT, MIN, MAX, AVG",
+          "file": "notes/SQL/funcoes-agregacao.md",
+          "slug": "sql-funcoes-agregacao",
+          "date": "2025-07-04",
+          "description": "Aprenda as funções de agregação essenciais para análise e sumarização de dados."
+        },
+        {
+          "title": "GROUP BY e HAVING - Agrupando e Filtrando Dados",
+          "file": "notes/SQL/group-by-having.md",
+          "slug": "sql-group-by-having",
+          "date": "2025-07-04",
+          "description": "Agrupe dados por categorias e filtre grupos usando GROUP BY e HAVING."
+        },
+        {
+          "title": "CASE - Lógica Condicional no SQL",
+          "file": "notes/SQL/case.md",
+          "slug": "sql-case",
+          "date": "2025-07-04",
+          "description": "Implemente lógica condicional nas consultas usando CASE para transformar dados."
+        },
+        {
+          "title": "JOINS - Combinando Dados de Múltiplas Tabelas",
+          "file": "notes/SQL/joins.md",
+          "slug": "sql-joins",
+          "date": "2025-07-04",
+          "description": "Aprenda a combinar dados de múltiplas tabelas usando INNER JOIN, LEFT JOIN e outros tipos de JOIN."
+        }
+      ]
+    },
+    {
+      "name": "Redes",
+      "id": "redes",
+      "color": "#FF6B6B",
+      "icon": "🌐",
+      "notes": [
+        {
+          "title": "TCP e UDP - Os Protocolos de Transporte",
+          "file": "notes/redes/tcp-udp.md",
+          "slug": "redes-tcp-udp",
+          "date": "2025-07-04",
+          "description": "Entenda as diferenças entre TCP e UDP, quando usar cada protocolo e suas características fundamentais."
+        },
+        {
+          "title": "Switching (Comutação) - A Arte de Conectar Dispositivos",
+          "file": "notes/redes/switching-comutacao.md",
+          "slug": "redes-switching-comutacao",
+          "date": "2025-07-04",
+          "description": "Aprenda como funcionam os switches, VLANs, Spanning Tree Protocol e as melhores práticas de switching."
+        },
+        {
+          "title": "Routing (Roteamento) - Conectando Redes Diferentes",
+          "file": "notes/redes/routing-roteamento.md",
+          "slug": "redes-routing-roteamento",
+          "date": "2025-07-04",
+          "description": "Domine os conceitos de roteamento, protocolos dinâmicos, tabelas de roteamento e NAT."
+        },
+        {
+          "title": "DNS - Domain Name System",
+          "file": "notes/redes/dns.md",
+          "slug": "redes-dns",
+          "date": "2025-07-04",
+          "description": "Entenda como funciona o DNS, hierarquia de domínios, tipos de registros e segurança DNS."
+        },
+        {
+          "title": "HTTP e HTTPS - Protocolos da Web",
+          "file": "notes/redes/http-https.md",
+          "slug": "redes-http-https",
+          "date": "2025-07-04",
+          "description": "Aprenda os protocolos fundamentais da web, métodos HTTP, códigos de status, autenticação e segurança."
+        },
+        {
+          "title": "FTP - File Transfer Protocol",
+          "file": "notes/redes/ftp.md",
+          "slug": "redes-ftp",
+          "date": "2025-07-04",
+          "description": "Conheça o protocolo FTP para transferência de arquivos, modos de conexão e alternativas seguras."
+        },
+        {
+          "title": "SMTP - Simple Mail Transfer Protocol",
+          "file": "notes/redes/smtp.md",
+          "slug": "redes-smtp",
+          "date": "2025-07-04",
+          "description": "Entenda como funciona o email na internet, protocolo SMTP, POP3, IMAP e segurança de email."
+        },
+        {
+          "title": "ICMP - Internet Control Message Protocol",
+          "file": "notes/redes/icmp.md",
+          "slug": "redes-icmp",
+          "date": "2025-07-04",
+          "description": "Aprenda o protocolo ICMP usado para diagnóstico de rede, comandos ping, traceroute e troubleshooting."
+        }
+      ]
     }
   ],
-  "articles": []
+  "articles": [
+    {
+      "title": "Arrays vs Linked Lists",
+      "file": "articles/arrays_vs_linked_list.md",
+      "slug": "arrays-vs-linked-lists",
+      "date": "2025-07-04",
+      "category": "Estruturas de Dados",
+      "description": "Comparação entre arrays e listas ligadas, explorando suas vantagens e desvantagens em diferentes cenários."
+    }
+  ]
 }
