@@ -62,6 +62,8 @@ func main() {
 
 ### Pontos Importantes na Implementação
 
-1.  **Fatia Ordenada:** A pré-condição mais crucial para a pesquisa binária é que a coleção de dados (a fatia, no caso de Go) esteja **ordenada**. Se não estiver, o algoritmo não funcionará corretamente.
-2.  **Cálculo do Meio:** A linha `mid := low + (high-low)/2` é uma forma segura de calcular o índice do meio. A forma mais simples `mid := (low + high) / 2` pode, em teoria, causar um *integer overflow* em linguagens de baixo nível se `low` e `high` forem números muito grandes. Em Go, é uma boa prática usar a forma mais segura.
-3.  **Condição de Parada:** O loop `for low <= high` continua enquanto ainda houver uma sub-fatia válida para pesquisar. Quando `low` se torna maior que `high`, significa que o elemento não foi encontrado.
+**Fatia Ordenada:** A pré-condição mais crucial para a pesquisa binária é que a coleção de dados (a fatia, no caso de Go) esteja **ordenada**. Se não estiver, o algoritmo não funcionará corretamente.
+
+**Cálculo do Meio:** A linha `mid := low + (high-low)/2` é uma forma segura de calcular o índice do meio. A forma mais simples `mid := (low + high) / 2` pode, em teoria, causar um *integer overflow* em linguagens de baixo nível se `low` e `high` forem números muito grandes. Em Go, é uma boa prática usar a forma mais segura.
+
+**Condição de Parada:** O loop `for low <= high` continua enquanto ainda houver uma sub-fatia válida para pesquisar. Quando `low` se torna maior que `high`, significa que o elemento não foi encontrado.
