@@ -1,10 +1,10 @@
-# Slices em Go
+### Slices em Go
 
 Um `slice` é uma "fatia" ou uma visão de um array subjacente. É um tipo de dados flexível e poderoso para trabalhar com sequências de dados em Go.
 
 Diferente dos arrays, os slices têm um tamanho dinâmico, podendo crescer e encolher conforme necessário.
 
-## Criando um Slice
+### Criando um Slice
 
 Você pode criar um slice a partir de um array existente ou usando a função `make`.
 
@@ -29,7 +29,7 @@ func main() {
 }
 ```
 
-## Funções Úteis
+### Funções Úteis
 
 *   `len()`: Retorna o número de elementos no slice.
 *   `cap()`: Retorna a capacidade do slice (o número de elementos no array subjacente, a partir do primeiro elemento do slice).
