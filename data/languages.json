@@ -69,6 +69,27 @@
           "slug": "algoritmos-big-o",
           "date": "2025-07-03",
           "description": "Entenda a notação Big O para analisar a eficiência e o desempenho de algoritmos."
+        },
+        {
+          "title": "Recursão - A Arte de Resolver Problemas se Chamando",
+          "file": "notes/algoritmos/recursao.md",
+          "slug": "algoritmos-recursao",
+          "date": "2025-07-05",
+          "description": "Aprenda recursão do zero: casos base, casos recursivos, exemplos práticos e quando usar esta poderosa técnica."
+        },
+        {
+          "title": "Pilha (Stack) - Estrutura de Dados LIFO",
+          "file": "notes/algoritmos/pilha.md",
+          "slug": "algoritmos-pilha",
+          "date": "2025-07-05",
+          "description": "Domine a estrutura de dados pilha: operações fundamentais, implementações e aplicações práticas."
+        },
+        {
+          "title": "QuickSort - O Algoritmo de Ordenação Elegante",
+          "file": "notes/algoritmos/quicksort.md",
+          "slug": "algoritmos-quicksort",
+          "date": "2025-07-05",
+          "description": "Aprenda o algoritmo QuickSort: funcionamento, implementações, otimizações e análise de complexidade."
         }
       ]
     },
