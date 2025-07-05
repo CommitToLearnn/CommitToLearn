@@ -19,6 +19,50 @@
     box-sizing: border-box;
 }
 
+/* Estilos modernos para links */
+a {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+a:hover {
+    color: #3b82f6;
+    text-decoration: underline;
+    text-decoration-color: #3b82f6;
+    text-underline-offset: 3px;
+}
+
+/* Links em listas ficam mais destacados */
+li a {
+    color: #93c5fd;
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 2px 6px;
+    transition: all 0.3s ease;
+}
+
+li a:hover {
+    background-color: rgba(96, 165, 250, 0.1);
+    color: #60a5fa;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Links em parágrafos ficam mais sutis */
+p a {
+    color: #7dd3fc;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+p a:hover {
+    color: #0ea5e9;
+    border-bottom-color: #0ea5e9;
+    text-decoration: none;
+}
+
 /* Estilos gerais do corpo */
 body {
     font-family: 'Inter', sans-serif;
@@ -217,6 +261,53 @@ main {
     margin-bottom: 0.875rem;
     color: var(--text-secondary);
     line-height: 1.5;
+}
+
+/* Links específicos dentro das notas */
+.note a {
+    color: #60a5fa !important;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.note a:hover {
+    color: #3b82f6 !important;
+    border-bottom-color: #3b82f6;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Links em listas dentro das notas */
+.note li a {
+    color: #7dd3fc !important;
+    background: rgba(125, 211, 252, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.note li a:hover {
+    color: #0ea5e9 !important;
+    background: rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+}
+
+/* Links externos com indicador */
+.note a[href^="http"]:after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.note a[href^="http"]:hover:after {
+    opacity: 1;
 }
 
 /* Blocos de código */
