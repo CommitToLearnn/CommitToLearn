@@ -336,9 +336,7 @@ func exemploRemainder() {
     
     // Diferença entre Remainder e Mod
     fmt.Println("\nDiferença Remainder vs Mod:")
-{% raw %}
-    casos := [][2]float64{{7, 3}, {-7, 3}, {7, -3}, {-7, -3}}
-{% endraw %}
+    casos := [][2]float64{ {7, 3}, {-7, 3}, {7, -3}, {-7, -3} }
     
     for _, caso := range casos {
         x, y := caso[0], caso[1]
