@@ -47,6 +47,20 @@
           "slug": "go-package-main",
           "date": "2025-07-04",
           "description": "Entenda o conceito de package main e como estruturar programas em Go."
+        },
+        {
+          "title": "Blank Identifier (_) em Go",
+          "file": "notes/go/blank-identifier.md",
+          "slug": "go-blank-identifier",
+          "date": "2025-07-06",
+          "description": "Aprenda a usar o identificador em branco (_) para ignorar valores e melhorar a legibilidade do código."
+        },
+        {
+          "title": "Funções Math em Go",
+          "file": "notes/go/funcoes-math.md",
+          "slug": "go-funcoes-math",
+          "date": "2025-07-06",
+          "description": "Explore o pacote math do Go com funções trigonométricas, logarítmicas, estatísticas e operações matemáticas avançadas."
         }
       ]
     },
@@ -90,6 +104,13 @@
           "slug": "algoritmos-quicksort",
           "date": "2025-07-05",
           "description": "Aprenda o algoritmo QuickSort: funcionamento, implementações, otimizações e análise de complexidade."
+        },
+        {
+          "title": "Análise de Casos: Médio vs Pior Caso",
+          "file": "notes/algoritmos/analise-casos.md",
+          "slug": "algoritmos-analise-casos",
+          "date": "2025-07-06",
+          "description": "Entenda a diferença entre caso médio e pior caso, análise amortizada e quando usar cada tipo de análise."
         }
       ]
     },
