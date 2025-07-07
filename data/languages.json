@@ -264,7 +264,7 @@
       "notes": [
         {
           "title": "Git Essencial - Controle de Versão para Desenvolvedores",
-          "file": "notes/ferramentas/git-essencial.md",
+          "file": "notes/git/git-essencial.md",
           "slug": "git-essencial",
           "date": "2025-07-06",
           "description": "Guia completo sobre Git: terminologias de commit, comandos essenciais, workflow avançado e boas práticas para desenvolvedores."
