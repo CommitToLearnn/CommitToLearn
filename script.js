@@ -168,11 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Coleta todas as anotações de todas as linguagens
-        const allNotes = [];
+        const allItems = [];
+        
+        // Adiciona todas as notas
         languagesData.languages.forEach(language => {
             language.notes.forEach(note => {
-                allNotes.push({
+                allItems.push({
                     ...note,
+                    type: 'note',
                     language: language.name,
                     languageIcon: language.icon,
                     languageObj: language
@@ -180,50 +183,70 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Ordena por data (mais recente primeiro)
-        allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Adiciona todos os artigos
+        if (languagesData.articles) {
+            languagesData.articles.forEach(article => {
+                allItems.push({
+                    ...article,
+                    type: 'article',
+                    language: article.category,
+                    languageIcon: '📝', // Ícone para artigos
+                    languageObj: null
+                });
+            });
+        }
 
-        // Verifica se há anotações para exibir
-        if (allNotes.length === 0) {
+        // Ordena por data (mais recente primeiro)
+        allItems.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // Verifica se há itens para exibir
+        if (allItems.length === 0) {
             publicationsList.innerHTML = '<p class="no-notes">Nenhuma publicação ainda.</p>';
             return;
         }
 
         // Função para criar um card de publicação
-        async function createPublicationCard(note) {
+        async function createPublicationCard(item) {
             // Formatação da data em português
-            const parts = note.date.split('-');
-            const noteDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+            const parts = item.date.split('-');
+            const itemDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
 
-            const day = noteDate.getUTCDate();
-            const month = noteDate.toLocaleDateString('pt-BR', { month: 'long', timeZone: 'UTC' });
-            const year = noteDate.getUTCFullYear();
+            const day = itemDate.getUTCDate();
+            const month = itemDate.toLocaleDateString('pt-BR', { month: 'long', timeZone: 'UTC' });
+            const year = itemDate.getUTCFullYear();
             const formattedDate = `${day} de ${month} de ${year}`;
 
-            // Carrega o conteúdo da nota para calcular tempo de leitura
+            // Carrega o conteúdo para calcular tempo de leitura
             try {
-                const response = await fetch(note.file);
+                const response = await fetch(item.file);
                 const content = await response.text();
                 const readingTime = calculateReadingTime(content);
 
+                // Define a função de clique baseada no tipo
+                const clickHandler = item.type === 'article' ? 
+                    `window.showArticle(${JSON.stringify(item).replace(/"/g, '&quot;')})` :
+                    `window.showNote(${JSON.stringify(item).replace(/"/g, '&quot;')})`;
+
                 return `
-                    <article class="publication-item" onclick="window.showNote(${JSON.stringify(note).replace(/"/g, '&quot;')})">
+                    <article class="publication-item" onclick="${clickHandler}">
                         <div class="publication-date">
                             ${formattedDate}
                         </div>
                         <div class="publication-content">
-                            <h3 class="publication-title">${note.title}</h3>
+                            <h3 class="publication-title">${item.title}</h3>
                             <div class="publication-meta">
                                 <span class="publication-language">
-                                    <span class="language-icon">${note.languageIcon}</span>
-                                    ${note.language.toUpperCase()}
+                                    <span class="language-icon">${item.languageIcon.endsWith('.svg') ? 
+                                        `<img src="${item.languageIcon}" alt="${item.language}" width="16" height="16">` : 
+                                        item.languageIcon}</span>
+                                    ${item.language.toUpperCase()}
                                 </span>
                                 <span class="reading-time">
                                     <span class="reading-time-icon">🕒</span>
                                     ${readingTime}
                                 </span>
                             </div>
-                            <p class="publication-description">${note.description || 'Clique para ler mais sobre este tópico.'}</p>
+                            <p class="publication-description">${item.description || 'Clique para ler mais sobre este tópico.'}</p>
                             <div class="read-more">
                                 Ler mais →
                             </div>
@@ -232,20 +255,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             } catch (error) {
                 // Se houver erro ao carregar, exibe sem tempo de leitura
+                const clickHandler = item.type === 'article' ? 
+                    `window.showArticle(${JSON.stringify(item).replace(/"/g, '&quot;')})` :
+                    `window.showNote(${JSON.stringify(item).replace(/"/g, '&quot;')})`;
+
                 return `
-                    <article class="publication-item" onclick="window.showNote(${JSON.stringify(note).replace(/"/g, '&quot;')})">
+                    <article class="publication-item" onclick="${clickHandler}">
                         <div class="publication-date">
                             ${formattedDate}
                         </div>
                         <div class="publication-content">
-                            <h3 class="publication-title">${note.title}</h3>
+                            <h3 class="publication-title">${item.title}</h3>
                             <div class="publication-meta">
                                 <span class="publication-language">
-                                    <span class="language-icon">${note.languageIcon}</span>
-                                    ${note.language.toUpperCase()}
+                                    <span class="language-icon">${item.languageIcon.endsWith('.svg') ? 
+                                        `<img src="${item.languageIcon}" alt="${item.language}" width="16" height="16">` : 
+                                        item.languageIcon}</span>
+                                    ${item.language.toUpperCase()}
                                 </span>
                             </div>
-                            <p class="publication-description">${note.description || 'Clique para ler mais sobre este tópico.'}</p>
+                            <p class="publication-description">${item.description || 'Clique para ler mais sobre este tópico.'}</p>
                             <div class="read-more">
                                 Ler mais →
                             </div>
@@ -256,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Cria todos os cards de forma assíncrona
-        Promise.all(allNotes.map(createPublicationCard))
+        Promise.all(allItems.map(createPublicationCard))
             .then(cardsHTML => {
                 publicationsList.innerHTML = cardsHTML.join('');
             })
@@ -288,7 +317,9 @@ document.addEventListener('DOMContentLoaded', () => {
             languageCard.className = 'language-card';
             
             languageCard.innerHTML = `
-                <div class="language-icon">${language.icon}</div>
+                <div class="language-icon">${language.icon.endsWith('.svg') ? 
+                    `<img src="${language.icon}" alt="${language.name}" width="32" height="32">` : 
+                    language.icon}</div>
                 <div class="language-name">${language.name}</div>
                 <div class="language-notes-count">${language.notes.length} anotação(ões)</div>
             `;
@@ -318,7 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        languagesData.articles.forEach(article => {
+        // Função para criar card de artigo
+        function createArticleCard(article) {
             const articleCard = document.createElement('div');
             articleCard.className = 'language-card article-card';
             
@@ -336,7 +368,13 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             
             articleCard.addEventListener('click', () => showArticle(article));
-            articlesGrid.appendChild(articleCard);
+            return articleCard;
+        }
+
+        // Cria todos os cards
+        languagesData.articles.forEach(article => {
+            const card = createArticleCard(article);
+            articlesGrid.appendChild(card);
         });
     }
 
