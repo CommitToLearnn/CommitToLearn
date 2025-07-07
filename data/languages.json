@@ -255,6 +255,21 @@
           "description": "Aprenda o protocolo ICMP usado para diagnóstico de rede, comandos ping, traceroute e troubleshooting."
         }
       ]
+    },
+    {
+      "name": "Git",
+      "id": "git",
+      "color": "#F05032",
+      "icon": "🔀",
+      "notes": [
+        {
+          "title": "Git Essencial - Controle de Versão para Desenvolvedores",
+          "file": "notes/ferramentas/git-essencial.md",
+          "slug": "git-essencial",
+          "date": "2025-07-06",
+          "description": "Guia completo sobre Git: terminologias de commit, comandos essenciais, workflow avançado e boas práticas para desenvolvedores."
+        }
+      ]
     }
   ],
   "articles": [
@@ -265,6 +280,14 @@
       "date": "2025-07-04",
       "category": "Estruturas de Dados",
       "description": "Comparação entre arrays e listas ligadas, explorando suas vantagens e desvantagens em diferentes cenários."
+    },
+    {
+      "title": "A Síndrome do Projeto 'Inútil': Por Que Você Deveria Postar Seu Código Mesmo Assim",
+      "file": "articles/a_sindrome_do_projeto_inutil.md",
+      "slug": "sindrome-projeto-inutil",
+      "date": "2025-07-06",
+      "category": "Carreira",
+      "description": "Reflexão sobre a importância de compartilhar projetos pessoais, mesmo aqueles que consideramos 'simples' ou 'inúteis'."
     }
   ]
 }
