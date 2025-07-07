@@ -111,6 +111,13 @@
           "slug": "algoritmos-analise-casos",
           "date": "2025-07-06",
           "description": "Entenda a diferença entre caso médio e pior caso, análise amortizada e quando usar cada tipo de análise."
+        },
+        {
+          "title": "Tabela Hash - Estrutura de Dados de Acesso Rápido",
+          "file": "notes/algoritmos/tabela-hash.md",
+          "slug": "algoritmos-tabela-hash",
+          "date": "2025-07-06",
+          "description": "Domine tabelas hash: funções hash, resolução de colisões, fator de carga e análise de desempenho."
         }
       ]
     },
