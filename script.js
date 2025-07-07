@@ -324,6 +324,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 notesContainer.innerHTML = `
                     <button class="back-button" onclick='${backButtonOnClick.replace(/'/g, "\'")}'>← Voltar para ${language.name}</button>
                     <div class="note">${converter.makeHtml(text)}</div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">💬 Comentários</h3>
+                        <div id="disqus_thread"></div>
+                    </div>
                 `;
 
                 // Aplicar syntax highlighting apenas para blocos com linguagem específica
@@ -354,6 +358,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
+
+                // Carrega os comentários do Disqus
+                loadDisqusComments(note.slug || note.title.toLowerCase().replace(/\s+/g, '-'));
             });
     }
 
@@ -373,6 +380,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 notesContainer.innerHTML = `
                     <button class="back-button" onclick="window.showArticles()">← Voltar para Artigos</button>
                     <div class="note">${converter.makeHtml(text)}</div>
+                    <div class="comments-section">
+                        <h3 class="comments-title">💬 Comentários</h3>
+                        <div id="disqus_thread"></div>
+                    </div>
                 `;
 
                 // Aplicar syntax highlighting apenas para blocos com linguagem específica
@@ -403,7 +414,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
+
+                // Carrega os comentários do Disqus
+                loadDisqusComments(article.slug || article.title.toLowerCase().replace(/\s+/g, '-'));
             });
+    }
+
+    /* ===== SISTEMA DE COMENTÁRIOS DISQUS ===== */
+
+    // Configurações do Disqus
+    const DISQUS_SHORTNAME = 'committolearn'; 
+
+    // Carrega os comentários do Disqus
+    function loadDisqusComments(pageIdentifier) {
+        // Remove instância anterior do Disqus se existir
+        if (window.DISQUS) {
+            window.DISQUS.reset({
+                reload: true,
+                config: function() {
+                    this.page.identifier = pageIdentifier;
+                    this.page.url = window.location.href;
+                    this.page.title = document.title;
+                }
+            });
+        } else {
+            // Configuração inicial do Disqus
+            window.disqus_config = function() {
+                this.page.url = window.location.href;
+                this.page.identifier = pageIdentifier;
+                this.page.title = document.title;
+            };
+
+            // Carrega o script do Disqus
+            const script = document.createElement('script');
+            script.src = `https://${DISQUS_SHORTNAME}.disqus.com/embed.js`;
+            script.setAttribute('data-timestamp', +new Date());
+            (document.head || document.body).appendChild(script);
+        }
     }
 
     /* ===== EXPOSIÇÃO DE FUNÇÕES GLOBAIS ===== */
