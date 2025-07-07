@@ -118,6 +118,27 @@
           "slug": "algoritmos-tabela-hash",
           "date": "2025-07-06",
           "description": "Domine tabelas hash: funções hash, resolução de colisões, fator de carga e análise de desempenho."
+        },
+        {
+          "title": "Grafos - A Base das Conexões",
+          "file": "notes/algoritmos/grafos.md",
+          "slug": "algoritmos-grafos",
+          "date": "2025-07-07",
+          "description": "Entenda grafos: estrutura fundamental para modelar relacionamentos, com implementações e algoritmos básicos."
+        },
+        {
+          "title": "BFS - Busca em Largura (Breadth-First Search)",
+          "file": "notes/algoritmos/bfs.md",
+          "slug": "algoritmos-bfs",
+          "date": "2025-07-07",
+          "description": "Domine a busca em largura: algoritmo essencial para encontrar caminhos mínimos e explorar grafos por níveis."
+        },
+        {
+          "title": "Filas - Estrutura de Dados FIFO",
+          "file": "notes/algoritmos/filas.md",
+          "slug": "algoritmos-filas",
+          "date": "2025-07-07",
+          "description": "Aprenda filas (FIFO): implementações eficientes, aplicações práticas e uso em algoritmos como BFS."
         }
       ]
     },
@@ -288,6 +309,14 @@
       "date": "2025-07-06",
       "category": "Carreira",
       "description": "Reflexão sobre a importância de compartilhar projetos pessoais, mesmo aqueles que consideramos 'simples' ou 'inúteis'."
+    },
+    {
+      "title": "\"Eu Nunca Vou Usar Isso\": Como a Teoria da Computação Desbloqueia Insights no Dia a Dia",
+      "file": "articles/estudo_aprofundado.md",
+      "slug": "teoria-computacao-insights",
+      "date": "2025-07-07",
+      "category": "Carreira",
+      "description": "Como o estudo aprofundado de grafos e BFS revelou conexões ocultas entre teoria e prática, transformando a forma de resolver problemas no dia a dia."
     }
   ]
 }
