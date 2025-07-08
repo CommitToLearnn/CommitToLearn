@@ -335,11 +335,11 @@ main {
     position: relative;
 }
 
-/* Força consistência visual em todos os blocos de código */
-.note pre,
-.note pre *,
-.note code,
-.note code * {
+/* Força consistência visual em todos os blocos de código - APENAS para blocos sem syntax highlighting */
+.note pre:not(.hljs),
+.note pre:not(.hljs) *,
+.note code:not([class*="language-"]),
+.note code:not([class*="language-"]) * {
     background: var(--code-bg) !important;
     color: var(--text-primary) !important;
 }
@@ -375,6 +375,10 @@ main {
     color: var(--text-primary) !important;
 }
 
+.note pre code.language-java {
+    color: var(--text-primary) !important;
+}
+
 .note pre code.language-sql {
     color: var(--text-primary) !important;
 }
@@ -384,6 +388,7 @@ main {
 .note pre code.language-js .hljs-keyword,
 .note pre code.language-python .hljs-keyword,
 .note pre code.language-go .hljs-keyword,
+.note pre code.language-java .hljs-keyword,
 .note pre code.language-sql .hljs-keyword {
     color: #c792ea !important; /* Roxo para palavras-chave */
 }
@@ -392,6 +397,7 @@ main {
 .note pre code.language-js .hljs-string,
 .note pre code.language-python .hljs-string,
 .note pre code.language-go .hljs-string,
+.note pre code.language-java .hljs-string,
 .note pre code.language-sql .hljs-string {
     color: #c3e88d !important; /* Verde claro para strings */
 }
@@ -400,6 +406,7 @@ main {
 .note pre code.language-js .hljs-number,
 .note pre code.language-python .hljs-number,
 .note pre code.language-go .hljs-number,
+.note pre code.language-java .hljs-number,
 .note pre code.language-sql .hljs-number {
     color: #f78c6c !important; /* Laranja para números */
 }
@@ -407,7 +414,8 @@ main {
 .note pre code.language-javascript .hljs-function,
 .note pre code.language-js .hljs-function,
 .note pre code.language-python .hljs-function,
-.note pre code.language-go .hljs-function {
+.note pre code.language-go .hljs-function,
+.note pre code.language-java .hljs-function {
     color: #82aaff !important; /* Azul para funções */
 }
 
@@ -415,6 +423,7 @@ main {
 .note pre code.language-js .hljs-comment,
 .note pre code.language-python .hljs-comment,
 .note pre code.language-go .hljs-comment,
+.note pre code.language-java .hljs-comment,
 .note pre code.language-sql .hljs-comment {
     color: #546e7a !important; /* Cinza para comentários */
 }
@@ -422,7 +431,8 @@ main {
 .note pre code.language-javascript .hljs-variable,
 .note pre code.language-js .hljs-variable,
 .note pre code.language-python .hljs-variable,
-.note pre code.language-go .hljs-variable {
+.note pre code.language-go .hljs-variable,
+.note pre code.language-java .hljs-variable {
     color: #ffcb6b !important; /* Amarelo para variáveis */
 }
 
@@ -434,28 +444,51 @@ main {
 .note pre code.language-javascript .hljs-title,
 .note pre code.language-js .hljs-title,
 .note pre code.language-python .hljs-title,
-.note pre code.language-go .hljs-title {
+.note pre code.language-go .hljs-title,
+.note pre code.language-java .hljs-title {
     color: #82aaff !important; /* Azul para títulos de função */
 }
 
 .note pre code.language-javascript .hljs-literal,
 .note pre code.language-js .hljs-literal,
 .note pre code.language-python .hljs-literal,
-.note pre code.language-go .hljs-literal {
+.note pre code.language-go .hljs-literal,
+.note pre code.language-java .hljs-literal {
     color: #ff5370 !important; /* Vermelho para literais */
 }
 
-.note pre code.language-python .hljs-built_in {
-    color: #ffcb6b !important; /* Amarelo para built-ins do Python */
+.note pre code.language-python .hljs-built_in,
+.note pre code.language-java .hljs-built_in {
+    color: #ffcb6b !important; /* Amarelo para built-ins */
 }
 
 .note pre code.language-go .hljs-type {
     color: #c792ea !important; /* Roxo para tipos em Go */
 }
 
-/* Operadores */
-.note pre code.language-sql .hljs-operator {
-    color: #89ddff !important; /* Ciano para operadores SQL */
+/* Regras específicas para Java */
+.note pre code.language-java .hljs-class {
+    color: #82aaff !important; /* Azul para classes */
+}
+
+.note pre code.language-java .hljs-type {
+    color: #c792ea !important; /* Roxo para tipos */
+}
+
+.note pre code.language-java .hljs-annotation {
+    color: #ffcb6b !important; /* Amarelo para anotações como @Override */
+}
+
+.note pre code.language-java .hljs-params {
+    color: #f07178 !important; /* Rosa para parâmetros */
+}
+
+.note pre code.language-java .hljs-meta {
+    color: #ffcb6b !important; /* Amarelo para metadados */
+}
+
+.note pre code.language-java .hljs-operator {
+    color: #89ddff !important; /* Azul claro para operadores */
 }
 
 .copy-btn {
