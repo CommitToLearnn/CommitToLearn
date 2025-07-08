@@ -61,6 +61,13 @@
           "slug": "go-funcoes-math",
           "date": "2025-07-06",
           "description": "Explore o pacote math do Go com funções trigonométricas, logarítmicas, estatísticas e operações matemáticas avançadas."
+        },
+        {
+          "title": "Ponteiros em Go - Referenciando Memória Diretamente",
+          "file": "notes/go/ponteiros.md",
+          "slug": "go-ponteiros",
+          "date": "2025-07-08",
+          "description": "Aprenda ponteiros em Go: referenciamento, dereferenciamento, passagem por referência e uso com structs."
         }
       ]
     },
@@ -139,6 +146,13 @@
           "slug": "algoritmos-filas",
           "date": "2025-07-07",
           "description": "Aprenda filas (FIFO): implementações eficientes, aplicações práticas e uso em algoritmos como BFS."
+        },
+        {
+          "title": "Algoritmo de Dijkstra - Menor Caminho em Grafos Ponderados",
+          "file": "notes/algoritmos/dijkstra.md",
+          "slug": "algoritmos-dijkstra",
+          "date": "2025-07-08",
+          "description": "Domine o algoritmo de Dijkstra: menor caminho em grafos ponderados com implementações em Python, Go e Java."
         }
       ]
     },
