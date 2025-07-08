@@ -14,13 +14,149 @@ document.addEventListener('DOMContentLoaded', () => {
     // Configuração do conversor Markdown
     const converter = new showdown.Converter({ 
         tables: true, 
-        strikethrough: true 
+        strikethrough: true,
+        ghCodeBlocks: true,
+        ghCompatibleHeaderId: true,
+        tasklists: true,
+        smoothLivePreview: true,
+        parseImgDimensions: true,
+        simplifiedAutoLink: true,
+        literalMidWordUnderscores: true
     });
     
     // Variável global para dados das linguagens
     let languagesData = null;
 
     /* ===== FUNCIONALIDADES DE INTERFACE ===== */
+
+    // Função auxiliar para detectar se o conteúdo deve ser destacado
+    function shouldHighlight(content) {
+        // Detecta padrões comuns de código
+        const codePatterns = [
+            /\bclass\s+\w+/,           // class declaration
+            /\bpublic\s+static\s+void/, // Java main method
+            /\bimport\s+[\w.]+/,       // import statements
+            /\bfunction\s+\w+/,        // function declaration
+            /\bdef\s+\w+/,             // Python function
+            /\bpackage\s+\w+/,         // package declaration
+            /\bfunc\s+\w+/,            // Go function
+            /\breturn\s+\w+/,          // return statement
+            /\b(if|for|while)\s*\(/   // control structures
+        ];
+        
+        return codePatterns.some(pattern => pattern.test(content));
+    }
+
+    // Função auxiliar para detectar código Java especificamente
+    function isJavaCode(content) {
+        const javaPatterns = [
+            /\bpublic\s+class\s+\w+/,
+            /\bpublic\s+static\s+void\s+main/,
+            /\bimport\s+java\./,
+            /\bSystem\.out\.print/,
+            /\bnew\s+\w+\s*\(/,
+            /\b(ArrayList|HashMap|String)\s*</,
+            /\bpublic\s+\w+\s+\w+\s*\(/,
+            /\bprivate\s+\w+\s+\w+/,
+            /\b@Override\b/,
+            /\bextends\s+\w+/,
+            /\bimplements\s+\w+/
+        ];
+        
+        return javaPatterns.some(pattern => pattern.test(content));
+    }
+
+    // Função auxiliar para detectar código Python
+    function isPythonCode(content) {
+        const pythonPatterns = [
+            /\bdef\s+\w+\s*\(/,
+            /\bimport\s+\w+/,
+            /\bfrom\s+\w+\s+import/,
+            /\bclass\s+\w+\s*\(/,
+            /\bclass\s+\w+\s*:/,
+            /\bif\s+__name__\s*==\s*['""]__main__['""]:/,
+            /\bprint\s*\(/,
+            /\bself\./,
+            /\brange\s*\(/
+        ];
+        
+        return pythonPatterns.some(pattern => pattern.test(content));
+    }
+
+    // Função auxiliar para detectar código Go
+    function isGoCode(content) {
+        const goPatterns = [
+            /\bpackage\s+\w+/,
+            /\bfunc\s+\w+\s*\(/,
+            /\bfunc\s+main\s*\(\s*\)/,
+            /\bimport\s*\(/,
+            /\bvar\s+\w+\s+\w+/,
+            /\bfmt\./,
+            /\bmake\s*\(/,
+            /\btype\s+\w+\s+struct/,
+            /\b:=\b/,
+            /\bfunc\s*\(/
+        ];
+        
+        return goPatterns.some(pattern => pattern.test(content));
+    }
+
+    // Função para aplicar syntax highlighting inteligente
+    function applySyntaxHighlighting(container) {
+        // Aguarda um pequeno delay para garantir que o DOM foi atualizado
+        setTimeout(() => {
+            const codeBlocks = container.querySelectorAll('pre code');
+            console.log(`Processando ${codeBlocks.length} blocos de código`);
+            
+            codeBlocks.forEach((codeBlock, index) => {
+                // Verifica se o bloco tem uma linguagem específica
+                const hasLanguageClass = codeBlock.classList.length > 0 && 
+                    Array.from(codeBlock.classList).some(cls => cls.startsWith('language-'));
+                
+                // Detecta linguagem pelo conteúdo
+                const codeContent = codeBlock.textContent || '';
+                console.log(`Bloco ${index}: hasLanguageClass=${hasLanguageClass}, classes=${codeBlock.className}`);
+                
+                // Reset do bloco
+                codeBlock.removeAttribute('data-highlighted');
+                codeBlock.classList.remove('hljs');
+                
+                // Determina se deve aplicar highlight
+                let shouldApplyHighlight = hasLanguageClass || shouldHighlight(codeContent);
+                
+                if (shouldApplyHighlight) {
+                    if (typeof hljs !== 'undefined') {
+                        // Se não tem classe de linguagem mas parece ser código, detecta a linguagem
+                        if (!hasLanguageClass) {
+                            if (isJavaCode(codeContent)) {
+                                codeBlock.classList.add('language-java');
+                                console.log(`Detectado Java no bloco ${index}`);
+                            } else if (isPythonCode(codeContent)) {
+                                codeBlock.classList.add('language-python');
+                                console.log(`Detectado Python no bloco ${index}`);
+                            } else if (isGoCode(codeContent)) {
+                                codeBlock.classList.add('language-go');
+                                console.log(`Detectado Go no bloco ${index}`);
+                            }
+                        }
+                        
+                        // Aplica o highlight
+                        try {
+                            hljs.highlightElement(codeBlock);
+                            console.log(`Highlight aplicado ao bloco ${index} com classes: ${codeBlock.className}`);
+                        } catch (error) {
+                            console.warn(`Erro ao aplicar syntax highlighting no bloco ${index}:`, error);
+                        }
+                    } else {
+                        console.warn('hljs não está disponível');
+                    }
+                } else {
+                    // Para blocos genéricos, mantém estilo neutro
+                    console.log(`Bloco ${index} mantido sem highlight`);
+                }
+            });
+        }, 100);
+    }
 
     // Adiciona botões de copiar aos blocos de código
     function addCopyButtons(container) {
@@ -447,31 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
-                // Aplicar syntax highlighting apenas para blocos com linguagem específica
-                const codeBlocks = notesContainer.querySelectorAll('pre code');
-                codeBlocks.forEach(codeBlock => {
-                    // Verifica se o bloco tem uma linguagem específica
-                    const hasLanguageClass = codeBlock.classList.length > 0 && 
-                        Array.from(codeBlock.classList).some(cls => cls.startsWith('language-'));
-                    
-                    if (hasLanguageClass) {
-                        // Para blocos com linguagem específica, aplica syntax highlighting
-                        if (typeof hljs !== 'undefined') {
-                            // Remove qualquer highlight anterior
-                            codeBlock.removeAttribute('data-highlighted');
-                            hljs.highlightElement(codeBlock);
-                        }
-                    } else {
-                        // Para blocos genéricos, remove qualquer highlight e força estilo neutro
-                        codeBlock.className = '';
-                        codeBlock.removeAttribute('data-highlighted');
-                        codeBlock.style.color = 'var(--text-primary)';
-                        codeBlock.style.background = 'transparent';
-                        // Remove qualquer HTML de syntax highlighting
-                        const originalText = codeBlock.textContent;
-                        codeBlock.innerHTML = originalText;
-                    }
-                });
+                // Aplicar syntax highlighting inteligente
+                applySyntaxHighlighting(notesContainer);
 
                 // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
@@ -511,31 +624,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
 
-                // Aplicar syntax highlighting apenas para blocos com linguagem específica
-                const codeBlocks = notesContainer.querySelectorAll('pre code');
-                codeBlocks.forEach(codeBlock => {
-                    // Verifica se o bloco tem uma linguagem específica
-                    const hasLanguageClass = codeBlock.classList.length > 0 && 
-                        Array.from(codeBlock.classList).some(cls => cls.startsWith('language-'));
-                    
-                    if (hasLanguageClass) {
-                        // Para blocos com linguagem específica, aplica syntax highlighting
-                        if (typeof hljs !== 'undefined') {
-                            // Remove qualquer highlight anterior
-                            codeBlock.removeAttribute('data-highlighted');
-                            hljs.highlightElement(codeBlock);
-                        }
-                    } else {
-                        // Para blocos genéricos, remove qualquer highlight e força estilo neutro
-                        codeBlock.className = '';
-                        codeBlock.removeAttribute('data-highlighted');
-                        codeBlock.style.color = 'var(--text-primary)';
-                        codeBlock.style.background = 'transparent';
-                        // Remove qualquer HTML de syntax highlighting
-                        const originalText = codeBlock.textContent;
-                        codeBlock.innerHTML = originalText;
-                    }
-                });
+                // Aplicar syntax highlighting inteligente
+                applySyntaxHighlighting(notesContainer);
 
                 // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
