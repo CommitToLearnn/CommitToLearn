@@ -33,6 +33,7 @@ Imagine que você está em um labirinto e quer mapear todas as salas. Com BFS, v
 
 ## Implementação Básica
 
+### Python
 ```python
 from collections import deque
 
@@ -71,8 +72,105 @@ print("BFS a partir de A:", bfs(grafo, 'A'))
 # Saída: ['A', 'B', 'C', 'D', 'E', 'F']
 ```
 
+### Go
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func bfs(grafo map[string][]string, inicio string) []string {
+    visitados := make(map[string]bool)
+    fila := []string{inicio}
+    visitados[inicio] = true
+    resultado := []string{}
+    
+    for len(fila) > 0 {
+        // Remove primeiro elemento (simula dequeue)
+        vertice := fila[0]
+        fila = fila[1:]
+        resultado = append(resultado, vertice)
+        
+        // Visita todos os vizinhos
+        for _, vizinho := range grafo[vertice] {
+            if !visitados[vizinho] {
+                visitados[vizinho] = true
+                fila = append(fila, vizinho)
+            }
+        }
+    }
+    
+    return resultado
+}
+
+func main() {
+    grafo := map[string][]string{
+        "A": {"B", "C"},
+        "B": {"A", "D", "E"},
+        "C": {"A", "F"},
+        "D": {"B"},
+        "E": {"B", "F"},
+        "F": {"C", "E"},
+    }
+    
+    resultado := bfs(grafo, "A")
+    fmt.Println("BFS a partir de A:", resultado)
+    // Saída: BFS a partir de A: [A B C D E F]
+}
+```
+
+### Java
+```java
+import java.util.*;
+
+public class BFS {
+    public static List<String> bfs(Map<String, List<String>> grafo, String inicio) {
+        Set<String> visitados = new HashSet<>();
+        Queue<String> fila = new LinkedList<>();
+        List<String> resultado = new ArrayList<>();
+        
+        fila.offer(inicio);
+        visitados.add(inicio);
+        
+        while (!fila.isEmpty()) {
+            String vertice = fila.poll();
+            resultado.add(vertice);
+            
+            // Visita todos os vizinhos
+            List<String> vizinhos = grafo.get(vertice);
+            if (vizinhos != null) {
+                for (String vizinho : vizinhos) {
+                    if (!visitados.contains(vizinho)) {
+                        visitados.add(vizinho);
+                        fila.offer(vizinho);
+                    }
+                }
+            }
+        }
+        
+        return resultado;
+    }
+    
+    public static void main(String[] args) {
+        Map<String, List<String>> grafo = new HashMap<>();
+        grafo.put("A", Arrays.asList("B", "C"));
+        grafo.put("B", Arrays.asList("A", "D", "E"));
+        grafo.put("C", Arrays.asList("A", "F"));
+        grafo.put("D", Arrays.asList("B"));
+        grafo.put("E", Arrays.asList("B", "F"));
+        grafo.put("F", Arrays.asList("C", "E"));
+        
+        List<String> resultado = bfs(grafo, "A");
+        System.out.println("BFS a partir de A: " + resultado);
+        // Saída: BFS a partir de A: [A, B, C, D, E, F]
+    }
+}
+```
+
 ## Encontrando o Menor Caminho
 
+### Python
 ```python
 def bfs_menor_caminho(grafo, inicio, fim):
     """
@@ -102,6 +200,88 @@ def bfs_menor_caminho(grafo, inicio, fim):
 caminho = bfs_menor_caminho(grafo, 'A', 'F')
 print("Menor caminho de A para F:", caminho)
 # Saída: ['A', 'C', 'F']
+```
+
+### Go
+```go
+func bfsMenorCaminho(grafo map[string][]string, inicio, fim string) []string {
+    if inicio == fim {
+        return []string{inicio}
+    }
+    
+    visitados := make(map[string]bool)
+    type item struct {
+        vertice string
+        caminho []string
+    }
+    
+    fila := []item{{inicio, []string{inicio}}}
+    visitados[inicio] = true
+    
+    for len(fila) > 0 {
+        atual := fila[0]
+        fila = fila[1:]
+        
+        for _, vizinho := range grafo[atual.vertice] {
+            if vizinho == fim {
+                resultado := make([]string, len(atual.caminho))
+                copy(resultado, atual.caminho)
+                return append(resultado, vizinho)
+            }
+            
+            if !visitados[vizinho] {
+                visitados[vizinho] = true
+                novoCaminho := make([]string, len(atual.caminho))
+                copy(novoCaminho, atual.caminho)
+                novoCaminho = append(novoCaminho, vizinho)
+                fila = append(fila, item{vizinho, novoCaminho})
+            }
+        }
+    }
+    
+    return nil // Caminho não encontrado
+}
+```
+
+### Java
+```java
+public static List<String> bfsMenorCaminho(Map<String, List<String>> grafo, 
+                                          String inicio, String fim) {
+    if (inicio.equals(fim)) {
+        return Arrays.asList(inicio);
+    }
+    
+    Set<String> visitados = new HashSet<>();
+    Queue<List<String>> fila = new LinkedList<>();
+    
+    fila.offer(Arrays.asList(inicio));
+    visitados.add(inicio);
+    
+    while (!fila.isEmpty()) {
+        List<String> caminho = fila.poll();
+        String vertice = caminho.get(caminho.size() - 1);
+        
+        List<String> vizinhos = grafo.get(vertice);
+        if (vizinhos != null) {
+            for (String vizinho : vizinhos) {
+                if (vizinho.equals(fim)) {
+                    List<String> resultado = new ArrayList<>(caminho);
+                    resultado.add(vizinho);
+                    return resultado;
+                }
+                
+                if (!visitados.contains(vizinho)) {
+                    visitados.add(vizinho);
+                    List<String> novoCaminho = new ArrayList<>(caminho);
+                    novoCaminho.add(vizinho);
+                    fila.offer(novoCaminho);
+                }
+            }
+        }
+    }
+    
+    return null; // Caminho não encontrado
+}
 ```
 
 ## BFS em Árvores
