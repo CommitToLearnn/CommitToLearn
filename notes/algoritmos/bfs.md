@@ -517,8 +517,11 @@ def bfs_bidirecional(grafo, inicio, fim):
 ## Exercícios para Praticar
 
 **Básico**: Implemente BFS que retorna apenas vértices alcançáveis
+
 **Intermediário**: Encontre o diâmetro de um grafo (maior distância entre dois vértices)
+
 **Avançado**: Implemente BFS que encontra todos os caminhos mais curtos
+
 **Desafio**: Resolva o problema do cavalo no tabuleiro de xadrez
 
 ## Próximos Passos
