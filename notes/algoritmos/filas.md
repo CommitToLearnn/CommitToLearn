@@ -34,8 +34,9 @@ Enqueue →  [  ] [  ] [  ] [  ]  → Dequeue
       Novos elementos    Elementos saem
 ```
 
-## Implementação com Lista Python
+## Implementações Básicas
 
+### Python
 ```python
 class Fila:
     def __init__(self):
@@ -86,6 +87,144 @@ print("Front:", fila.front())   # A
 print("Rear:", fila.rear())     # C
 print("Dequeue:", fila.dequeue())  # A
 print("Nova fila:", fila.display())  # ['B', 'C']
+```
+
+### Go
+```go
+package main
+
+import (
+    "fmt"
+    "errors"
+)
+
+type Fila struct {
+    itens []string
+}
+
+func NovaTila() *Fila {
+    return &Fila{itens: make([]string, 0)}
+}
+
+func (f *Fila) Enqueue(item string) {
+    f.itens = append(f.itens, item)
+}
+
+func (f *Fila) Dequeue() (string, error) {
+    if f.IsEmpty() {
+        return "", errors.New("fila vazia")
+    }
+    item := f.itens[0]
+    f.itens = f.itens[1:]
+    return item, nil
+}
+
+func (f *Fila) Front() (string, error) {
+    if f.IsEmpty() {
+        return "", errors.New("fila vazia")
+    }
+    return f.itens[0], nil
+}
+
+func (f *Fila) Rear() (string, error) {
+    if f.IsEmpty() {
+        return "", errors.New("fila vazia")
+    }
+    return f.itens[len(f.itens)-1], nil
+}
+
+func (f *Fila) IsEmpty() bool {
+    return len(f.itens) == 0
+}
+
+func (f *Fila) Size() int {
+    return len(f.itens)
+}
+
+func (f *Fila) Display() []string {
+    resultado := make([]string, len(f.itens))
+    copy(resultado, f.itens)
+    return resultado
+}
+
+func main() {
+    fila := NovaTila()
+    fila.Enqueue("A")
+    fila.Enqueue("B")
+    fila.Enqueue("C")
+    
+    fmt.Println("Fila:", fila.Display())  // [A B C]
+    front, _ := fila.Front()
+    fmt.Println("Front:", front)  // A
+    rear, _ := fila.Rear()
+    fmt.Println("Rear:", rear)   // C
+    item, _ := fila.Dequeue()
+    fmt.Println("Dequeue:", item)  // A
+    fmt.Println("Nova fila:", fila.Display())  // [B C]
+}
+```
+
+### Java
+```java
+import java.util.*;
+
+public class Fila<T> {
+    private List<T> itens;
+    
+    public Fila() {
+        this.itens = new ArrayList<>();
+    }
+    
+    public void enqueue(T item) {
+        itens.add(item);
+    }
+    
+    public T dequeue() {
+        if (isEmpty()) {
+            throw new RuntimeException("Fila vazia");
+        }
+        return itens.remove(0);
+    }
+    
+    public T front() {
+        if (isEmpty()) {
+            throw new RuntimeException("Fila vazia");
+        }
+        return itens.get(0);
+    }
+    
+    public T rear() {
+        if (isEmpty()) {
+            throw new RuntimeException("Fila vazia");
+        }
+        return itens.get(itens.size() - 1);
+    }
+    
+    public boolean isEmpty() {
+        return itens.isEmpty();
+    }
+    
+    public int size() {
+        return itens.size();
+    }
+    
+    public List<T> display() {
+        return new ArrayList<>(itens);
+    }
+    
+    public static void main(String[] args) {
+        Fila<String> fila = new Fila<>();
+        fila.enqueue("A");
+        fila.enqueue("B");
+        fila.enqueue("C");
+        
+        System.out.println("Fila: " + fila.display());  // [A, B, C]
+        System.out.println("Front: " + fila.front());   // A
+        System.out.println("Rear: " + fila.rear());     // C
+        System.out.println("Dequeue: " + fila.dequeue()); // A
+        System.out.println("Nova fila: " + fila.display()); // [B, C]
+    }
+}
 ```
 
 ## Implementação Otimizada com Deque
