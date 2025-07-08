@@ -97,6 +97,7 @@ matriz = [
 
 ## Implementação Básica
 
+### Python
 ```python
 class Grafo:
     def __init__(self):
@@ -127,6 +128,119 @@ g.adicionar_vertice('C')
 g.adicionar_aresta('A', 'B')
 g.adicionar_aresta('B', 'C')
 g.imprimir_grafo()
+```
+
+### Go
+```go
+package main
+
+import "fmt"
+
+// Grafo representa um grafo usando lista de adjacência
+type Grafo struct {
+    vertices map[string][]string
+}
+
+// NovoGrafo cria um novo grafo
+func NovoGrafo() *Grafo {
+    return &Grafo{
+        vertices: make(map[string][]string),
+    }
+}
+
+// AdicionarVertice adiciona um vértice ao grafo
+func (g *Grafo) AdicionarVertice(vertice string) {
+    if _, existe := g.vertices[vertice]; !existe {
+        g.vertices[vertice] = []string{}
+    }
+}
+
+// AdicionarAresta adiciona uma aresta entre dois vértices (não-direcionado)
+func (g *Grafo) AdicionarAresta(v1, v2 string) {
+    // Verifica se ambos os vértices existem
+    if _, existe1 := g.vertices[v1]; !existe1 {
+        return
+    }
+    if _, existe2 := g.vertices[v2]; !existe2 {
+        return
+    }
+    
+    // Adiciona a aresta em ambas as direções (grafo não-direcionado)
+    g.vertices[v1] = append(g.vertices[v1], v2)
+    g.vertices[v2] = append(g.vertices[v2], v1)
+}
+
+// ObterVizinhos retorna os vizinhos de um vértice
+func (g *Grafo) ObterVizinhos(vertice string) []string {
+    if vizinhos, existe := g.vertices[vertice]; existe {
+        return vizinhos
+    }
+    return []string{}
+}
+
+// ImprimirGrafo imprime a representação do grafo
+func (g *Grafo) ImprimirGrafo() {
+    for vertice, vizinhos := range g.vertices {
+        fmt.Printf("%s: %v\n", vertice, vizinhos)
+    }
+}
+
+func main() {
+    g := NovoGrafo()
+    g.AdicionarVertice("A")
+    g.AdicionarVertice("B")
+    g.AdicionarVertice("C")
+    g.AdicionarAresta("A", "B")
+    g.AdicionarAresta("B", "C")
+    g.ImprimirGrafo()
+}
+```
+
+### Java
+```java
+import java.util.*;
+
+public class Grafo {
+    private Map<String, List<String>> vertices;
+    
+    public Grafo() {
+        this.vertices = new HashMap<>();
+    }
+    
+    public void adicionarVertice(String vertice) {
+        if (!vertices.containsKey(vertice)) {
+            vertices.put(vertice, new ArrayList<>());
+        }
+    }
+    
+    public void adicionarAresta(String v1, String v2) {
+        // Grafo não-direcionado
+        if (vertices.containsKey(v1) && vertices.containsKey(v2)) {
+            vertices.get(v1).add(v2);
+            vertices.get(v2).add(v1);
+        }
+    }
+    
+    public List<String> obterVizinhos(String vertice) {
+        return vertices.getOrDefault(vertice, new ArrayList<>());
+    }
+    
+    public void imprimirGrafo() {
+        for (Map.Entry<String, List<String>> entry : vertices.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+    
+    public static void main(String[] args) {
+        Grafo g = new Grafo();
+        g.adicionarVertice("A");
+        g.adicionarVertice("B");
+        g.adicionarVertice("C");
+        g.adicionarAresta("A", "B");
+        g.adicionarAresta("B", "C");
+        g.imprimirGrafo();
+    }
+}
 ```
 
 ## Algoritmos Fundamentais
