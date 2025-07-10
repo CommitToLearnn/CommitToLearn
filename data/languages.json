@@ -153,6 +153,13 @@
           "slug": "algoritmos-dijkstra",
           "date": "2025-07-08",
           "description": "Domine o algoritmo de Dijkstra: menor caminho em grafos ponderados com implementações em Python, Go e Java."
+        },
+        {
+          "title": "Algoritmos Gulosos (Greedy Algorithms)",
+          "file": "notes/algoritmos/algoritmos-gulosos.md",
+          "slug": "algoritmos-gulosos",
+          "date": "2025-07-10",
+          "description": "Entenda o que são algoritmos gulosos, suas características, exemplos clássicos e aplicações práticas."
         }
       ]
     },
