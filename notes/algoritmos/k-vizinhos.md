@@ -152,3 +152,48 @@ X_normalized = scaler.fit_transform(X)
 - **Muitas dimensões:** Maldição da dimensionalidade
 - **Dados esparsos:** Distâncias se tornam menos significativas
 - **Tempo real crítico:** Predições são lentas
+
+## Overfitting e Underfitting no KNN
+
+O algoritmo KNN é particularmente sensível aos problemas de **overfitting** e **underfitting** dependendo do valor de K escolhido:
+
+### Overfitting (K muito pequeno)
+- **K = 1:** O modelo se torna muito específico aos dados de treino
+- **Sensível a ruído:** Outliers podem influenciar demais as predições
+- **Fronteiras de decisão irregulares:** Muitas "ilhas" de classificação
+- **Alta variância:** Pequenas mudanças nos dados afetam muito o resultado
+
+### Underfitting (K muito grande)
+- **K muito alto:** O modelo se torna muito generalista
+- **Perde padrões locais:** Ignora estruturas importantes nos dados
+- **Fronteiras de decisão muito suaves:** Pode não capturar complexidade real
+- **Alto viés:** Simplifica demais o problema
+
+### Encontrando o K Ideal
+```python
+# Exemplo de validação cruzada para encontrar melhor K
+from sklearn.model_selection import cross_val_score
+from sklearn.neighbors import KNeighborsClassifier
+
+k_values = range(1, 31)
+cv_scores = []
+
+for k in k_values:
+    knn = KNeighborsClassifier(n_neighbors=k)
+    scores = cross_val_score(knn, X_train, y_train, cv=5)
+    cv_scores.append(scores.mean())
+
+optimal_k = k_values[cv_scores.index(max(cv_scores))]
+```
+
+**💡 Para mais detalhes sobre overfitting e underfitting:** [Overfitting e Underfitting](../machine-learning/overfitting-underfitting.md)
+
+## KNN no Contexto de Machine Learning
+
+O K-Vizinhos é fundamentalmente um **algoritmo de machine learning** supervisionado, usado para:
+- **Sistemas de recomendação** (Netflix, Spotify)
+- **Detecção de anomalias** (fraudes, outliers)
+- **Classificação de imagens** e reconhecimento de padrões
+- **Processamento de linguagem natural**
+
+Para uma visão completa do KNN no contexto de ML, incluindo pipelines de produção, comparações com deep learning e aplicações práticas, veja: **[K-Vizinhos em Machine Learning](../machine-learning/k-vizinhos-ml.md)**
