@@ -326,6 +326,28 @@
           "description": "Guia completo sobre Git: terminologias de commit, comandos essenciais, workflow avançado e boas práticas para desenvolvedores."
         }
       ]
+    },
+    {
+      "name": "Machine Learning",
+      "id": "machine-learning",
+      "color": "#FF8C00",
+      "icon": "🤖",
+      "notes": [
+        {
+          "title": "Overfitting e Underfitting",
+          "file": "notes/machine-learning/overfitting-underfitting.md",
+          "slug": "ml-overfitting-underfitting",
+          "date": "2025-07-11",
+          "description": "Entenda os conceitos fundamentais de overfitting e underfitting em machine learning, com estratégias práticas para combater cada problema."
+        },
+        {
+          "title": "K-Vizinhos Mais Próximos (KNN) em Machine Learning",
+          "file": "notes/machine-learning/k-vizinhos-ml.md",
+          "slug": "ml-k-vizinhos",
+          "date": "2025-07-11",
+          "description": "Aprenda KNN no contexto de machine learning: aplicações práticas, pipelines de ML, otimizações para produção e comparações com outros algoritmos."
+        }
+      ]
     }
   ],
   "articles": [
