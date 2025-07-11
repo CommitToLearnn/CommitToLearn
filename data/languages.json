@@ -160,6 +160,20 @@
           "slug": "algoritmos-gulosos",
           "date": "2025-07-10",
           "description": "Entenda o que são algoritmos gulosos, suas características, exemplos clássicos e aplicações práticas."
+        },
+        {
+          "title": "Programação Dinâmica (Dynamic Programming)",
+          "file": "notes/algoritmos/programacao-dinamica.md",
+          "slug": "programacao-dinamica",
+          "date": "2025-07-11",
+          "description": "Domine programação dinâmica: técnica para resolver problemas de otimização com subestrutura ótima e subproblemas sobrepostos."
+        },
+        {
+          "title": "K-Vizinhos Mais Próximos (K-Nearest Neighbors)",
+          "file": "notes/algoritmos/k-vizinhos.md",
+          "slug": "k-vizinhos",
+          "date": "2025-07-11",
+          "description": "Aprenda KNN: algoritmo simples e poderoso para classificação e regressão baseado na proximidade entre pontos de dados."
         }
       ]
     },
