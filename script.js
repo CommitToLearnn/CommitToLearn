@@ -2,11 +2,32 @@
 
 // Detecta se está rodando no GitHub Pages
 const isGitHubPages = window.location.hostname === 'committolearnn.github.io';
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 const basePath = isGitHubPages ? '/CommitToLearn' : '';
+
+// Debug logs
+console.log('🔍 Debug de Caminhos:');
+console.log('- Hostname:', window.location.hostname);
+console.log('- Is GitHub Pages:', isGitHubPages);
+console.log('- Is Localhost:', isLocalhost);
+console.log('- Base Path:', basePath);
+console.log('- Full URL:', window.location.href);
 
 // Função para resolver caminhos
 function resolvePath(path) {
-    return basePath + '/' + path;
+    // Remove barra inicial se existir para evitar dupla barra
+    const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+    
+    if (isGitHubPages) {
+        // No GitHub Pages, adiciona o basePath
+        const resolvedPath = basePath + '/' + cleanPath;
+        console.log(`📁 GitHub Pages - Resolvendo caminho: "${path}" -> "${resolvedPath}"`);
+        return resolvedPath;
+    } else {
+        // Localmente (localhost ou file://), usa o caminho original
+        console.log(`📁 Local - Mantendo caminho: "${path}" -> "${cleanPath}"`);
+        return cleanPath;
+    }
 }
 
 /* ===== INICIALIZAÇÃO E CONFIGURAÇÃO ===== */
@@ -232,14 +253,25 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ===== CARREGAMENTO DE DADOS ===== */
 
     // Carrega dados das linguagens do arquivo JSON
-    fetch(resolvePath('data/languages.json'))
-        .then(response => response.json())
+    const languagesJsonPath = resolvePath('data/languages.json');
+    console.log('🔄 Carregando languages.json de:', languagesJsonPath);
+    
+    fetch(languagesJsonPath)
+        .then(response => {
+            console.log('📥 Resposta languages.json:', response.status, response.statusText);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
+            console.log('✅ Languages.json carregado com sucesso');
             languagesData = data;
             showHome(); // Exibe a página inicial
         })
         .catch(error => {
-            console.error('Erro ao carregar dados das linguagens:', error);
+            console.error('❌ Erro ao carregar dados das linguagens:', error);
+            console.error('URL tentada:', languagesJsonPath);
             showHome(); // Exibe a página inicial mesmo em caso de erro
         });
 
@@ -567,9 +599,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showNote(note) {
-        fetch(resolvePath(note.file))
-            .then(response => response.text())
+        const noteFilePath = resolvePath(note.file);
+        console.log('🔄 Carregando nota de:', noteFilePath);
+        console.log('🔍 Arquivo original:', note.file);
+        console.log('🌐 URL atual:', window.location.href);
+        
+        fetch(noteFilePath)
+            .then(response => {
+                console.log('📥 Resposta nota:', response.status, response.statusText);
+                console.log('📍 URL tentada:', response.url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText} - URL: ${response.url}`);
+                }
+                return response.text();
+            })
             .then(text => {
+                console.log('✅ Nota carregada com sucesso');
                 homeContainer.style.display = 'none';
                 languagesContainer.style.display = 'none';
                 articlesContainer.style.display = 'none';
@@ -600,8 +645,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
 
+                // Intercepta links markdown para navegação interna
+                interceptMarkdownLinks(notesContainer);
+
                 // Carrega os comentários do Disqus
                 loadDisqusComments(note.slug || note.title.toLowerCase().replace(/\s+/g, '-'));
+            })
+            .catch(error => {
+                console.error('❌ Erro ao carregar nota:', error);
+                console.error('📍 Caminho tentado:', noteFilePath);
+                console.error('📄 Arquivo original:', note.file);
+                
+                // Exibe mensagem de erro para o usuário
+                notesContainer.innerHTML = `
+                    <button class="back-button" onclick='window.showLanguageNotes(${JSON.stringify(note.languageObj)})'>← Voltar para ${note.languageObj.name}</button>
+                    <div class="error-message">
+                        <h2>❌ Erro ao carregar nota</h2>
+                        <p><strong>Arquivo:</strong> ${note.file}</p>
+                        <p><strong>Caminho tentado:</strong> ${noteFilePath}</p>
+                        <p><strong>Erro:</strong> ${error.message}</p>
+                        <p>Verifique se o arquivo existe no caminho correto.</p>
+                    </div>
+                `;
             });
     }
 
@@ -641,9 +706,72 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Adiciona botões de copiar
                 addCopyButtons(notesContainer);
 
+                // Intercepta links markdown para navegação interna
+                interceptMarkdownLinks(notesContainer);
+
                 // Carrega os comentários do Disqus
                 loadDisqusComments(article.slug || article.title.toLowerCase().replace(/\s+/g, '-'));
             });
+    }
+
+    // Função para interceptar cliques em links markdown e processar através do sistema de navegação
+    function interceptMarkdownLinks(container) {
+        const links = container.querySelectorAll('a[href]');
+        
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            
+            // Verifica se é um link para arquivo .md interno
+            if (href && href.endsWith('.md') && !href.startsWith('http')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Impede navegação normal
+                    
+                    console.log('🔗 Link markdown interceptado:', href);
+                    
+                    // Resolve o caminho correto
+                    let resolvedPath = href;
+                    
+                    // Se o link começa com '../', ajusta para o caminho correto
+                    if (href.startsWith('../')) {
+                        resolvedPath = 'notes/' + href.substring(3);
+                    } else if (!href.startsWith('notes/')) {
+                        resolvedPath = 'notes/' + href;
+                    }
+                    
+                    console.log('🎯 Caminho resolvido:', resolvedPath);
+                    
+                    // Encontra a nota correspondente no languages.json
+                    if (languagesData) {
+                        let foundNote = null;
+                        let foundLanguage = null;
+                        
+                        // Procura em todas as linguagens
+                        for (const language of languagesData.languages) {
+                            const note = language.notes.find(n => n.file === resolvedPath);
+                            if (note) {
+                                foundNote = note;
+                                foundLanguage = language;
+                                break;
+                            }
+                        }
+                        
+                        if (foundNote && foundLanguage) {
+                            console.log('✅ Nota encontrada:', foundNote.title, 'em', foundLanguage.name);
+                            showNote({ ...foundNote, languageObj: foundLanguage });
+                        } else {
+                            console.warn('❌ Nota não encontrada no languages.json:', resolvedPath);
+                            // Fallback: tenta carregar diretamente
+                            const fakeNote = {
+                                title: 'Carregando...',
+                                file: resolvedPath,
+                                languageObj: { name: 'Voltar', icon: '📄' }
+                            };
+                            showNote(fakeNote);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     /* ===== SISTEMA DE COMENTÁRIOS DISQUS ===== */
