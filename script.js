@@ -1,3 +1,14 @@
+/* ===== CONFIGURAÇÃO DE CAMINHOS ===== */
+
+// Detecta se está rodando no GitHub Pages
+const isGitHubPages = window.location.hostname === 'committolearnn.github.io';
+const basePath = isGitHubPages ? '/CommitToLearn' : '';
+
+// Função para resolver caminhos
+function resolvePath(path) {
+    return basePath + '/' + path;
+}
+
 /* ===== INICIALIZAÇÃO E CONFIGURAÇÃO ===== */
 
 // Aguarda o carregamento completo do DOM
@@ -221,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ===== CARREGAMENTO DE DADOS ===== */
 
     // Carrega dados das linguagens do arquivo JSON
-    fetch('data/languages.json')
+    fetch(resolvePath('data/languages.json'))
         .then(response => response.json())
         .then(data => {
             languagesData = data;
@@ -354,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Carrega o conteúdo para calcular tempo de leitura
             try {
-                const response = await fetch(item.file);
+                const response = await fetch(resolvePath(item.file));
                 const content = await response.text();
                 const readingTime = calculateReadingTime(content);
 
@@ -556,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showNote(note) {
-        fetch(note.file)
+        fetch(resolvePath(note.file))
             .then(response => response.text())
             .then(text => {
                 homeContainer.style.display = 'none';
@@ -597,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Exibe um artigo específico
     function showArticle(article) {
         // Carrega o conteúdo do arquivo do artigo
-        fetch(article.file)
+        fetch(resolvePath(article.file))
             .then(response => response.text())
             .then(text => {
                 // Controla visibilidade dos containers
