@@ -174,6 +174,55 @@
           "slug": "k-vizinhos",
           "date": "2025-07-11",
           "description": "Aprenda KNN: algoritmo simples e poderoso para classificação e regressão baseado na proximidade entre pontos de dados."
+        },
+        {
+          "title": "OCR (Optical Character Recognition)",
+          "file": "notes/algoritmos/ocr.md",
+          "slug": "algoritmos-ocr",
+          "date": "2025-07-13",
+          "description": "Tecnologia para reconhecimento óptico de caracteres em imagens e documentos digitalizados."
+        },
+        {
+          "title": "Transformada de Fourier",
+          "file": "notes/algoritmos/transformada-fourier.md",
+          "slug": "algoritmos-transformada-fourier",
+          "date": "2025-07-13",
+          "description": "Análise de frequência e processamento de sinais digitais com FFT, aplicações em áudio, imagem e sistemas."
+        },
+        {
+          "title": "Hash Índice Invertido para Busca na Web",
+          "file": "notes/algoritmos/hash-indice-invertido.md",
+          "slug": "algoritmos-hash-indice-invertido",
+          "date": "2025-07-13",
+          "description": "Estrutura fundamental dos motores de busca web, implementações otimizadas e técnicas de escalabilidade."
+        },
+        {
+          "title": "Filtro de Bloom e HyperLogLog",
+          "file": "notes/algoritmos/filtro-bloom-hyperloglog.md",
+          "slug": "algoritmos-filtro-bloom-hyperloglog",
+          "date": "2025-07-13",
+          "description": "Estruturas de dados probabilísticas para big data, streaming e estimativas eficientes em memória."
+        },
+        {
+          "title": "Algoritmos SHA",
+          "file": "notes/algoritmos/algoritmos-sha.md",
+          "slug": "algoritmos-sha",
+          "date": "2025-07-13",
+          "description": "Funções hash criptográficas seguras SHA-1, SHA-256, SHA-3 com implementações e aplicações práticas."
+        },
+        {
+          "title": "SimHash",
+          "file": "notes/algoritmos/simhash.md",
+          "slug": "algoritmos-simhash",
+          "date": "2025-07-13",
+          "description": "Algoritmo para detecção de similaridade e near-duplicate detection em documentos e web crawling."
+        },
+        {
+          "title": "Programação Linear",
+          "file": "notes/algoritmos/programacao-linear.md",
+          "slug": "algoritmos-programacao-linear",
+          "date": "2025-07-13",
+          "description": "Otimização matemática com restrições lineares, método simplex e aplicações em problemas reais."
         }
       ]
     },
@@ -346,6 +395,13 @@
           "slug": "ml-k-vizinhos",
           "date": "2025-07-11",
           "description": "Aprenda KNN no contexto de machine learning: aplicações práticas, pipelines de ML, otimizações para produção e comparações com outros algoritmos."
+        },
+        {
+          "title": "Classificador Naive Bayes",
+          "file": "notes/machine-learning/naive-bayes.md",
+          "slug": "ml-naive-bayes",
+          "date": "2025-07-13",
+          "description": "Algoritmo probabilístico para classificação com tipos Gaussian, Multinomial e Bernoulli, aplicações em spam e sentimento."
         }
       ]
     }
