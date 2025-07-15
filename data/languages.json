@@ -402,6 +402,13 @@
           "slug": "ml-naive-bayes",
           "date": "2025-07-13",
           "description": "Algoritmo probabilístico para classificação com tipos Gaussian, Multinomial e Bernoulli, aplicações em spam e sentimento."
+        },
+        {
+          "title": "Tipos de Aprendizado em Machine Learning",
+          "file": "notes/machine-learning/tipos-aprendizado.md",
+          "slug": "ml-tipos-aprendizado",
+          "date": "2025-07-15",
+          "description": "Notas aprofundadas sobre aprendizado supervisionado, não supervisionado, semissupervisionado, por reforço, online, por lotes, baseado em instâncias e baseado em modelo, com exemplos e diagramas."
         }
       ]
     }
