@@ -411,6 +411,120 @@
           "description": "Notas aprofundadas sobre aprendizado supervisionado, não supervisionado, semissupervisionado, por reforço, online, por lotes, baseado em instâncias e baseado em modelo, com exemplos e diagramas."
         }
       ]
+    },
+    {
+      "name": "Java",
+      "id": "java",
+      "color": "#ED8B00",
+      "icon": "☕",
+      "notes": [
+        {
+          "title": "Tipos de Dados em Java",
+          "file": "notes/java/tipos-de-dados.md",
+          "slug": "java-tipos-de-dados",
+          "date": "2025-07-16",
+          "description": "Aprenda sobre tipos primitivos, conversões de tipo (casting) e classes wrapper em Java, com exemplos práticos."
+        },
+        {
+          "title": "Variáveis e Constantes em Java",
+          "file": "notes/java/variaveis-constantes.md",
+          "slug": "java-variaveis-constantes",
+          "date": "2025-07-16",
+          "description": "Declaração de variáveis, uso de constantes com final, regras de nomenclatura e escopo em Java."
+        },
+        {
+          "title": "Operadores em Java",
+          "file": "notes/java/operadores.md",
+          "slug": "java-operadores",
+          "date": "2025-07-16",
+          "description": "Operadores aritméticos, de comparação, lógicos, de atribuição, ternário e precedência de operadores em Java."
+        },
+        {
+          "title": "Estruturas Condicionais em Java",
+          "file": "notes/java/estruturas-condicionais.md",
+          "slug": "java-estruturas-condicionais",
+          "date": "2025-07-16",
+          "description": "Domine if-else, switch-case, switch expressions e condições aninhadas em Java com exemplos práticos."
+        },
+        {
+          "title": "Estruturas de Repetição em Java",
+          "file": "notes/java/estruturas-repeticao.md",
+          "slug": "java-estruturas-repeticao",
+          "date": "2025-07-16",
+          "description": "Loops for, while, do-while, for-each, controle de fluxo com break e continue, e loops aninhados em Java."
+        },
+        {
+          "title": "Arrays em Java",
+          "file": "notes/java/arrays.md",
+          "slug": "java-arrays",
+          "date": "2025-07-16",
+          "description": "Declaração, inicialização, operações com arrays, arrays multidimensionais e métodos da classe Arrays em Java."
+        },
+        {
+          "title": "Métodos em Java",
+          "file": "notes/java/metodos.md",
+          "slug": "java-metodos",
+          "date": "2025-07-16",
+          "description": "Definição de métodos, parâmetros, retorno, sobrecarga, escopo de variáveis, recursão e boas práticas em Java."
+        }
+      ]
+    },
+    {
+      "name": "Python",
+      "id": "python",
+      "color": "#3776AB",
+      "icon": "🐍",
+      "notes": [
+        {
+          "title": "Tipos de Dados em Python",
+          "file": "notes/python/tipos-de-dados.md",
+          "slug": "python-tipos-de-dados",
+          "date": "2025-07-16",
+          "description": "Tipos básicos, coleções (list, tuple, dict, set), verificação de tipos, conversões e valores falsy em Python."
+        },
+        {
+          "title": "Variáveis e Constantes em Python",
+          "file": "notes/python/variaveis-constantes.md",
+          "slug": "python-variaveis-constantes",
+          "date": "2025-07-16",
+          "description": "Declaração de variáveis, atribuição múltipla, convenções de nomenclatura, escopo e simulação de constantes em Python."
+        },
+        {
+          "title": "Operadores em Python",
+          "file": "notes/python/operadores.md",
+          "slug": "python-operadores",
+          "date": "2025-07-16",
+          "description": "Operadores aritméticos, comparação, lógicos, identidade, membro, walrus operator e precedência em Python."
+        },
+        {
+          "title": "Estruturas Condicionais em Python",
+          "file": "notes/python/estruturas-condicionais.md",
+          "slug": "python-estruturas-condicionais",
+          "date": "2025-07-16",
+          "description": "if-elif-else, comparações em cadeia, valores truthy/falsy, match-case (Python 3.10+) e operador ternário."
+        },
+        {
+          "title": "Estruturas de Repetição em Python",
+          "file": "notes/python/estruturas-repeticao.md",
+          "slug": "python-estruturas-repeticao",
+          "date": "2025-07-16",
+          "description": "Loops for, while, enumerate, zip, controle de fluxo, comprehensions e otimizações em Python."
+        },
+        {
+          "title": "Listas em Python",
+          "file": "notes/python/listas.md",
+          "slug": "python-listas",
+          "date": "2025-07-16",
+          "description": "Criação, acesso, modificação, métodos, fatiamento, listas aninhadas, list comprehensions e operações avançadas."
+        },
+        {
+          "title": "Funções em Python",
+          "file": "notes/python/funcoes.md",
+          "slug": "python-funcoes",
+          "date": "2025-07-16",
+          "description": "Definição, parâmetros, *args/**kwargs, lambda, decoradores, recursão, escopo e boas práticas com funções."
+        }
+      ]
     }
   ],
   "articles": [
