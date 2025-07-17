@@ -68,6 +68,55 @@
           "slug": "go-ponteiros",
           "date": "2025-07-08",
           "description": "Aprenda ponteiros em Go: referenciamento, dereferenciamento, passagem por referência e uso com structs."
+        },
+        {
+          "title": "Interfaces em Go",
+          "file": "notes/go/interfaces.md",
+          "slug": "go-interfaces",
+          "date": "2025-07-17",
+          "description": "Entenda o conceito de interfaces em Go, como defini-las e implementá-las com exemplos práticos."
+        },
+        {
+          "title": "Goroutines em Go",
+          "file": "notes/go/goroutines.md",
+          "slug": "go-goroutines",
+          "date": "2025-07-17",
+          "description": "Aprenda sobre goroutines em Go para execução concorrente e como sincronizá-las com WaitGroup."
+        },
+        {
+          "title": "Pacotes em Go",
+          "file": "notes/go/pacotes.md",
+          "slug": "go-pacotes",
+          "date": "2025-07-17",
+          "description": "Saiba como organizar e reutilizar código em Go usando pacotes."
+        },
+        {
+          "title": "Canais em Go",
+          "file": "notes/go/canais.md",
+          "slug": "go-canais",
+          "date": "2025-07-17",
+          "description": "Descubra como usar canais para comunicação entre goroutines em Go."
+        },
+        {
+          "title": "Testes em Go",
+          "file": "notes/go/testes.md",
+          "slug": "go-testes",
+          "date": "2025-07-17",
+          "description": "Aprenda a escrever e executar testes em Go usando o pacote testing."
+        },
+        {
+          "title": "Reflection em Go",
+          "file": "notes/go/reflection.md",
+          "slug": "go-reflection",
+          "date": "2025-07-17",
+          "description": "Explore o uso de reflection em Go para inspecionar e manipular tipos e valores em tempo de execução."
+        },
+        {
+          "title": "Trabalhando com JSON em Go",
+          "file": "notes/go/json.md",
+          "slug": "go-json",
+          "date": "2025-07-17",
+          "description": "Aprenda a codificar e decodificar dados JSON em Go usando o pacote encoding/json."
         }
       ]
     },
@@ -466,6 +515,55 @@
           "slug": "java-metodos",
           "date": "2025-07-16",
           "description": "Definição de métodos, parâmetros, retorno, sobrecarga, escopo de variáveis, recursão e boas práticas em Java."
+        },
+        {
+          "title": "Coleções em Java",
+          "file": "notes/java/colecoes.md",
+          "slug": "java-colecoes",
+          "date": "2025-07-17",
+          "description": "Descubra as principais interfaces de coleções em Java, como List, Set e Map, com exemplos práticos."
+        },
+        {
+          "title": "Threads em Java",
+          "file": "notes/java/threads.md",
+          "slug": "java-threads",
+          "date": "2025-07-17",
+          "description": "Aprenda a criar e gerenciar threads em Java para execução paralela de código."
+        },
+        {
+          "title": "Streams em Java",
+          "file": "notes/java/streams.md",
+          "slug": "java-streams",
+          "date": "2025-07-17",
+          "description": "Entenda como processar coleções de dados de forma funcional usando streams em Java."
+        },
+        {
+          "title": "Expressões Lambda em Java",
+          "file": "notes/java/lambda.md",
+          "slug": "java-lambda",
+          "date": "2025-07-17",
+          "description": "Explore o uso de expressões lambda para escrever código mais conciso e funcional em Java."
+        },
+        {
+          "title": "Anotações em Java",
+          "file": "notes/java/annotations.md",
+          "slug": "java-annotations",
+          "date": "2025-07-17",
+          "description": "Aprenda a usar e criar anotações em Java para adicionar metadados ao seu código."
+        },
+        {
+          "title": "Reflection em Java",
+          "file": "notes/java/reflection.md",
+          "slug": "java-reflection",
+          "date": "2025-07-17",
+          "description": "Descubra como inspecionar e manipular classes, métodos e atributos em tempo de execução usando reflection em Java."
+        },
+        {
+          "title": "Tratamento de Exceções em Java",
+          "file": "notes/java/exceptions.md",
+          "slug": "java-exceptions",
+          "date": "2025-07-17",
+          "description": "Aprenda a tratar exceções em Java usando blocos try-catch e a lançar exceções personalizadas."
         }
       ]
     },
@@ -523,6 +621,55 @@
           "slug": "python-funcoes",
           "date": "2025-07-16",
           "description": "Definição, parâmetros, *args/**kwargs, lambda, decoradores, recursão, escopo e boas práticas com funções."
+        },
+        {
+          "title": "Decoradores em Python",
+          "file": "notes/python/decorators.md",
+          "slug": "python-decorators",
+          "date": "2025-07-17",
+          "description": "Aprenda a criar e usar decoradores em Python para modificar o comportamento de funções de forma elegante."
+        },
+        {
+          "title": "Gerenciadores de Contexto em Python",
+          "file": "notes/python/context-managers.md",
+          "slug": "python-context-managers",
+          "date": "2025-07-17",
+          "description": "Descubra como gerenciar recursos de forma eficiente em Python usando gerenciadores de contexto."
+        },
+        {
+          "title": "Metaclasses em Python",
+          "file": "notes/python/metaclasses.md",
+          "slug": "python-metaclasses",
+          "date": "2025-07-17",
+          "description": "Entenda o conceito de metaclasses em Python e como elas podem ser usadas para modificar o comportamento de classes."
+        },
+        {
+          "title": "Iteradores e Geradores em Python",
+          "file": "notes/python/iterators-generators.md",
+          "slug": "python-iterators-generators",
+          "date": "2025-07-17",
+          "description": "Aprenda a criar e usar iteradores e geradores em Python para iterar sobre coleções de dados de forma eficiente."
+        },
+        {
+          "title": "Async e Await em Python",
+          "file": "notes/python/async-await.md",
+          "slug": "python-async-await",
+          "date": "2025-07-17",
+          "description": "Explore a programação assíncrona em Python usando async e await para tarefas de I/O."
+        },
+        {
+          "title": "Type Hints em Python",
+          "file": "notes/python/type-hints.md",
+          "slug": "python-type-hints",
+          "date": "2025-07-17",
+          "description": "Descubra como usar type hints em Python para melhorar a legibilidade e a manutenção do código."
+        },
+        {
+          "title": "Dataclasses em Python",
+          "file": "notes/python/dataclasses.md",
+          "slug": "python-dataclasses",
+          "date": "2025-07-17",
+          "description": "Aprenda a usar dataclasses em Python para simplificar a criação de classes que armazenam dados."
         }
       ]
     }
