@@ -90,3 +90,8 @@ Este projeto está licenciado sob a Licença MIT.
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=footer"/>
 
 </div>
+## Instalação
+
+1. Clone o repositório
+2. Explore os diretórios por tecnologia
+3. Leia os arquivos markdown para aprender
