@@ -30,6 +30,79 @@
       ]
     },
     {
+      "name": "DevOps",
+      "id": "devops",
+      "color": "#FF6B35",
+      "icon": "🚀",
+      "notes": [
+        {
+          "title": "CALMS - Pilares do DevOps",
+          "file": "notes/devops/calms.md",
+          "slug": "devops-calms",
+          "date": "2025-07-21",
+          "description": "Entenda os cinco pilares fundamentais do DevOps: Culture, Automation, Lean, Measurement e Sharing."
+        }
+      ]
+    },
+    {
+      "name": "Containerização",
+      "id": "containerizacao",
+      "color": "#2496ED",
+      "icon": "📦",
+      "notes": [
+        {
+          "title": "Docker",
+          "file": "notes/containerizacao/docker.md",
+          "slug": "containerizacao-docker",
+          "date": "2025-07-21",
+          "description": "Aprenda Docker para containerizar aplicações, incluindo Dockerfile, Docker Compose e boas práticas."
+        },
+        {
+          "title": "Kubernetes",
+          "file": "notes/containerizacao/kubernetes.md",
+          "slug": "containerizacao-kubernetes",
+          "date": "2025-07-21",
+          "description": "Domine a orquestração de containers com Kubernetes, desde conceitos básicos até deployment em produção."
+        }
+      ]
+    },
+    {
+      "name": "Sistemas",
+      "id": "sistemas",
+      "color": "#28A745",
+      "icon": "⚙️",
+      "notes": [
+        {
+          "title": "Namespaces",
+          "file": "notes/sistemas/namespaces.md",
+          "slug": "sistemas-namespaces",
+          "date": "2025-07-21",
+          "description": "Entenda os namespaces do Linux para isolamento de recursos e base para containerização."
+        },
+        {
+          "title": "Cgroups (Control Groups)",
+          "file": "notes/sistemas/cgroups.md",
+          "slug": "sistemas-cgroups",
+          "date": "2025-07-21",
+          "description": "Aprenda sobre cgroups para controle e limitação de recursos em sistemas Linux."
+        },
+        {
+          "title": "Unshare",
+          "file": "notes/sistemas/unshare.md",
+          "slug": "sistemas-unshare",
+          "date": "2025-07-21",
+          "description": "Domine o comando unshare para criação de novos namespaces e isolamento de processos."
+        },
+        {
+          "title": "Máquinas Virtuais (VMs)",
+          "file": "notes/sistemas/vm.md",
+          "slug": "sistemas-vm",
+          "date": "2025-07-21",
+          "description": "Compreenda virtualização completa com VMs, hypervisors e casos de uso em infraestrutura."
+        }
+      ]
+    },
+    {
       "name": "Go",
       "id": "go",
       "color": "#00ADD8",
