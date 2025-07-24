@@ -63,6 +63,20 @@
           "slug": "containerizacao-kubernetes",
           "date": "2025-07-21",
           "description": "Domine a orquestração de containers com Kubernetes, desde conceitos básicos até deployment em produção."
+        },
+        {
+          "title": "Docker Network",
+          "file": "notes/containerizacao/docker-network.md",
+          "slug": "containerizacao-docker-network",
+          "date": "2025-07-23",
+          "description": "Entenda as redes Docker para comunicação entre containers e isolamento de serviços."
+        },
+        {
+          "title": "Comandos Básicos Docker",
+          "file": "notes/containerizacao/comandos-basicos-docker.md",
+          "slug": "containerizacao-comandos-basicos-docker",
+          "date": "2025-07-23",
+          "description": "Referência completa dos comandos essenciais do Docker para desenvolvimento e operações diárias."
         }
       ]
     },
@@ -99,6 +113,70 @@
           "slug": "sistemas-vm",
           "date": "2025-07-21",
           "description": "Compreenda virtualização completa com VMs, hypervisors e casos de uso em infraestrutura."
+        }
+      ]
+    },
+    {
+      "name": "Deep Learning",
+      "id": "deep-learning",
+      "color": "#FF6B6B",
+      "icon": "🧠",
+      "notes": [
+        {
+          "title": "Tokens",
+          "file": "notes/deep-learning/tokens.md",
+          "slug": "deep-learning-tokens",
+          "date": "2025-07-23",
+          "description": "Entenda tokens como unidades básicas de processamento em modelos de linguagem e sistemas de NLP."
+        },
+        {
+          "title": "Self Attention",
+          "file": "notes/deep-learning/self-attention.md",
+          "slug": "deep-learning-self-attention",
+          "date": "2025-07-23",
+          "description": "Domine o mecanismo central dos Transformers que permite capturar dependências de longo alcance."
+        },
+        {
+          "title": "Attention Allocation",
+          "file": "notes/deep-learning/attention-allocation.md",
+          "slug": "deep-learning-attention-allocation",
+          "date": "2025-07-23",
+          "description": "Aprenda como modelos distribuem recursos de atenção entre tokens, camadas e cabeças."
+        },
+        {
+          "title": "Transformers",
+          "file": "notes/deep-learning/transformers.md",
+          "slug": "deep-learning-transformers",
+          "date": "2025-07-23",
+          "description": "Explore a arquitetura que revolucionou o processamento de linguagem natural e deep learning."
+        },
+        {
+          "title": "Early vs High Layers",
+          "file": "notes/deep-learning/early-vs-high-layers.md",
+          "slug": "deep-learning-early-vs-high-layers",
+          "date": "2025-07-23",
+          "description": "Analise as diferenças entre camadas iniciais e finais em redes neurais profundas."
+        },
+        {
+          "title": "Pesos entre Tokens e Attention Vectors",
+          "file": "notes/deep-learning/pesos-tokens-attention-vectors.md",
+          "slug": "deep-learning-pesos-tokens-attention-vectors",
+          "date": "2025-07-23",
+          "description": "Entenda como pesos de atenção determinam importância relativa e formam representações."
+        },
+        {
+          "title": "Loss Functions e Proximidade Semântica",
+          "file": "notes/deep-learning/loss-function-proximidade-semantica.md",
+          "slug": "deep-learning-loss-function-proximidade-semantica",
+          "date": "2025-07-23",
+          "description": "Explore a relação entre loss functions, proximidade vetorial e singularidade semântica."
+        },
+        {
+          "title": "Assimétricos",
+          "file": "notes/deep-learning/assimetricos.md",
+          "slug": "deep-learning-assimetricos",
+          "date": "2025-07-23",
+          "description": "Compreenda estruturas assimétricas em arquiteturas, atenção e loss functions."
         }
       ]
     },
@@ -226,7 +304,7 @@
       "name": "Algoritmos",
       "id": "algoritmos",
       "color": "#F1DE47",
-      "icon": "🧠",
+      "icon": "🧮",
       "notes": [
         {
           "title": "Pesquisa Binária (Binary Search)",
@@ -800,6 +878,46 @@
       "date": "2025-07-07",
       "category": "Carreira",
       "description": "Como o estudo aprofundado de grafos e BFS revelou conexões ocultas entre teoria e prática, transformando a forma de resolver problemas no dia a dia."
+    },
+    {
+      "title": "Como a IA Presta Atenção? Explicando o Self-Attention com uma Reunião da ONU",
+      "file": "articles/como_a_ia_presta_atencao.md",
+      "slug": "ia-self-attention-onu",
+      "date": "2025-07-23",
+      "category": "Deep Learning",
+      "description": "Desmistifica o mecanismo de Self-Attention dos Transformers usando a analogia de uma reunião da ONU, explicando Query, Key e Value."
+    },
+    {
+      "title": "Como as Palavras Viram Matemática? Uma Introdução aos Tokens e Word Embeddings",
+      "file": "articles/como_as_palavras_viram_matematica.md",
+      "slug": "palavras-matematica-embeddings",
+      "date": "2025-07-23",
+      "category": "Deep Learning",
+      "description": "Explora como a IA converte linguagem natural em números através de tokens e embeddings, criando uma geometria do significado."
+    },
+    {
+      "title": "Do Básico à Produção: Desvendando o Dockerfile Perfeito para Aplicações Node.js",
+      "file": "articles/dockerfile_para_nodejs.md",
+      "slug": "dockerfile-perfeito-nodejs",
+      "date": "2025-07-23",
+      "category": "DevOps",
+      "description": "Guia completo para criar Dockerfiles otimizados para Node.js, incluindo Multi-Stage Builds, cache e melhores práticas de segurança."
+    },
+    {
+      "title": "Loss Function: O \"Professor Exigente\" que Ensina uma Inteligência Artificial",
+      "file": "articles/loss_function.md",
+      "slug": "loss-function-professor-exigente",
+      "date": "2025-07-23",
+      "category": "Deep Learning",
+      "description": "Entenda como as Loss Functions guiam o aprendizado da IA através da medição precisa de erros e otimização gradual."
+    },
+    {
+      "title": "Meus Containers não se Falam! Um Guia Prático sobre docker network",
+      "file": "articles/meus_containers_nao_se_falam.md",
+      "slug": "containers-docker-network",
+      "date": "2025-07-23",
+      "category": "DevOps",
+      "description": "Resolve o problema clássico de comunicação entre containers Docker usando redes customizadas e descoberta de serviços por nome."
     }
   ]
 }
