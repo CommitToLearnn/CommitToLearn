@@ -69,9 +69,9 @@ open index.html
 
 ### 🌐 Live Demo | Demonstração
 
-Visit the live site: [CommitToLearn](https://matheussricardoo.github.io/CommitToLearn/)
+Visit the live site: [CommitToLearn](https://committolearnn.github.io/CommitToLearn/)
 
-Visite o site ao vivo: [CommitToLearn](https://matheussricardoo.github.io/CommitToLearn/)
+Visite o site ao vivo: [CommitToLearn](https://committolearnn.github.io/CommitToLearn/)
 
 ### 📁 Project Structure | Estrutura do Projeto
 
