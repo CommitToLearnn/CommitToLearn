@@ -1,35 +1,6 @@
 {
   "languages": [
     {
-      "name": "Algoritmos",
-      "id": "algoritmos",
-      "color": "#FFA500",
-      "icon": "🔄",
-      "notes": [
-        {
-          "title": "Two Pointers (Dois Ponteiros)",
-          "file": "notes/algoritmos/two-pointers.md",
-          "slug": "algoritmos-two-pointers",
-          "date": "2025-07-18",
-          "description": "Aprenda a técnica de dois ponteiros para resolver problemas de forma eficiente em arrays e listas ligadas."
-        },
-        {
-          "title": "Backtracking",
-          "file": "notes/algoritmos/backtracking.md",
-          "slug": "algoritmos-backtracking",
-          "date": "2025-07-18",
-          "description": "Entenda a técnica de backtracking para resolver problemas recursivamente, retrocedendo quando encontra caminhos inválidos."
-        },
-        {
-          "title": "Sliding Window (Janela Deslizante)",
-          "file": "notes/algoritmos/sliding-window.md",
-          "slug": "algoritmos-sliding-window",
-          "date": "2025-07-18",
-          "description": "Explore a técnica de janela deslizante para otimizar problemas que envolvem subarrays ou substrings."
-        }
-      ]
-    },
-    {
       "name": "DevOps",
       "id": "devops",
       "color": "#FF6B35",
@@ -328,6 +299,27 @@
       "color": "#F1DE47",
       "icon": "🧮",
       "notes": [
+        {
+          "title": "Two Pointers (Dois Ponteiros)",
+          "file": "notes/algoritmos/two-pointers.md",
+          "slug": "algoritmos-two-pointers",
+          "date": "2025-07-18",
+          "description": "Aprenda a técnica de dois ponteiros para resolver problemas de forma eficiente em arrays e listas ligadas."
+        },
+        {
+          "title": "Backtracking",
+          "file": "notes/algoritmos/backtracking.md",
+          "slug": "algoritmos-backtracking",
+          "date": "2025-07-18",
+          "description": "Entenda a técnica de backtracking para resolver problemas recursivamente, retrocedendo quando encontra caminhos inválidos."
+        },
+        {
+          "title": "Sliding Window (Janela Deslizante)",
+          "file": "notes/algoritmos/sliding-window.md",
+          "slug": "algoritmos-sliding-window",
+          "date": "2025-07-18",
+          "description": "Explore a técnica de janela deslizante para otimizar problemas que envolvem subarrays ou substrings."
+        },
         {
           "title": "Pesquisa Binária (Binary Search)",
           "file": "notes/algoritmos/binary-search.md",
