@@ -20,12 +20,29 @@
 |:---:|:---|:---|
 | 📝 | Study Notes Organization | Organização de Anotações de Estudo |
 | 🎨 | Modern Black & White Theme | Tema Moderno Preto e Branco |
-| 🐹 | Go Programming Content | Conteúdo de Programação Go |
+| � | Multiple Programming Languages | Múltiplas Linguagens de Programação |
+| 🧠 | Deep Learning Content | Conteúdo de Deep Learning |
+| 🔗 | API Development Guides | Guias de Desenvolvimento de APIs |
 | ✨ | Glassmorphism Design | Design com Glassmorphism |
 | 📱 | Fully Responsive Layout | Layout Totalmente Responsivo |
 | 🔍 | Syntax Highlighting | Destaque de Sintaxe |
 | 📋 | Copy Code Buttons | Botões de Copiar Código |
 | ⚡ | Fast & Lightweight | Rápido e Leve |
+
+</div>
+
+### 📚 Latest Articles | Artigos Mais Recentes
+
+<div align="center">
+
+| 📅 Data | 📖 Artigo | 🏷️ Categoria |
+|:---:|:---|:---:|
+| 2025-07-25 | **Idempotência REST & Idempotency Key** | APIs |
+| 2025-07-23 | **Como a IA Presta Atenção?** (Self-Attention) | Deep Learning |
+| 2025-07-23 | **Como as Palavras Viram Matemática?** (Tokens) | Deep Learning |
+| 2025-07-23 | **Dockerfile Perfeito para Node.js** | DevOps |
+| 2025-07-23 | **Loss Function: O Professor Exigente** | Deep Learning |
+| 2025-07-23 | **Meus Containers não se Falam!** | DevOps |
 
 </div>
 
@@ -66,9 +83,36 @@ CommitToLearn/
 ├── data/
 │   └── languages.json  # Content data | Dados do conteúdo
 ├── notes/
-│   └── go/            # Go programming notes | Anotações de Go
-└── articles/          # Future articles | Artigos futuros
+│   ├── algoritmos/     # Algorithms & Data Structures | Algoritmos e Estruturas
+│   ├── apis/          # API Development | Desenvolvimento de APIs
+│   ├── containerizacao/ # Docker & Kubernetes | Docker e Kubernetes
+│   ├── deep-learning/ # AI & Machine Learning | IA e Aprendizado de Máquina
+│   ├── go/            # Go programming | Programação Go
+│   ├── java/          # Java programming | Programação Java
+│   ├── python/        # Python programming | Programação Python
+│   ├── sql/           # Database queries | Consultas de banco
+│   ├── redes/         # Network protocols | Protocolos de rede
+│   └── sistemas/      # System administration | Administração de sistemas
+└── articles/          # Educational articles | Artigos educacionais
 ```
+
+### 🎯 Content Areas | Áreas de Conteúdo
+
+<div align="center">
+
+| 🏷️ Categoria | 📊 Notas | 🎨 Ícone | 📝 Descrição |
+|:---:|:---:|:---:|:---|
+| **Algoritmos** | 24+ | 🧮 | Data Structures & Algorithms |
+| **Deep Learning** | 8 | 🧠 | AI, Transformers, Self-Attention |
+| **APIs** | 2 | 🔗 | REST, Idempotency, Web Services |
+| **Python** | 14 | 🐍 | Modern Python Development |
+| **Java** | 14 | ☕ | Enterprise Java Programming |
+| **Go** | 16 | 🐹 | Concurrent Programming |
+| **Docker** | 4 | 📦 | Containerization & Orchestration |
+| **SQL** | 9 | 🗄️ | Database Design & Queries |
+| **Redes** | 8 | 🌐 | Network Protocols & Security |
+
+</div>
 
 ### 👤 Author | Autor
 
@@ -90,8 +134,3 @@ Este projeto está licenciado sob a Licença MIT.
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=120&section=footer"/>
 
 </div>
-## Instalação
-
-1. Clone o repositório
-2. Explore os diretórios por tecnologia
-3. Leia os arquivos markdown para aprender
