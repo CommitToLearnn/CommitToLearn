@@ -94,6 +94,13 @@
           "description": "Aprenda sobre cgroups para controle e limitação de recursos em sistemas Linux."
         },
         {
+          "title": "Cache Redis",
+          "file": "notes/sistemas/cache-redis.md",
+          "slug": "sistemas-cache-redis",
+          "date": "2025-07-25",
+          "description": "Implementação de cache com Redis: estruturas de dados, padrões de cache, rate limiting e otimizações."
+        },
+        {
           "title": "Unshare",
           "file": "notes/sistemas/unshare.md",
           "slug": "sistemas-unshare",
@@ -932,6 +939,38 @@
       "date": "2025-07-23",
       "category": "DevOps",
       "description": "Resolve o problema clássico de comunicação entre containers Docker usando redes customizadas e descoberta de serviços por nome."
+    },
+    {
+      "title": "Aperte o Botão Quantas Vezes Quiser: Desvendando a Idempotência em APIs REST",
+      "file": "articles/o_botao_de_elevador_e_sua_api.md",
+      "slug": "botao-elevador-idempotencia-api",
+      "date": "2025-07-25",
+      "category": "APIs",
+      "description": "Introdução aos conceitos de idempotência em APIs REST usando a analogia intuitiva do botão de elevador e métodos HTTP."
+    },
+    {
+      "title": "Sua Conexão Caiu. E Agora? Como a Idempotência em APIs Salva seu Sistema",
+      "file": "articles/sua_conexao_caiu_e_agora.md",
+      "slug": "conexao-caiu-idempotencia-apis",
+      "date": "2025-07-25",
+      "category": "APIs",
+      "description": "Demonstra como problemas de rede podem causar operações duplicadas e como a idempotência protege sistemas contra esses cenários."
+    },
+    {
+      "title": "Como Tornar um POST Seguro? Apresentando o Padrão Idempotency-Key",
+      "file": "articles/como_tornar_um_post_seguro.md",
+      "slug": "post-seguro-idempotency-key",
+      "date": "2025-07-25",
+      "category": "APIs",
+      "description": "Explora o padrão Idempotency-Key usado por Stripe e PayPal para tornar operações POST seguras contra duplicação."
+    },
+    {
+      "title": "Código sem Cobrança Dupla: Construindo uma API Idempotente com Node.js e Redis",
+      "file": "articles/construindo_uma_API_Idempotente.md",
+      "slug": "api-idempotente-nodejs-redis",
+      "date": "2025-07-25",
+      "category": "APIs",
+      "description": "Tutorial prático para implementar uma API de pagamentos idempotente usando Node.js, Express e Redis com padrão Idempotency-Key."
     }
   ]
 }
