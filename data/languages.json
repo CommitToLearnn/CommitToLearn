@@ -45,6 +45,28 @@
       ]
     },
     {
+      "name": "APIs",
+      "id": "apis",
+      "color": "#17A2B8",
+      "icon": "🔗",
+      "notes": [
+        {
+          "title": "Idempotência REST",
+          "file": "notes/apis/idempotencia-rest.md",
+          "slug": "apis-idempotencia-rest",
+          "date": "2025-07-25",
+          "description": "Conceitos fundamentais de idempotência em APIs REST, métodos HTTP idempotentes e implementações práticas."
+        },
+        {
+          "title": "Idempotency Key",
+          "file": "notes/apis/idempotency-key.md",
+          "slug": "apis-idempotency-key",
+          "date": "2025-07-25",
+          "description": "Implementação de chaves de idempotência para tornar operações não idempotentes seguras contra duplicação."
+        }
+      ]
+    },
+    {
       "name": "Containerização",
       "id": "containerizacao",
       "color": "#2496ED",
