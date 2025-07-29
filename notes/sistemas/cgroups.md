@@ -10,23 +10,23 @@ Cgroups são uma funcionalidade do kernel Linux que permite limitar, contabiliza
 
 ## Funcionalidades Principais
 
-### 1. Limitação de Recursos
+### Limitação de Recursos
 - CPU: tempo de processamento, núcleos específicos
 - Memória: RAM, swap, cache
 - I/O: largura de banda de disco, IOPS
 - Rede: largura de banda (com tc - traffic control)
 
-### 2. Priorização
+### Priorização
 - Define prioridades entre grupos
 - Garantia de recursos mínimos
 - Compartilhamento proporcional
 
-### 3. Contabilização
+### Contabilização
 - Monitora uso de recursos em tempo real
 - Histórico de consumo
 - Estatísticas detalhadas
 
-### 4. Controle
+### Controle
 - Congelamento de processos
 - Checkpointing
 - Migração de processos

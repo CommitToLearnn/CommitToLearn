@@ -139,7 +139,7 @@ class MultiHeadAttention(nn.Module):
 
 ## Tipos de Atenção
 
-### 1. Self Attention (Padrão)
+### Self Attention (Padrão)
 ```python
 # Todos os tokens podem atender a todos os tokens
 # Usado em layers encoder
@@ -150,7 +150,7 @@ mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1)
 scores = scores.masked_fill(mask == 1, -float('inf'))
 ```
 
-### 2. Cross Attention
+### Cross Attention
 ```python
 # Queries de uma sequência, Keys/Values de outra
 # Usado em decoder para atender ao encoder
@@ -167,7 +167,7 @@ def cross_attention(decoder_hidden, encoder_outputs):
     return output
 ```
 
-### 3. Masked Self Attention
+### Masked Self Attention
 ```python
 # Impede que tokens vejam tokens futuros
 # Usado em modelos de linguagem (GPT)
@@ -183,7 +183,7 @@ scores = scores.masked_fill(mask, -float('inf'))
 
 ## Problemas e Limitações
 
-### 1. Complexidade Quadrática
+### Complexidade Quadrática
 ```python
 # O(n²) em memória e computação
 # Problemático para sequências longas
@@ -194,7 +194,7 @@ scores = scores.masked_fill(mask, -float('inf'))
 # Matriz de atenção: 10000 x 10000 = 100M elementos
 ```
 
-### 2. Falta de Noção Posicional
+### Falta de Noção Posicional
 ```python
 # Self attention é permutation invariant
 # Precisa de positional encodings
@@ -205,7 +205,7 @@ scores = scores.masked_fill(mask, -float('inf'))
 
 ## Otimizações do Self Attention
 
-### 1. Sparse Attention
+### Sparse Attention
 ```python
 # Nem todos os tokens precisam atender a todos
 # Patterns específicos de atenção
@@ -215,7 +215,7 @@ scores = scores.masked_fill(mask, -float('inf'))
 # Random Attention: conexões aleatórias
 ```
 
-### 2. Linear Attention
+### Linear Attention
 ```python
 # Aproximações que reduzem complexidade para O(n)
 # Kernelized attention
@@ -232,7 +232,7 @@ def linear_attention(Q, K, V):
     return output
 ```
 
-### 3. Flash Attention
+### Flash Attention
 ```python
 # Otimização de memória sem mudar matemática
 # Computa atenção em blocos (tiling)
@@ -293,7 +293,7 @@ def attention_rollout(attention_matrices):
 
 ## Aplicações Específicas
 
-### 1. Language Modeling
+### Language Modeling
 ```python
 # GPT-style: causal self attention
 # Predição do próximo token
@@ -302,7 +302,7 @@ def attention_rollout(attention_matrices):
 causal_mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1)
 ```
 
-### 2. Sentence Classification
+### Sentence Classification
 ```python
 # BERT-style: bidirectional self attention
 # Token [CLS] acumula informação da sequência
@@ -311,7 +311,7 @@ causal_mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1)
 cls_representation = output[:, 0, :]  # Primeiro token
 ```
 
-### 3. Machine Translation
+### Machine Translation
 ```python
 # Encoder-Decoder com cross attention
 # Decoder atende ao encoder e próprio contexto

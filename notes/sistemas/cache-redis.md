@@ -21,7 +21,7 @@ Redis é um **banco de dados NoSQL em memória** que oferece:
 
 ## Estruturas de Dados
 
-### 1. Strings
+### Strings
 ```bash
 # Operações básicas
 SET chave "valor"
@@ -55,7 +55,7 @@ r.incr('page_views')
 r.incrby('downloads', 10)
 ```
 
-### 2. Hashes
+### Hashes
 ```bash
 # Hash operations
 HSET user:1001 name "João" email "joao@email.com" age 30
@@ -87,7 +87,7 @@ config = {
 r.hset('app:config', mapping=config)
 ```
 
-### 3. Lists
+### Lists
 ```bash
 # Lista como fila (FIFO)
 LPUSH queue:tasks "task1"
@@ -120,7 +120,7 @@ r.lpush('recent:posts', f'post:{post_id}')
 r.ltrim('recent:posts', 0, 9)  # Mantém últimos 10
 ```
 
-### 4. Sets
+### Sets
 ```bash
 # Sets únicos
 SADD tags:python "web" "backend" "api"
@@ -150,7 +150,7 @@ r.sadd('user:1002:followers', '1001', '1005')
 is_following = r.sismember('user:1001:following', '1002')
 ```
 
-### 5. Sorted Sets (ZSets)
+### Sorted Sets (ZSets)
 ```bash
 # Ranking com scores
 ZADD leaderboard 100 "user1" 85 "user2" 92 "user3"
@@ -190,7 +190,7 @@ recent = r.zrangebyscore('recent:activities', two_hours_ago, '+inf')
 
 ## Padrões de Cache
 
-### 1. Cache-Aside (Lazy Loading)
+### Cache-Aside (Lazy Loading)
 ```python
 def get_user(user_id):
     # Tentar cache primeiro
@@ -218,7 +218,7 @@ def update_user(user_id, data):
     r.setex(f'user:{user_id}', 3600, json.dumps(updated_user))
 ```
 
-### 2. Write-Through
+### Write-Through
 ```python
 def save_user(user_data):
     # Salvar no database primeiro
@@ -230,7 +230,7 @@ def save_user(user_data):
     return user_id
 ```
 
-### 3. Write-Behind (Write-Back)
+### Write-Behind (Write-Back)
 ```python
 def update_user_async(user_id, data):
     # Atualizar cache imediatamente
@@ -700,7 +700,7 @@ def cleanup_expired_keys():
 
 ## Melhores Práticas
 
-### 1. Naming Conventions
+### Naming Conventions
 ```python
 # ✅ Bom - Hierárquico e descritivo
 user_cache_key = f"app:v1:user:{user_id}:profile"
@@ -712,7 +712,7 @@ user_key = f"user{user_id}"
 session_key = f"sess_{session_id}"
 ```
 
-### 2. TTL Management
+### TTL Management
 ```python
 # TTLs baseados no uso
 TTL_CONFIG = {
@@ -728,7 +728,7 @@ def set_with_appropriate_ttl(key, value, key_type):
     redis_client.setex(key, ttl, value)
 ```
 
-### 3. Error Handling
+### Error Handling
 ```python
 class CacheManager:
     def __init__(self, redis_client, fallback_func=None):

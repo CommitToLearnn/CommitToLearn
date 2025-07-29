@@ -10,37 +10,37 @@ Namespaces são uma funcionalidade do kernel Linux que permite isolar recursos d
 
 ## Tipos de Namespaces
 
-### 1. PID Namespace
+### PID Namespace
 - Isola identificadores de processos
 - Cada namespace tem sua própria numeração de PIDs
 - Processo pode ter PIDs diferentes em namespaces diferentes
 
-### 2. Network Namespace
+### Network Namespace
 - Isola recursos de rede
 - Interfaces de rede, tabelas de roteamento, regras de firewall
 - Cada namespace tem seu próprio stack de rede
 
-### 3. Mount Namespace
+### Mount Namespace
 - Isola pontos de montagem do sistema de arquivos
 - Permite diferentes vistas do sistema de arquivos
 - Cada processo pode ver um conjunto diferente de montagens
 
-### 4. UTS Namespace
+### UTS Namespace
 - Isola hostname e domainname
 - Permite que diferentes processos tenham hostnames diferentes
 - UTS = Unix Time Sharing
 
-### 5. IPC Namespace
+### IPC Namespace
 - Isola recursos de comunicação entre processos
 - Semáforos, filas de mensagens, memória compartilhada
 - IPC = Inter-Process Communication
 
-### 6. User Namespace
+### User Namespace
 - Isola identificadores de usuário e grupo
 - Permite mapeamento de UIDs/GIDs
 - Processo pode ser root dentro do namespace mas não-root fora
 
-### 7. Cgroup Namespace
+### Cgroup Namespace
 - Isola vista dos cgroups
 - Permite que processos vejam diferentes hierarquias de cgroups
 

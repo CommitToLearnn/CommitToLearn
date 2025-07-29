@@ -173,7 +173,7 @@ def compute_composition_entropy(contributions):
 
 ## Padrões de Atenção Específicos
 
-### 1. Attention to Content vs Function Words
+### Attention to Content vs Function Words
 ```python
 def analyze_content_function_attention(attention_weights, tokens, pos_tags):
     """
@@ -198,7 +198,7 @@ def analyze_content_function_attention(attention_weights, tokens, pos_tags):
     }
 ```
 
-### 2. Positional Attention Patterns
+### Positional Attention Patterns
 ```python
 def analyze_positional_attention_patterns(attention_weights):
     """
@@ -239,7 +239,7 @@ def compute_attention_locality(attention_weights):
     return locality_score.item()
 ```
 
-### 3. Head Specialization Patterns
+### Head Specialization Patterns
 ```python
 def analyze_head_specialization(multi_head_attention, tokens):
     """
@@ -288,7 +288,7 @@ def classify_attention_pattern(attention_matrix):
 
 ## Otimização dos Pesos de Atenção
 
-### 1. Attention Regularization
+### Attention Regularization
 ```python
 class AttentionWeightRegularizer:
     def __init__(self, entropy_weight=0.1, sparsity_weight=0.1):
@@ -335,7 +335,7 @@ class AttentionWeightRegularizer:
         return sparsity_loss
 ```
 
-### 2. Attention Weight Clipping
+### Attention Weight Clipping
 ```python
 def clip_attention_weights(attention_weights, min_val=1e-6, max_val=0.8):
     """

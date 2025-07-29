@@ -93,7 +93,7 @@ class TransformerDecoderLayer(nn.Module):
 
 ## Componentes Fundamentais
 
-### 1. Positional Encoding
+### Positional Encoding
 ```python
 import math
 
@@ -120,7 +120,7 @@ def positional_encoding(seq_len, d_model):
 # 3. Extrapolação para sequências mais longas
 ```
 
-### 2. Layer Normalization
+### Layer Normalization
 ```python
 class LayerNorm(nn.Module):
     def __init__(self, features, eps=1e-6):
@@ -141,7 +141,7 @@ class LayerNorm(nn.Module):
 # Post-norm: x = LayerNorm(x + SubLayer(x))
 ```
 
-### 3. Feed Forward Network
+### Feed Forward Network
 ```python
 class PositionwiseFeedForward(nn.Module):
     def __init__(self, d_model, d_ff, dropout=0.1):
@@ -164,7 +164,7 @@ class PositionwiseFeedForward(nn.Module):
 
 ## Variantes de Transformer
 
-### 1. BERT (Bidirectional Encoder)
+### BERT (Bidirectional Encoder)
 ```python
 class BERT(nn.Module):
     def __init__(self, vocab_size, d_model, num_heads, num_layers, max_seq_len):
@@ -196,7 +196,7 @@ class BERT(nn.Module):
 # - Next Sentence Prediction
 ```
 
-### 2. GPT (Decoder-only)
+### GPT (Decoder-only)
 ```python
 class GPT(nn.Module):
     def __init__(self, vocab_size, d_model, num_heads, num_layers, max_seq_len):
@@ -231,7 +231,7 @@ class GPT(nn.Module):
 # - Language modeling objective
 ```
 
-### 3. T5 (Text-to-Text Transfer Transformer)
+### T5 (Text-to-Text Transfer Transformer)
 ```python
 class T5(nn.Module):
     def __init__(self, vocab_size, d_model, num_heads, num_layers):
@@ -257,7 +257,7 @@ class T5(nn.Module):
 
 ## Otimizações e Melhorias
 
-### 1. Attention Optimizations
+### Attention Optimizations
 ```python
 # Flash Attention - otimização de memória
 # Sparse Attention - redução de complexidade
@@ -279,7 +279,7 @@ class EfficientAttention(nn.Module):
             return self.full_attention(q, k, v, mask)
 ```
 
-### 2. Positional Encoding Variants
+### Positional Encoding Variants
 ```python
 # Relative Positional Encoding (T5)
 class RelativePositionalEncoding(nn.Module):
@@ -307,7 +307,7 @@ class RotaryPositionalEmbedding(nn.Module):
         return self.apply_rotary_emb(x, position_ids)
 ```
 
-### 3. Normalization Variants
+### Normalization Variants
 ```python
 # RMSNorm - simplificação do LayerNorm
 class RMSNorm(nn.Module):
@@ -365,7 +365,7 @@ class TransformerLRScheduler:
 
 ## Aplicações e Casos de Uso
 
-### 1. Language Modeling
+### Language Modeling
 ```python
 # GPT-style autoregressive generation
 def generate_text(model, prompt, max_length=100):
@@ -384,7 +384,7 @@ def generate_text(model, prompt, max_length=100):
     return tokenizer.decode(tokens)
 ```
 
-### 2. Sequence Classification
+### Sequence Classification
 ```python
 # BERT-style classification
 class TransformerClassifier(nn.Module):
@@ -400,7 +400,7 @@ class TransformerClassifier(nn.Module):
         return self.classifier(cls_output)
 ```
 
-### 3. Machine Translation
+### Machine Translation
 ```python
 # Encoder-Decoder translation
 class TransformerTranslator(nn.Module):
@@ -417,17 +417,17 @@ class TransformerTranslator(nn.Module):
 
 ## Limitações e Desafios
 
-### 1. Computational Complexity
+### Computational Complexity
 - Complexidade quadrática O(n²) em memória e tempo
 - Limitação de comprimento de sequência
 - Necessidade de hardware especializado
 
-### 2. Data Requirements
+### Data Requirements
 - Necessita grandes quantidades de dados
 - Sensitive a qualidade dos dados
 - Viés presente nos dados de treinamento
 
-### 3. Interpretability
+### Interpretability
 - Dificuldade em interpretar decisões
 - Attention não necessariamente indica causalidade
 - Comportamento emergente difícil de prever

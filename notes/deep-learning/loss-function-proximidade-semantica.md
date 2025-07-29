@@ -140,7 +140,7 @@ def compute_distance_preservation(original_embeddings, reduced_embeddings):
 
 ## Loss Functions para Representações Semânticas
 
-### 1. Contrastive Loss
+### Contrastive Loss
 ```python
 class ContrastiveLoss(torch.nn.Module):
     """
@@ -189,7 +189,7 @@ class ContrastiveLoss(torch.nn.Module):
         }
 ```
 
-### 2. Triplet Loss
+### Triplet Loss
 ```python
 class TripletLoss(torch.nn.Module):
     """
@@ -240,7 +240,7 @@ def mine_hard_triplets(embeddings, labels, margin=0.3):
     return hard_triplets
 ```
 
-### 3. InfoNCE Loss
+### InfoNCE Loss
 ```python
 class InfoNCELoss(torch.nn.Module):
     """

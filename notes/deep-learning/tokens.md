@@ -10,7 +10,7 @@ Tokens são as unidades básicas de processamento em modelos de linguagem e sist
 
 ## Tipos de Tokenização
 
-### 1. Word-level Tokenization
+### Word-level Tokenization
 ```python
 # Tokenização por palavras
 texto = "O gato subiu no telhado"
@@ -23,7 +23,7 @@ tokens = texto.split()
 # - Não captura morfologia
 ```
 
-### 2. Character-level Tokenization
+### Character-level Tokenization
 ```python
 # Tokenização por caracteres
 texto = "hello"
@@ -40,7 +40,7 @@ tokens = list(texto)
 # - Perde semântica de palavras
 ```
 
-### 3. Subword Tokenization
+### Subword Tokenization
 ```python
 # BPE (Byte Pair Encoding)
 # SentencePiece

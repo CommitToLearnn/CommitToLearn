@@ -36,7 +36,7 @@ unshare [options] [command [arguments]]
 
 ## Exemplos Práticos
 
-### 1. Isolamento de PID
+### Isolamento de PID
 ```bash
 # Criar novo PID namespace
 sudo unshare --pid --fork --mount-proc /bin/bash
@@ -45,7 +45,7 @@ sudo unshare --pid --fork --mount-proc /bin/bash
 ps aux
 ```
 
-### 2. Isolamento de Rede
+### Isolamento de Rede
 ```bash
 # Criar namespace de rede isolado
 sudo unshare --net /bin/bash
@@ -54,7 +54,7 @@ sudo unshare --net /bin/bash
 ip addr show
 ```
 
-### 3. Isolamento de Mount
+### Isolamento de Mount
 ```bash
 # Criar novo mount namespace
 unshare --mount /bin/bash
@@ -65,14 +65,14 @@ mount --bind /etc /tmp/teste
 ls /tmp/teste
 ```
 
-### 4. Container Básico
+### Container Básico
 ```bash
 # Criar "container" simples
 sudo unshare --pid --net --mount --uts --ipc --fork --mount-proc \
   chroot /path/to/rootfs /bin/sh
 ```
 
-### 5. User Namespace
+### User Namespace
 ```bash
 # Criar user namespace como usuário normal
 unshare --user --map-root-user /bin/bash
@@ -125,14 +125,14 @@ unshare --pid --net --mount --fork \
 
 ## Dicas e Truques
 
-### 1. Combinando Namespaces
+### Combinando Namespaces
 ```bash
 # Isolamento completo
 sudo unshare --pid --net --mount --uts --ipc --user \
   --map-root-user --fork --mount-proc /bin/bash
 ```
 
-### 2. Persistindo Namespaces
+### Persistindo Namespaces
 ```bash
 # Criar namespace e mantê-lo vivo
 touch /tmp/netns
@@ -142,7 +142,7 @@ sudo unshare --net=/tmp/netns sleep infinity &
 sudo nsenter --net=/tmp/netns /bin/bash
 ```
 
-### 3. Debugging
+### Debugging
 ```bash
 # Ver namespaces atuais
 ls -la /proc/self/ns/
