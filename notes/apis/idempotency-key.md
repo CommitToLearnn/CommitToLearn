@@ -432,7 +432,7 @@ result = client.make_request('/payments', data={
 
 ## Melhores Práticas
 
-### 1. Validação de Chaves
+### Validação de Chaves
 ```python
 import re
 
@@ -465,7 +465,7 @@ def validate_idempotency():
             return jsonify({'error': error}), 400
 ```
 
-### 2. TTL Apropriado
+### TTL Apropriado
 ```python
 # Configuração baseada no tipo de operação
 TTL_CONFIG = {
@@ -479,7 +479,7 @@ def get_ttl_for_operation(operation_type):
     return TTL_CONFIG.get(operation_type, 24 * 60 * 60)
 ```
 
-### 3. Monitoramento
+### Monitoramento
 ```python
 from prometheus_client import Counter, Histogram
 
@@ -497,7 +497,7 @@ def track_idempotency_miss():
     idempotency_metrics['misses'].inc()
 ```
 
-### 4. Segurança
+### Segurança
 ```python
 import hashlib
 import hmac

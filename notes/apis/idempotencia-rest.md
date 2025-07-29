@@ -249,7 +249,7 @@ def test_delete_idempotency():
 
 ## Melhores Práticas
 
-### 1. Design de URLs RESTful
+### Design de URLs RESTful
 ```python
 # ✅ Idempotente - PUT com ID específico
 PUT /users/123
@@ -261,7 +261,7 @@ POST /users
 PUT /users/email:joao@email.com
 ```
 
-### 2. Validação de Estado
+### Validação de Estado
 ```python
 @app.route('/users/<int:user_id>', methods=['PUT'])
 def update_user(user_id):
@@ -277,7 +277,7 @@ def update_user(user_id):
     # ...
 ```
 
-### 3. Documentação Clara
+### Documentação Clara
 ```yaml
 # OpenAPI specification
 /users/{userId}:
