@@ -379,6 +379,10 @@ main {
     color: var(--text-primary) !important;
 }
 
+.note pre code.language-dockerfile {
+    color: var(--text-primary) !important;
+}
+
 .note pre code.language-sql {
     color: var(--text-primary) !important;
 }
@@ -389,6 +393,7 @@ main {
 .note pre code.language-python .hljs-keyword,
 .note pre code.language-go .hljs-keyword,
 .note pre code.language-java .hljs-keyword,
+.note pre code.language-dockerfile .hljs-keyword,
 .note pre code.language-sql .hljs-keyword {
     color: #c792ea !important; /* Roxo para palavras-chave */
 }
@@ -398,6 +403,7 @@ main {
 .note pre code.language-python .hljs-string,
 .note pre code.language-go .hljs-string,
 .note pre code.language-java .hljs-string,
+.note pre code.language-dockerfile .hljs-string,
 .note pre code.language-sql .hljs-string {
     color: #c3e88d !important; /* Verde claro para strings */
 }
@@ -407,6 +413,7 @@ main {
 .note pre code.language-python .hljs-number,
 .note pre code.language-go .hljs-number,
 .note pre code.language-java .hljs-number,
+.note pre code.language-dockerfile .hljs-number,
 .note pre code.language-sql .hljs-number {
     color: #f78c6c !important; /* Laranja para números */
 }
@@ -424,6 +431,7 @@ main {
 .note pre code.language-python .hljs-comment,
 .note pre code.language-go .hljs-comment,
 .note pre code.language-java .hljs-comment,
+.note pre code.language-dockerfile .hljs-comment,
 .note pre code.language-sql .hljs-comment {
     color: #546e7a !important; /* Cinza para comentários */
 }
@@ -438,6 +446,73 @@ main {
 
 .note pre code.language-sql .hljs-built_in {
     color: #ff9800 !important; /* Laranja para funções SQL built-in */
+}
+
+/* Comandos específicos do Docker/Dockerfile */
+.note pre code.language-dockerfile .hljs-keyword {
+    color: #00bcd4 !important; /* Azul ciano para comandos Docker (FROM, RUN, COPY, etc.) */
+}
+
+.note pre code.language-dockerfile .hljs-built_in {
+    color: #00bcd4 !important; /* Azul ciano para comandos Docker built-in */
+}
+
+.note pre code.language-dockerfile .hljs-title {
+    color: #ffeb3b !important; /* Amarelo para nomes de imagens */
+}
+
+.note pre code.language-dockerfile .hljs-variable {
+    color: #4caf50 !important; /* Verde para variáveis de ambiente */
+}
+
+.note pre code.language-dockerfile .hljs-meta {
+    color: #9c27b0 !important; /* Roxo para metadados */
+}
+
+/* Highlighting adicional para Docker mesmo sem hljs perfeito */
+.note pre code.language-dockerfile {
+    color: #ffffff !important;
+}
+
+/* Padrões específicos que podem não ser detectados pelo hljs */
+.note pre code.language-dockerfile span:contains("FROM"),
+.note pre code.language-dockerfile span:contains("RUN"),
+.note pre code.language-dockerfile span:contains("COPY"),
+.note pre code.language-dockerfile span:contains("WORKDIR"),
+.note pre code.language-dockerfile span:contains("EXPOSE"),
+.note pre code.language-dockerfile span:contains("ENV"),
+.note pre code.language-dockerfile span:contains("CMD"),
+.note pre code.language-dockerfile span:contains("ENTRYPOINT") {
+    color: #00bcd4 !important;
+    font-weight: bold;
+}
+
+/* Classes para highlighting manual do Docker */
+.note pre code .docker-command {
+    color: #00bcd4 !important; /* Azul ciano para comandos */
+    font-weight: bold;
+}
+
+.note pre code .docker-comment {
+    color: #546e7a !important; /* Cinza para comentários */
+    font-style: italic;
+}
+
+.note pre code .docker-string {
+    color: #c3e88d !important; /* Verde claro para strings */
+}
+
+.note pre code .docker-variable {
+    color: #4caf50 !important; /* Verde para variáveis */
+    font-weight: bold;
+}
+
+.note pre code .docker-number {
+    color: #f78c6c !important; /* Laranja para números */
+}
+
+.note pre code .docker-flag {
+    color: #ff9800 !important; /* Laranja escuro para flags */
 }
 
 /* Tokens adicionais para melhor destacamento */
