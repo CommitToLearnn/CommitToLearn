@@ -10,7 +10,7 @@ As redes Docker permitem que containers se comuniquem entre si e com o mundo ext
 
 ## Tipos de Redes Docker
 
-### 1. Bridge Network (Padrão)
+### Bridge Network (Padrão)
 ```bash
 # Rede padrão para containers
 docker network ls
@@ -22,7 +22,7 @@ docker run -d --name web nginx
 docker run -d --name app python:3.9
 ```
 
-### 2. Host Network
+### Host Network
 ```bash
 # Container usa rede do host diretamente
 docker run --network host nginx
@@ -31,7 +31,7 @@ docker run --network host nginx
 # Container acessa todas interfaces do host
 ```
 
-### 3. None Network
+### None Network
 ```bash
 # Container sem rede
 docker run --network none alpine
@@ -40,7 +40,7 @@ docker run --network none alpine
 # Isolamento completo de rede
 ```
 
-### 4. Custom Bridge Networks
+### Custom Bridge Networks
 ```bash
 # Criar rede personalizada
 docker network create --driver bridge minha-rede
@@ -53,7 +53,7 @@ docker network create \
   rede-personalizada
 ```
 
-### 5. Overlay Network (Swarm)
+### Overlay Network (Swarm)
 ```bash
 # Para múltiplos hosts Docker
 docker network create \
@@ -247,7 +247,7 @@ docker run --rm --network container:target-container nicolaka/netshoot
 
 ## Casos de Uso Práticos
 
-### 1. Aplicação Multi-tier
+### Aplicação Multi-tier
 ```bash
 # Criar rede para aplicação
 docker network create app-tier
@@ -275,7 +275,7 @@ docker run -d \
   my-frontend:latest
 ```
 
-### 2. Microsserviços com Proxy Reverso
+### Microsserviços com Proxy Reverso
 ```yaml
 version: '3.8'
 services:
