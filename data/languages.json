@@ -70,6 +70,34 @@
           "slug": "containerizacao-comandos-basicos-docker",
           "date": "2025-07-23",
           "description": "Referência completa dos comandos essenciais do Docker para desenvolvimento e operações diárias."
+        },
+        {
+          "title": "Alpine vs Slim",
+          "file": "notes/containerizacao/alpine-vs-slim.md",
+          "slug": "containerizacao-alpine-vs-slim",
+          "date": "2025-07-29",
+          "description": "Comparação entre imagens Alpine e Slim para escolher a base ideal considerando tamanho, compatibilidade e segurança."
+        },
+        {
+          "title": "Yarn vs NPM vs PNPM",
+          "file": "notes/containerizacao/yarn-vs-npm.md",
+          "slug": "containerizacao-yarn-vs-npm",
+          "date": "2025-07-29",
+          "description": "Análise comparativa de gerenciadores de pacotes Node.js em containers Docker com foco em performance e cache."
+        },
+        {
+          "title": "Multi-Process Docker Builds",
+          "file": "notes/containerizacao/multi-process-builds.md",
+          "slug": "containerizacao-multi-process-builds",
+          "date": "2025-07-29",
+          "description": "Otimização de builds Docker usando processos paralelos e multi-stage builds para reduzir tempo de criação."
+        },
+        {
+          "title": "Docker com Banco de Dados",
+          "file": "notes/containerizacao/docker-com-banco-dados.md",
+          "slug": "containerizacao-docker-banco-dados",
+          "date": "2025-07-29",
+          "description": "Integração completa entre aplicações Docker e bancos de dados, incluindo persistência, networking e arquiteturas complexas."
         }
       ]
     },
