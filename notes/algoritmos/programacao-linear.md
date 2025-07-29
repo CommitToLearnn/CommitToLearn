@@ -934,7 +934,7 @@ if __name__ == "__main__":
 
 ## Aplicações Avançadas
 
-### 1. Problema de Alocação de Portfolio
+### Problema de Alocação de Portfolio
 
 ```python
 class PortfolioOptimization:
@@ -1055,7 +1055,7 @@ if __name__ == "__main__":
     demo_portfolio_optimization()
 ```
 
-### 2. Problema de Planejamento de Produção Multi-Período
+### Problema de Planejamento de Produção Multi-Período
 
 ```python
 class ProductionPlanning:
@@ -1369,27 +1369,27 @@ if __name__ == "__main__":
 
 ## Casos de Uso Reais
 
-### 1. **Logística e Transporte**
+### **Logística e Transporte**
 - Otimização de rotas de entrega
 - Planejamento de frota
 - Localização de centros de distribuição
 
-### 2. **Manufatura**
+### **Manufatura**
 - Planejamento de produção
 - Programação de máquinas
 - Gestão de estoque
 
-### 3. **Finanças**
+### **Finanças**
 - Otimização de portfolio
 - Gestão de risco
 - Planejamento de capital
 
-### 4. **Energia**
+### **Energia**
 - Despacho de usinas
 - Planejamento da expansão
 - Comercialização de energia
 
-### 5. **Agricultura**
+### **Agricultura**
 - Planejamento de cultivos
 - Alocação de recursos hídricos
 - Otimização de rações
