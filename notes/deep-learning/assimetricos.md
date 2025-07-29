@@ -10,7 +10,7 @@ Estruturas assimétricas em deep learning referem-se a arquiteturas, mecanismos 
 
 ## Tipos de Assimetria
 
-### 1. Attention Assimétrica
+### Attention Assimétrica
 ```python
 import torch
 import torch.nn as nn
@@ -91,7 +91,7 @@ def asymmetric_cross_attention(decoder_hidden, encoder_output):
     return output, weights
 ```
 
-### 2. Arquiteturas Encoder-Decoder Assimétricas
+### Arquiteturas Encoder-Decoder Assimétricas
 ```python
 class AsymmetricEncoderDecoder(nn.Module):
     """
@@ -142,7 +142,7 @@ class AsymmetricEncoderDecoder(nn.Module):
         return self.output_projection(decoder_output)
 ```
 
-### 3. Attention Causal (Unidirecional)
+### Attention Causal (Unidirecional)
 ```python
 class CausalAsymmetricAttention(nn.Module):
     """
@@ -195,7 +195,7 @@ class CausalAsymmetricAttention(nn.Module):
 
 ## Loss Functions Assimétricas
 
-### 1. Focal Loss (Assimétrica por Classe)
+### Focal Loss (Assimétrica por Classe)
 ```python
 class AsymmetricFocalLoss(nn.Module):
     """
@@ -254,7 +254,7 @@ class AsymmetricBCELoss(nn.Module):
         return loss.mean()
 ```
 
-### 2. Asymmetric Ranking Loss
+### Asymmetric Ranking Loss
 ```python
 class AsymmetricRankingLoss(nn.Module):
     """
@@ -289,7 +289,7 @@ class AsymmetricRankingLoss(nn.Module):
 
 ## Regularização Assimétrica
 
-### 1. Directional Regularization
+### Directional Regularization
 ```python
 class DirectionalRegularizer:
     """
@@ -341,7 +341,7 @@ class AsymmetricDropout(nn.Module):
 
 ## Otimizadores Assimétricos
 
-### 1. Asymmetric Learning Rates
+### Asymmetric Learning Rates
 ```python
 class AsymmetricOptimizer:
     """
@@ -394,7 +394,7 @@ class AsymmetricScheduler:
 
 ## Aplicações Práticas
 
-### 1. Machine Translation
+### Machine Translation
 ```python
 class AsymmetricTranslationModel(nn.Module):
     """
@@ -429,7 +429,7 @@ class AsymmetricTranslationModel(nn.Module):
         
         return tgt_decoded
 
-### 2. Question Answering
+### Question Answering
 class AsymmetricQAModel(nn.Module):
     """
     QA com tratamento assimétrico de pergunta e contexto

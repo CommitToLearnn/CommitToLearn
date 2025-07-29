@@ -109,7 +109,7 @@ def analyze_high_attention_patterns(attention_weights, layer_idx=-1):
 
 ## Análise por Domínio
 
-### 1. Computer Vision (CNNs)
+### Computer Vision (CNNs)
 ```python
 class LayerAnalysisCV:
     def __init__(self, model):
@@ -163,7 +163,7 @@ class LayerAnalysisCV:
         return rf_size
 ```
 
-### 2. Natural Language Processing (Transformers)
+### Natural Language Processing (Transformers)
 ```python
 class LayerAnalysisNLP:
     def __init__(self, model):
@@ -219,7 +219,7 @@ class LayerAnalysisNLP:
         return locality_scores
 ```
 
-### 3. Speech Processing
+### Speech Processing
 ```python
 class LayerAnalysisSpeech:
     def analyze_speech_hierarchy(self):

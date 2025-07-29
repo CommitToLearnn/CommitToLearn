@@ -10,7 +10,7 @@ Attention Allocation refere-se a como os modelos distribuem e alocam recursos de
 
 ## Mecanismos de Alocação
 
-### 1. Token-Level Allocation
+### Token-Level Allocation
 ```python
 # Como atenção é distribuída entre tokens
 # Alguns tokens recebem mais atenção que outros
@@ -40,7 +40,7 @@ def analyze_token_attention(attention_weights, tokens):
 # - Primeira e última posição frequentemente importantes
 ```
 
-### 2. Layer-wise Allocation
+### Layer-wise Allocation
 ```python
 # Diferentes layers capturam diferentes tipos de informação
 # Early layers: sintaxe, gramática
@@ -78,7 +78,7 @@ class LayerWiseAttentionAnalysis:
         return entropy.mean().item()
 ```
 
-### 3. Head-wise Allocation
+### Head-wise Allocation
 ```python
 # Multi-head attention: cada cabeça especializa em padrões diferentes
 # Head specialization analysis
@@ -121,7 +121,7 @@ def compute_locality_score(attention_matrix):
 
 ## Padrões de Alocação
 
-### 1. Attention to Function Words
+### Attention to Function Words
 ```python
 # Tokens funcionais frequentemente recebem atenção desproporcional
 # [SEP], [CLS], pontuação, artigos
@@ -146,7 +146,7 @@ def function_word_attention(attention_weights, tokens):
 # Pode indicar ineficiência na alocação de recursos
 ```
 
-### 2. Positional Bias
+### Positional Bias
 ```python
 # Bias para primeira e última posições
 # Recency bias vs primacy bias
@@ -173,7 +173,7 @@ def positional_bias_analysis(attention_weights):
     }
 ```
 
-### 3. Content vs Context Allocation
+### Content vs Context Allocation
 ```python
 # Balanceamento entre focar no token atual vs contexto
 
@@ -195,7 +195,7 @@ def content_context_balance(attention_weights):
 
 ## Otimização da Alocação
 
-### 1. Attention Regularization
+### Attention Regularization
 ```python
 # Regularizar distribuição de atenção para melhor alocação
 
@@ -231,7 +231,7 @@ class AttentionRegularization(nn.Module):
         return entropy_loss
 ```
 
-### 2. Sparse Attention Allocation
+### Sparse Attention Allocation
 ```python
 # Alocar atenção apenas para tokens mais relevantes
 
@@ -259,7 +259,7 @@ class SparseAttentionAllocation(nn.Module):
         return torch.softmax(sparse_attention, dim=-1)
 ```
 
-### 3. Dynamic Allocation
+### Dynamic Allocation
 ```python
 # Alocação dinâmica baseada no contexto
 
@@ -289,7 +289,7 @@ class DynamicAttentionAllocation(nn.Module):
 
 ## Métricas de Qualidade da Alocação
 
-### 1. Attention Entropy
+### Attention Entropy
 ```python
 def attention_entropy(attention_weights):
     """
@@ -302,7 +302,7 @@ def attention_entropy(attention_weights):
     return entropy.mean()
 ```
 
-### 2. Attention Diversity
+### Attention Diversity
 ```python
 def attention_diversity(attention_heads):
     """
@@ -323,7 +323,7 @@ def attention_diversity(attention_heads):
     return torch.tensor(diversity_scores).mean()
 ```
 
-### 3. Allocation Efficiency
+### Allocation Efficiency
 ```python
 def allocation_efficiency(attention_weights, target_labels):
     """
@@ -342,7 +342,7 @@ def allocation_efficiency(attention_weights, target_labels):
 
 ## Problemas de Má Alocação
 
-### 1. Attention Collapse
+### Attention Collapse
 ```python
 # Toda atenção concentrada em poucos tokens
 # Resulta em representações pobres
@@ -357,7 +357,7 @@ def detect_attention_collapse(attention_weights, threshold=0.8):
     return collapse_ratio > 0.5  # Mais de 50% das queries colapsaram
 ```
 
-### 2. Uniform Attention
+### Uniform Attention
 ```python
 # Atenção muito distribuída = não discriminativa
 # Todas as posições recebem atenção similar
@@ -373,7 +373,7 @@ def detect_uniform_attention(attention_weights, threshold=0.1):
     return normalized_entropy > (1 - threshold)  # Muito próximo da uniformidade
 ```
 
-### 3. Over-attention to Special Tokens
+### Over-attention to Special Tokens
 ```python
 # Atenção excessiva para [CLS], [SEP], etc.
 
