@@ -133,12 +133,75 @@ document.addEventListener('DOMContentLoaded', () => {
         return goPatterns.some(pattern => pattern.test(content));
     }
 
+    // Função auxiliar para detectar código Docker/Dockerfile
+    function isDockerCode(content) {
+        const dockerPatterns = [
+            /^\s*FROM\s+[\w\/\:\.-]+/m,
+            /^\s*RUN\s+/m,
+            /^\s*COPY\s+/m,
+            /^\s*ADD\s+/m,
+            /^\s*WORKDIR\s+/m,
+            /^\s*EXPOSE\s+\d+/m,
+            /^\s*ENV\s+\w+/m,
+            /^\s*CMD\s*\[/m,
+            /^\s*ENTRYPOINT\s*\[/m,
+            /^\s*VOLUME\s+/m,
+            /^\s*USER\s+/m,
+            /^\s*LABEL\s+/m,
+            /^\s*ARG\s+/m,
+            /^\s*HEALTHCHECK\s+/m,
+            /^\s*ONBUILD\s+/m,
+            /^\s*SHELL\s*\[/m,
+            /^\s*STOPSIGNAL\s+/m,
+            /\$\{.*\}/,                    // Variáveis Docker ${VAR}
+            /--no-cache/,                  // Flags típicos do Docker
+            /apt-get\s+update/,            // Comandos típicos em containers
+            /apk\s+add/,                   // Alpine package manager
+            /docker\s+build/,              // Comandos docker
+            /docker\s+run/
+        ];
+        
+        const detected = dockerPatterns.some(pattern => pattern.test(content));
+        if (detected) {
+            console.log('🐳 Docker code detected! Patterns found in:', content.substring(0, 100));
+        }
+        return detected;
+    }
+
+    // Função para aplicar highlighting manual ao Docker
+    function applyDockerHighlighting(codeBlock) {
+        const content = codeBlock.textContent;
+        
+        // Define padrões e cores para Docker
+        const dockerHighlightRules = [
+            { pattern: /^(FROM|RUN|COPY|ADD|WORKDIR|EXPOSE|ENV|CMD|ENTRYPOINT|VOLUME|USER|LABEL|ARG|HEALTHCHECK|ONBUILD|SHELL|STOPSIGNAL)\b/gm, class: 'docker-command' },
+            { pattern: /^#.*/gm, class: 'docker-comment' },
+            { pattern: /"[^"]*"/g, class: 'docker-string' },
+            { pattern: /'[^']*'/g, class: 'docker-string' },
+            { pattern: /\$\{[^}]+\}/g, class: 'docker-variable' },
+            { pattern: /\b\d+\b/g, class: 'docker-number' },
+            { pattern: /--[\w-]+/g, class: 'docker-flag' }
+        ];
+
+        let highlightedContent = content;
+        
+        // Aplica cada regra
+        dockerHighlightRules.forEach(rule => {
+            highlightedContent = highlightedContent.replace(rule.pattern, `<span class="${rule.class}">$&</span>`);
+        });
+
+        // Aplica o conteúdo destacado
+        codeBlock.innerHTML = highlightedContent;
+        
+        console.log('🎨 Docker highlighting manual aplicado');
+    }
+
     // Função para aplicar syntax highlighting inteligente
     function applySyntaxHighlighting(container) {
         // Aguarda um pequeno delay para garantir que o DOM foi atualizado
         setTimeout(() => {
             const codeBlocks = container.querySelectorAll('pre code');
-            console.log(`Processando ${codeBlocks.length} blocos de código`);
+            console.log(`🔍 Processando ${codeBlocks.length} blocos de código`);
             
             codeBlocks.forEach((codeBlock, index) => {
                 // Verifica se o bloco tem uma linguagem específica
@@ -147,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Detecta linguagem pelo conteúdo
                 const codeContent = codeBlock.textContent || '';
-                console.log(`Bloco ${index}: hasLanguageClass=${hasLanguageClass}, classes=${codeBlock.className}`);
+                console.log(`📝 Bloco ${index}: hasLanguageClass=${hasLanguageClass}, classes=${codeBlock.className}`);
                 
                 // Reset do bloco
                 codeBlock.removeAttribute('data-highlighted');
@@ -160,34 +223,54 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (typeof hljs !== 'undefined') {
                         // Se não tem classe de linguagem mas parece ser código, detecta a linguagem
                         if (!hasLanguageClass) {
-                            if (isJavaCode(codeContent)) {
+                            if (isDockerCode(codeContent)) {
+                                codeBlock.classList.add('language-dockerfile');
+                                console.log(`🐳 Detectado Docker/Dockerfile no bloco ${index}`);
+                                // Aplicar highlighting manual se necessário
+                                applyDockerHighlighting(codeBlock);
+                            } else if (isJavaCode(codeContent)) {
                                 codeBlock.classList.add('language-java');
-                                console.log(`Detectado Java no bloco ${index}`);
+                                console.log(`☕ Detectado Java no bloco ${index}`);
                             } else if (isPythonCode(codeContent)) {
                                 codeBlock.classList.add('language-python');
-                                console.log(`Detectado Python no bloco ${index}`);
+                                console.log(`🐍 Detectado Python no bloco ${index}`);
                             } else if (isGoCode(codeContent)) {
                                 codeBlock.classList.add('language-go');
-                                console.log(`Detectado Go no bloco ${index}`);
+                                console.log(`🔷 Detectado Go no bloco ${index}`);
                             }
                         }
                         
                         // Aplica o highlight
                         try {
-                            hljs.highlightElement(codeBlock);
-                            console.log(`Highlight aplicado ao bloco ${index} com classes: ${codeBlock.className}`);
+                            if (codeBlock.classList.contains('language-dockerfile')) {
+                                // Para Docker, tenta hljs primeiro, depois fallback manual
+                                try {
+                                    hljs.highlightElement(codeBlock);
+                                    console.log(`✅ HLJS Docker highlight aplicado ao bloco ${index}`);
+                                } catch (dockerError) {
+                                    console.warn(`⚠️ HLJS falhou para Docker, usando highlight manual no bloco ${index}`);
+                                    applyDockerHighlighting(codeBlock);
+                                }
+                            } else {
+                                hljs.highlightElement(codeBlock);
+                            }
+                            console.log(`✅ Highlight aplicado ao bloco ${index} com classes: ${codeBlock.className}`);
                         } catch (error) {
-                            console.warn(`Erro ao aplicar syntax highlighting no bloco ${index}:`, error);
+                            console.warn(`⚠️ Erro ao aplicar syntax highlighting no bloco ${index}:`, error);
+                            // Se é Docker e hljs falhou, tenta highlighting manual
+                            if (codeBlock.classList.contains('language-dockerfile')) {
+                                applyDockerHighlighting(codeBlock);
+                            }
                         }
                     } else {
-                        console.warn('hljs não está disponível');
+                        console.warn('❌ hljs não está disponível');
                     }
                 } else {
                     // Para blocos genéricos, mantém estilo neutro
-                    console.log(`Bloco ${index} mantido sem highlight`);
+                    console.log(`ℹ️ Bloco ${index} mantido sem highlight`);
                 }
             });
-        }, 100);
+        }, 200);
     }
 
     // Adiciona botões de copiar aos blocos de código
