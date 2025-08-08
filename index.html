@@ -17,15 +17,16 @@
 </head>
 <body>
     <!-- Cabeçalho principal da página -->
-    <header>
-        <h1 onclick="showHome()" style="cursor: pointer;">CommitToLearn</h1>
-        <p>Cada commit é um passo na jornada do conhecimento.</p>
-        
-        <!-- Menu de navegação -->
-        <nav>
-            <a href="#" onclick="showStudies()" id="nav-estudos">Estudos</a>
-            <a href="#" onclick="showArticles()" id="nav-artigos">Artigos</a>
-        </nav>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="brand" onclick="showHome()" role="button" aria-label="Ir para Home">
+                <span class="brand-name"><span class="brand-accent">Commit</span>ToLearn</span>
+            </div>
+            <nav class="main-nav" aria-label="Navegação principal">
+                <a href="#" onclick="showStudies()" id="nav-estudos">Estudos</a>
+                <a href="#" onclick="showArticles()" id="nav-artigos">Artigos</a>
+            </nav>
+        </div>
     </header>
 
     <!-- Conteúdo principal da aplicação -->
@@ -71,7 +72,7 @@
     </footer>
 
     <!-- Tema CSS para syntax highlighting do código -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
     
     <!-- Bibliotecas JavaScript externas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
