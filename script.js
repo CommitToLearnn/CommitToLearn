@@ -408,33 +408,72 @@ document.addEventListener('DOMContentLoaded', () => {
         createArticleCards();
     }
 
+    // Renderização de artigos 
+    function createArticleCards() {
+        if (!languagesData) {
+            articlesContainer.innerHTML = '<p class="loading-center">Carregando artigos...</p>';
+            return;
+        }
+        const articles = languagesData.articles || [];
+        if (articles.length === 0) {
+            articlesContainer.innerHTML = `
+                <div class="articles-header">
+                    <h2>Artigos</h2>
+                    <p>Nenhum artigo publicado ainda.</p>
+                </div>`;
+            return;
+        }
+        // Header + grid
+        articlesContainer.innerHTML = `
+            <div class="articles-header">
+                <h2>Artigos</h2>
+                <p>Explorações mais extensas, ideias consolidadas e sínteses práticas.</p>
+            </div>
+            <div class="articles-grid" id="articles-grid"></div>
+        `;
+        const grid = document.getElementById('articles-grid');
+        // Ordena por data desc
+        const sorted = [...articles].sort((a,b)=> new Date(b.date) - new Date(a.date));
+        sorted.forEach(article => {
+            const d = new Date(article.date);
+            const dateLabel = d.toLocaleDateString('pt-BR',{ day:'2-digit', month:'short', year:'numeric'});
+            const card = document.createElement('article');
+            card.className = 'article-card';
+            card.innerHTML = `
+                <div class="article-card-inner">
+                    <div class="article-card-meta">
+                        <span class="article-badge">ARTIGO</span>
+                        <span class="article-date">${dateLabel}</span>
+                    </div>
+                    <h3 class="article-card-title">${article.title}</h3>
+                    <p class="article-card-desc">${article.description || 'Clique para ler o conteúdo completo.'}</p>
+                    <div class="article-card-footer">
+                        <span class="article-open">Ler →</span>
+                    </div>
+                </div>`;
+            card.addEventListener('click', ()=> showArticle(article));
+            grid.appendChild(card);
+        });
+    }
+
     /* ===== CRIAÇÃO DE INTERFACE ===== */
 
     // Cria a timeline de publicações na página inicial
     function createTimeline() {
-        // HTML da estrutura da timeline
-        homeContainer.innerHTML = `
-            <div class="publications-header">
-                <h2>Jornada do Conhecimento</h2>
-                <p>Explore todas as anotações e descubra novos conceitos em programação.</p>
-            </div>
-            <div class="publications-list" id="publications-list"></div>
-        `;
-        
-        const publicationsList = document.getElementById('publications-list');
-        
-        // Verifica se os dados foram carregados
-        if (!languagesData) {
-            publicationsList.innerHTML = '<p>Carregando publicações...</p>';
-            return;
-        }
+        // Placeholder enquanto carrega
+        homeContainer.innerHTML = `<div class="home-hero loading">Carregando...</div>`;
 
-        // Coleta todas as anotações de todas as linguagens
+        if (!languagesData) return;
+
+        // Coleta dados agregados
         const allItems = [];
-        
-        // Adiciona todas as notas
+        let totalNotes = 0;
+        let earliestDate = null;
         languagesData.languages.forEach(language => {
+            totalNotes += language.notes.length;
             language.notes.forEach(note => {
+                const d = new Date(note.date);
+                if (!earliestDate || d < earliestDate) earliestDate = d;
                 allItems.push({
                     ...note,
                     type: 'note',
@@ -444,200 +483,214 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
-
-        // Adiciona todos os artigos
         if (languagesData.articles) {
             languagesData.articles.forEach(article => {
+                const d = new Date(article.date);
+                if (!earliestDate || d < earliestDate) earliestDate = d;
                 allItems.push({
                     ...article,
                     type: 'article',
                     language: article.category,
-                    languageIcon: '📝', // Ícone para artigos
+                    languageIcon: '📝',
                     languageObj: null
                 });
             });
         }
+        const totalArticles = languagesData.articles ? languagesData.articles.length : 0;
+        const distinctLanguages = languagesData.languages.length;
+        allItems.sort((a,b)=> new Date(b.date) - new Date(a.date));
+        const latest = allItems.slice(0,8);
+        const daysSinceStart = earliestDate ? Math.ceil((Date.now()-earliestDate.getTime())/86400000) : 0;
 
-        // Ordena por data (mais recente primeiro)
-        allItems.sort((a, b) => new Date(b.date) - new Date(a.date));
+        homeContainer.innerHTML = `
+            <section class="home-hero">
+                <div class="hero-content">
+                    <h1><span class="hero-highlight">Commit</span>ToLearn</h1>
+                    <p class="hero-sub">Eu commito minhas experiências aqui para que acelerem as suas.</p>
+                    <div class="hero-actions">
+                        <button class="hero-btn primary" onclick="showStudies()">Explorar Estudos →</button>
+                        <button class="hero-btn ghost" onclick="showArticles()">Ler Artigos</button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat"><span class="stat-value">${totalNotes}</span><span class="stat-label">Anotações</span></div>
+                        <div class="stat"><span class="stat-value">${totalArticles}</span><span class="stat-label">Artigos</span></div>
+                        <div class="stat"><span class="stat-value">${distinctLanguages}</span><span class="stat-label">Áreas</span></div>
+                        <div class="stat"><span class="stat-value">${daysSinceStart}</span><span class="stat-label">Dias</span></div>
+                    </div>
+                </div>
+                <div class="hero-aside">
+                    <div class="hero-aside-inner">
+                        <h3>Filosofia</h3>
+                        <p>Cada commit aqui é um pedaço da minha história de aprendizado — um registro público das minhas anotações que amanhã pode ajudar outra pessoa (ou o meu eu do futuro).</p>
+                        <ul class="hero-principles">
+                            <li>🧩 Commits que contam a história do estudo</li>
+                            <li>🗂️ Anotações versionadas e recuperáveis</li>
+                            <li>🔁 Experimentos reprodutíveis e rastreáveis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="home-latest">
+                <div class="latest-header">
+                    <h2>Últimas Publicações</h2>
+                    <button class="see-all-btn" onclick="showStudies()">Ver tudo →</button>
+                </div>
+                <div class="latest-grid" id="latest-grid"></div>
+            </section>
+        `;
 
-        // Verifica se há itens para exibir
-        if (allItems.length === 0) {
-            publicationsList.innerHTML = '<p class="no-notes">Nenhuma publicação ainda.</p>';
-            return;
+        const latestGrid = document.getElementById('latest-grid');
+
+        function buildLatestCard(item){
+            const d = new Date(item.date);
+            const dateLabel = d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+            const isArticle = item.type==='article';
+            return `<article class="latest-card ${isArticle?'article':''}" onclick='${isArticle?`showArticle(${JSON.stringify(item).replace(/"/g,'&quot;')})`:`showNote(${JSON.stringify(item).replace(/"/g,'&quot;')})`}'>
+                <div class="latest-meta">
+                    <span class="latest-badge ${isArticle?'badge-article':'badge-note'}">${isArticle?'ARTIGO':'NOTA'}</span>
+                    <span class="latest-date">${dateLabel}</span>
+                </div>
+                <h3 class="latest-title">${item.title}</h3>
+                <div class="latest-bottom">
+                    <span class="latest-lang">${item.languageIcon} ${item.language}</span>
+                    <span class="latest-open">Ler →</span>
+                </div>
+            </article>`;
         }
 
-        // Função para criar um card de publicação
-        async function createPublicationCard(item) {
-            // Formatação da data em português
-            const parts = item.date.split('-');
-            const itemDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
-
-            const day = itemDate.getUTCDate();
-            const month = itemDate.toLocaleDateString('pt-BR', { month: 'long', timeZone: 'UTC' });
-            const year = itemDate.getUTCFullYear();
-            const formattedDate = `${day} de ${month} de ${year}`;
-
-            // Carrega o conteúdo para calcular tempo de leitura
-            try {
-                const response = await fetch(resolvePath(item.file));
-                const content = await response.text();
-                const readingTime = calculateReadingTime(content);
-
-                // Define a função de clique baseada no tipo
-                const clickHandler = item.type === 'article' ? 
-                    `window.showArticle(${JSON.stringify(item).replace(/"/g, '&quot;')})` :
-                    `window.showNote(${JSON.stringify(item).replace(/"/g, '&quot;')})`;
-
-                return `
-                    <article class="publication-item" onclick="${clickHandler}">
-                        <div class="publication-date">
-                            ${formattedDate}
-                        </div>
-                        <div class="publication-content">
-                            <h3 class="publication-title">${item.title}</h3>
-                            <div class="publication-meta">
-                                <span class="publication-language">
-                                    <span class="language-icon">${item.languageIcon.endsWith('.svg') ? 
-                                        `<img src="${item.languageIcon}" alt="${item.language}" width="16" height="16">` : 
-                                        item.languageIcon}</span>
-                                    ${item.language.toUpperCase()}
-                                </span>
-                                <span class="reading-time">
-                                    <span class="reading-time-icon">🕒</span>
-                                    ${readingTime}
-                                </span>
-                            </div>
-                            <p class="publication-description">${item.description || 'Clique para ler mais sobre este tópico.'}</p>
-                            <div class="read-more">
-                                Ler mais →
-                            </div>
-                        </div>
-                    </article>
-                `;
-            } catch (error) {
-                // Se houver erro ao carregar, exibe sem tempo de leitura
-                const clickHandler = item.type === 'article' ? 
-                    `window.showArticle(${JSON.stringify(item).replace(/"/g, '&quot;')})` :
-                    `window.showNote(${JSON.stringify(item).replace(/"/g, '&quot;')})`;
-
-                return `
-                    <article class="publication-item" onclick="${clickHandler}">
-                        <div class="publication-date">
-                            ${formattedDate}
-                        </div>
-                        <div class="publication-content">
-                            <h3 class="publication-title">${item.title}</h3>
-                            <div class="publication-meta">
-                                <span class="publication-language">
-                                    <span class="language-icon">${item.languageIcon.endsWith('.svg') ? 
-                                        `<img src="${item.languageIcon}" alt="${item.language}" width="16" height="16">` : 
-                                        item.languageIcon}</span>
-                                    ${item.language.toUpperCase()}
-                                </span>
-                            </div>
-                            <p class="publication-description">${item.description || 'Clique para ler mais sobre este tópico.'}</p>
-                            <div class="read-more">
-                                Ler mais →
-                            </div>
-                        </div>
-                    </article>
-                `;
-            }
-        }
-
-        // Cria todos os cards de forma assíncrona
-        Promise.all(allItems.map(createPublicationCard))
-            .then(cardsHTML => {
-                publicationsList.innerHTML = cardsHTML.join('');
-            })
-            .catch(error => {
-                console.error('Erro ao criar timeline:', error);
-                publicationsList.innerHTML = '<p class="no-notes">Erro ao carregar publicações.</p>';
-            });
+        latestGrid.innerHTML = latest.map(buildLatestCard).join('');
     }
+    // Fim createTimeline
 
     // Cria os cards das linguagens de programação
     function createLanguageCards() {
-        // HTML da estrutura da página de estudos
+        // HTML da estrutura da página de estudos com barra de controle
         languagesContainer.innerHTML = `
-            <div class="studies-header">
+            <div class="studies-header studies-languages-header">
                 <h2>Área de Estudos</h2>
                 <p>Explore conceitos e anotações organizados por linguagem</p>
+                <div class="languages-controls">
+                    <div class="languages-search-wrapper">
+                        <input type="text" id="languages-search" placeholder="Buscar linguagem ou anotação..." aria-label="Buscar linguagem">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="languages-sorting">
+                        <button class="sort-btn active" data-sort="notes">Mais anotações</button>
+                        <button class="sort-btn" data-sort="az">A → Z</button>
+                        <button class="sort-btn" data-sort="recent">Recentes</button>
+                    </div>
+                </div>
             </div>
-            <div class="languages-grid" id="languages-grid"></div>
+            <div class="languages-grid enhanced" id="languages-grid"></div>
         `;
         const languagesGrid = document.getElementById('languages-grid');
+        const searchInput = document.getElementById('languages-search');
+        const sorting = languagesContainer.querySelector('.languages-sorting');
         
         if (!languagesData) {
             languagesGrid.innerHTML = '<p>Carregando estudos...</p>';
             return;
         }
 
-        languagesData.languages.forEach(language => {
-            const languageCard = document.createElement('div');
-            languageCard.className = 'language-card';
-            
-            languageCard.innerHTML = `
-                <div class="language-icon">${language.icon.endsWith('.svg') ? 
-                    `<img src="${language.icon}" alt="${language.name}" width="32" height="32">` : 
-                    language.icon}</div>
-                <div class="language-name">${language.name}</div>
-                <div class="language-notes-count">${language.notes.length} anotação(ões)</div>
-            `;
-            
-            languageCard.addEventListener('click', () => showLanguageNotes(language));
-            languagesGrid.appendChild(languageCard);
-        });
-    }
+        // Pré-cálculo para progress (normaliza pela linguagem com mais notas)
+        const maxNotes = Math.max(...languagesData.languages.map(l => l.notes.length || 0), 1);
 
-    function createArticleCards() {
-        articlesContainer.innerHTML = `
-            <div class="studies-header">
-                <h2>Artigos</h2>
-                <p>Reflexões e insights sobre programação e desenvolvimento</p>
-            </div>
-            <div class="languages-grid" id="articles-grid"></div>
-        `;
-        const articlesGrid = document.getElementById('articles-grid');
-        
-        if (!languagesData || !languagesData.articles || languagesData.articles.length === 0) {
-            articlesGrid.innerHTML = `
-                <div class="no-content">
-                    <h3>Em breve...</h3>
-                    <p>Novos artigos e reflexões sobre programação serão publicados em breve!</p>
+        // Função para criar card individual
+        function buildLanguageCard(language) {
+            const percent = Math.round((language.notes.length / maxNotes) * 100);
+            // Determinar a data mais recente entre as notas (se houver)
+            let lastDate = null;
+            language.notes.forEach(n => { if (n.date) { const d = new Date(n.date); if (!lastDate || d > lastDate) lastDate = d; } });
+            const recentLabel = lastDate ? lastDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'short' }) : '—';
+            const card = document.createElement('div');
+            card.className = 'language-card enhanced';
+            card.setAttribute('tabindex','0');
+            card.setAttribute('role','button');
+            card.setAttribute('aria-label', `${language.name} com ${language.notes.length} anotações`);
+            card.innerHTML = `
+                <div class="language-card-top">
+                    <div class="language-icon-wrapper">
+                        <div class="language-icon-main">${language.icon.endsWith && language.icon.endsWith('.svg') ? 
+                            `<img src="${language.icon}" alt="${language.name}" width="48" height="48">` : 
+                            language.icon}</div>
+                        <div class="language-progress" style="--progress:${percent};" aria-hidden="true">
+                            <span class="language-progress-value">${language.notes.length}</span>
+                        </div>
+                    </div>
+                    <div class="language-meta">
+                        <h3 class="language-name">${language.name}</h3>
+                        <div class="language-info-line">
+                            <span class="language-notes-count">${language.notes.length} anotação(ões)</span>
+                            <span class="language-last-date" title="Última atualização">🗓 ${recentLabel}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="language-tags">${language.tags ? language.tags.map(t=>`<span class='lang-tag'>${t}</span>`).join('') : ''}</div>
+                <div class="language-card-footer">
+                    <button class="open-language-btn" aria-label="Abrir ${language.name}">Ver anotações →</button>
                 </div>
             `;
-            return;
+            card.addEventListener('click', () => showLanguageNotes(language));
+            card.addEventListener('keypress', (e) => { if (e.key === 'Enter') showLanguageNotes(language); });
+            card.querySelector('.open-language-btn').addEventListener('click', (e) => { e.stopPropagation(); showLanguageNotes(language); });
+            return card;
         }
 
-        // Função para criar card de artigo
-        function createArticleCard(article) {
-            const articleCard = document.createElement('div');
-            articleCard.className = 'language-card article-card';
-            
-            const articleDate = new Date(article.date);
-            const formattedDate = articleDate.toLocaleDateString('pt-BR', { 
-                day: 'numeric', 
-                month: 'long', 
-                year: 'numeric' 
-            });
-            
-            articleCard.innerHTML = `
-                <div class="language-icon">📝</div>
-                <div class="language-name">${article.title}</div>
-                <div class="language-notes-count">${article.category} • ${formattedDate}</div>
-            `;
-            
-            articleCard.addEventListener('click', () => showArticle(article));
-            return articleCard;
+        // Estado atual de filtro e ordenação
+        let currentList = [...languagesData.languages];
+        let currentSort = 'notes';
+
+        function applySort(list) {
+            const sorted = list.slice();
+            if (currentSort === 'notes') {
+                sorted.sort((a,b)=> b.notes.length - a.notes.length);
+            } else if (currentSort === 'az') {
+                sorted.sort((a,b)=> a.name.localeCompare(b.name,'pt-BR'));
+            } else if (currentSort === 'recent') {
+                // Usa data mais recente de nota
+                function latest(l){
+                    let d=null; l.notes.forEach(n=>{ if(n.date){ const dn=new Date(n.date); if(!d||dn>d)d=dn; }}); return d?d.getTime():0; }
+                sorted.sort((a,b)=> latest(b)-latest(a));
+            }
+            return sorted;
         }
 
-        // Cria todos os cards
-        languagesData.articles.forEach(article => {
-            const card = createArticleCard(article);
-            articlesGrid.appendChild(card);
+        function render() {
+            languagesGrid.innerHTML='';
+            applySort(currentList).forEach(language => languagesGrid.appendChild(buildLanguageCard(language)));
+            if (languagesGrid.children.length===0) {
+                languagesGrid.innerHTML = `<div class='no-languages-results'>Nenhuma linguagem encontrada para sua busca.</div>`;
+            }
+        }
+
+        // Busca dinâmica (debounce leve)
+        let searchTimer=null;
+        searchInput.addEventListener('input', (e)=>{
+            const q = e.target.value.trim().toLowerCase();
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(()=>{
+                if (!q) { currentList = [...languagesData.languages]; render(); return; }
+                currentList = languagesData.languages.filter(lang => {
+                    if (lang.name.toLowerCase().includes(q)) return true;
+                    // Busca também dentro dos títulos das notas
+                    return lang.notes.some(n => (n.title||'').toLowerCase().includes(q));
+                });
+                render();
+            },150);
         });
+
+        // Ordenação
+        sorting.addEventListener('click', (e)=>{
+            const btn = e.target.closest('.sort-btn');
+            if(!btn) return;
+            sorting.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSort = btn.dataset.sort;
+            render();
+        });
+
+        // Render inicial
+        render();
     }
 
     /* ===== FUNÇÕES DE EXIBIÇÃO DE CONTEÚDO ===== */
@@ -899,4 +952,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showLanguageNotes = showLanguageNotes;
     window.showNote = showNote;
     window.showArticle = showArticle;
+
 });
