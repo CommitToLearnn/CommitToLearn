@@ -901,6 +901,35 @@
           "description": "Aprenda a usar dataclasses em Python para simplificar a criação de classes que armazenam dados."
         }
       ]
+    },
+    {
+      "name": "Dados",
+      "id": "dados",
+      "color": "#6F42C1",
+      "icon": "📊",
+      "notes": [
+          {
+            "title": "Dados Quantitativos e Qualitativos",
+            "file": "notes/dados/quantitativos-qualitativos.md",
+            "slug": "dados-quantitativos-qualitativos",
+            "date": "2025-08-14T12:00:00-03:00",
+            "description": "Entenda a diferença entre dados quantitativos (numéricos) e qualitativos (categorias), com exemplos e aplicações."
+          },
+          {
+            "title": "Dados Primários, Secundários e de Terceiros",
+            "file": "notes/dados/primarios-secundarios-terceiros.md",
+            "slug": "dados-primarios-secundarios-terceiros",
+            "date": "2025-08-14T12:00:00-03:00",
+            "description": "Saiba como identificar e utilizar dados primários, secundários e de terceiros, suas vantagens e desafios."
+          },
+          {
+            "title": "Dados Estruturados, Semi-Estruturados e Não Estruturados",
+            "file": "notes/dados/estruturados-semi-nao-estruturados.md",
+            "slug": "dados-estruturados-semi-nao-estruturados",
+            "date": "2025-08-14T12:00:00-03:00",
+            "description": "Descubra as diferenças entre dados estruturados, semi-estruturados e não estruturados, com exemplos práticos."
+          }
+      ]
     }
   ],
   "articles": [
