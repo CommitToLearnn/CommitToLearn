@@ -930,6 +930,35 @@
             "description": "Descubra as diferenças entre dados estruturados, semi-estruturados e não estruturados, com exemplos práticos."
           }
       ]
+    },
+    {
+      "name": "Engenharia de Software",
+      "id": "engenharia-de-software",
+      "color": "#6F42C1",
+      "icon": "🛠️",
+      "notes": [
+        {
+          "title": "Banco de Dados: Linha vs. Coluna vs. Hadoop",
+          "file": "notes/engenharia-de-software/banco-dados-linha-coluna-hadoop.md",
+          "slug": "banco-dados-linha-coluna-hadoop",
+          "date": "2025-08-22",
+          "description": "Entenda as diferenças entre bancos de dados orientados a linhas, colunas e o ecossistema Hadoop, e quando usar cada um."
+        },
+        {
+          "title": "Os 7 Princípios da Engenharia de Software",
+          "file": "notes/engenharia-de-software/principios-engenharia-software.md",
+          "slug": "principios-engenharia-software",
+          "date": "2025-08-22",
+          "description": "Uma visão sobre os princípios fundamentais que guiam a construção de software de alta qualidade, baseados nas ideias de Hooker."
+        },
+        {
+          "title": "Fluxos de Processo Ágil: Scrum, XP e Kanban",
+          "file": "notes/engenharia-de-software/fluxos-processo-agil.md",
+          "slug": "fluxos-processo-agil",
+          "date": "2025-08-22",
+          "description": "Compare as metodologias ágeis mais populares e entenda qual se adapta melhor ao seu time e projeto."
+        }
+      ]
     }
   ],
   "articles": [
