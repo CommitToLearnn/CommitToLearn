@@ -1057,6 +1057,14 @@
       "date": "2025-07-25",
       "category": "APIs",
       "description": "Tutorial prático para implementar uma API de pagamentos idempotente usando Node.js, Express e Redis com padrão Idempotency-Key."
+    },
+    {
+      "title": "O App Bilíngue: Falando iOS e Android Fluentemente Sem Perder Sua Identidade",
+      "file": "articles/o_app_bilingue_ios_android.md",
+      "slug": "app-bilingue-ios-android",
+      "date": "2025-08-23",
+      "category": "UX/UI",
+      "description": "Encontrar o equilíbrio perfeito entre consistência de marca e conformidade com as convenções nativas do iOS e Android."
     }
   ]
 }
