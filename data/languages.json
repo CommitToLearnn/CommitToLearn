@@ -1065,6 +1065,14 @@
       "date": "2025-08-23",
       "category": "UX/UI",
       "description": "Encontrar o equilíbrio perfeito entre consistência de marca e conformidade com as convenções nativas do iOS e Android."
+    },
+    {
+      "title": "Sim, o Recrutador Sabe que Você Deu Ctrl+C: A Verdade Sobre Colar em Entrevistas Técnicas",
+      "file": "articles/sim_o_recrutador_sabe_que_voce_deu_ctrl_c.md",
+      "slug": "recrutador-sabe-ctrl-c-entrevistas-tecnicas",
+      "date": "2025-08-27",
+      "category": "Carreira",
+      "description": "Como as plataformas de codificação detectam quando você cola código e por que honestidade é mais valiosa que a solução perfeita."
     }
   ]
 }
