@@ -12,6 +12,27 @@
           "slug": "devops-calms",
           "date": "2025-07-21",
           "description": "Entenda os cinco pilares fundamentais do DevOps: Culture, Automation, Lean, Measurement e Sharing."
+        },
+        {
+          "title": "Docker Compose - Orquestração de Ambientes Locais",
+          "file": "notes/devops/docker-compose.md",
+          "slug": "devops-docker-compose",
+          "date": "2025-09-10",
+          "description": "O maestro de uma orquestra de containers: centraliza aplicações multi-container em um arquivo declarativo YAML."
+        },
+        {
+          "title": "Infrastructure as Code (IaC) - O Princípio da Automação",
+          "file": "notes/devops/iac.md",
+          "slug": "devops-iac",
+          "date": "2025-09-10",
+          "description": "Gerencie infraestrutura através de código: elimine ClickOps, garanta consistência e automatize provisionamento."
+        },
+        {
+          "title": "GitOps - A Governança da Infraestrutura como Código",
+          "file": "notes/devops/gitops.md",
+          "slug": "devops-gitops",
+          "date": "2025-09-10",
+          "description": "Metodologia que usa Git como fonte da verdade para IaC: fluxo automatizado, auditável e seguro via Pull Requests."
         }
       ]
     },
@@ -1073,6 +1094,14 @@
       "date": "2025-08-27",
       "category": "Carreira",
       "description": "Como as plataformas de codificação detectam quando você cola código e por que honestidade é mais valiosa que a solução perfeita."
+    },
+    {
+      "title": "\"Não é Magia, é Instrução\": Por Que um Bom Prompt Reduz os Erros da IA",
+      "file": "articles/nao_e_magia_e_instrucao_bom_prompt.md",
+      "slug": "nao-e-magia-e-instrucao-bom-prompt",
+      "date": "2025-09-11",
+      "category": "Inteligência Artificial",
+      "description": "Desmistifica como prompts bem estruturados reduzem a entropia das respostas de IA usando o framework R.A.C.E. (Role, Action, Context, Example)."
     }
   ]
 }
