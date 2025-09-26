@@ -920,6 +920,13 @@
           "slug": "python-dataclasses",
           "date": "2025-07-17",
           "description": "Aprenda a usar dataclasses em Python para simplificar a criação de classes que armazenam dados."
+        },
+        {
+          "title": "Flask: O Microframework 'Faça Você Mesmo' para a Web",
+          "file": "notes/python/flask.md",
+          "slug": "python-flask-microframework",
+          "date": "2025-09-26",
+          "description": "Introdução prática ao Flask: roteamento com decorators, request/response, Jinja2 e exemplo mínimo de aplicação."
         }
       ]
     },
