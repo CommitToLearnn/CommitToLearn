@@ -545,7 +545,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const d = new Date(item.date);
             const dateLabel = d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
             const isArticle = item.type==='article';
-            return `<article class="latest-card ${isArticle?'article':''}" onclick='${isArticle?`showArticle(${JSON.stringify(item).replace(/"/g,'&quot;')})`:`showNote(${JSON.stringify(item).replace(/"/g,'&quot;')})`}'>
+            // Escapa apenas aspas duplas para uso em atributo com aspas duplas (permite títulos com ' sem quebrar)
+            const payload = JSON.stringify(item).replace(/\"/g,'&quot;');
+            return `<article class="latest-card ${isArticle?'article':''}" onclick="${isArticle?`showArticle(${payload})`:`showNote(${payload})`}">
                 <div class="latest-meta">
                     <span class="latest-badge ${isArticle?'badge-article':'badge-note'}">${isArticle?'ARTIGO':'NOTA'}</span>
                     <span class="latest-date">${dateLabel}</span>
@@ -757,11 +759,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 notesContainer.style.display = 'block';
                 
                 const language = note.languageObj;
-                const backButtonOnClick = `window.showLanguageNotes(${JSON.stringify(language)})`;
+                const backButtonPayload = JSON.stringify(language).replace(/\"/g,'&quot;');
                 const readingTime = calculateReadingTime(text);
 
                 notesContainer.innerHTML = `
-                    <button class="back-button" onclick='${backButtonOnClick.replace(/'/g, "\'")}'>← Voltar para ${language.name}</button>
+                    <button class="back-button" onclick="window.showLanguageNotes(${backButtonPayload})">← Voltar para ${language.name}</button>
                     <div class="note-header">
                         <div class="reading-time">
                             <span class="reading-time-icon">📖</span>
@@ -794,7 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Exibe mensagem de erro para o usuário
                 notesContainer.innerHTML = `
-                    <button class="back-button" onclick='window.showLanguageNotes(${JSON.stringify(note.languageObj)})'>← Voltar para ${note.languageObj.name}</button>
+                    <button class="back-button" onclick="window.showLanguageNotes(${JSON.stringify(note.languageObj).replace(/\"/g,'&quot;')})">← Voltar para ${note.languageObj.name}</button>
                     <div class="error-message">
                         <h2>❌ Erro ao carregar nota</h2>
                         <p><strong>Arquivo:</strong> ${note.file}</p>
