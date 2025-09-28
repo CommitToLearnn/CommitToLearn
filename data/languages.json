@@ -657,6 +657,13 @@
           "slug": "redes-icmp",
           "date": "2025-07-04",
           "description": "Aprenda o protocolo ICMP usado para diagnóstico de rede, comandos ping, traceroute e troubleshooting."
+        },
+        {
+          "title": "Server Hangup - Desconexão Inesperada do Servidor",
+          "file": "notes/redes/server-hangup.md",
+          "slug": "redes-server-hangup",
+          "date": "2025-09-27",
+          "description": "O que é 'socket hang up'/ECONNRESET, causas comuns (timeouts, crashes, recursos, proxies) e como diagnosticar."
         }
       ]
     },
