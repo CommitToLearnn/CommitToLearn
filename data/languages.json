@@ -994,6 +994,28 @@
           "description": "Compare as metodologias ágeis mais populares e entenda qual se adapta melhor ao seu time e projeto."
         }
       ]
+    },
+    {
+      "name": "Engenharia de Software",
+      "id": "engenharia-de-software",
+      "color": "#6C757D",
+      "icon": "🔧",
+      "notes": [
+        {
+          "title": "Test-Driven Development (TDD)",
+          "file": "notes/engenharia-de-software/tdd.md",
+          "slug": "engenharia-software-tdd",
+          "date": "2025-09-28",
+          "description": "Metodologia de design: escreva testes antes do código. Ciclo Red-Green-Refactor com exemplos práticos."
+        },
+        {
+          "title": "Testes Unitários (TU)",
+          "file": "notes/engenharia-de-software/tu.md",
+          "slug": "engenharia-software-testes-unitarios",
+          "date": "2025-09-28",
+          "description": "Verificação isolada de unidades de código: AAA pattern, mocks/stubs, automação e exemplos com pytest."
+        }
+      ]
     }
   ],
   "articles": [
