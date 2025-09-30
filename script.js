@@ -34,6 +34,50 @@ function resolvePath(path) {
 
 // Aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // Inicialização do sistema i18n
+    i18n.updatePageLanguage();
+    
+    // Configurar botão de troca de idioma
+    const languageToggle = document.getElementById('language-toggle');
+    const langText = languageToggle.querySelector('.lang-text');
+    
+    // Atualiza o texto do botão baseado no idioma atual
+    function updateLanguageButton() {
+        langText.textContent = i18n.isEnglish() ? 'PT' : 'EN';
+    }
+    
+    // Listener para trocar idioma
+    languageToggle.addEventListener('click', () => {
+        const newLocale = i18n.isEnglish() ? 'pt-BR' : 'en-US';
+        i18n.setLocale(newLocale);
+        updateLanguageButton();
+        refreshCurrentView();
+    });
+    
+    updateLanguageButton();
+    
+    // Função para atualizar textos da navegação
+    function updateNavigationTexts() {
+        document.getElementById('nav-estudos').textContent = i18n.t('nav.studies');
+        document.getElementById('nav-artigos').textContent = i18n.t('nav.articles');
+    }
+    
+    // Função para recarregar a view atual após troca de idioma
+    function refreshCurrentView() {
+        updateNavigationTexts();
+        
+        if (homeContainer.style.display !== 'none') {
+            createTimeline();
+        } else if (languagesContainer.style.display !== 'none') {
+            createLanguageCards();
+        } else if (articlesContainer.style.display !== 'none') {
+            createArticleCards();
+        }
+        // Notas específicas não precisam ser recarregadas pois o markdown não muda
+    }
+    
+    updateNavigationTexts();
+    
     // Elementos principais do DOM
     const homeContainer = document.getElementById('home-container');
     const languagesContainer = document.getElementById('languages-container');
@@ -325,11 +369,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Formata o tempo de leitura
         if (minutes < 1) {
-            return 'Menos de 1 min';
+            return i18n.t('code.lessThanOneMin');
         } else if (minutes === 1) {
-            return '1 min de leitura';
+            return i18n.t('code.oneMin');
         } else {
-            return `${minutes} min de leitura`;
+            return i18n.t('code.minutesRead', { minutes });
         }
     }
 
@@ -411,23 +455,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Renderização de artigos 
     function createArticleCards() {
         if (!languagesData) {
-            articlesContainer.innerHTML = '<p class="loading-center">Carregando artigos...</p>';
+            articlesContainer.innerHTML = `<p class="loading-center">${i18n.t('loading')}</p>`;
             return;
         }
         const articles = languagesData.articles || [];
         if (articles.length === 0) {
             articlesContainer.innerHTML = `
                 <div class="articles-header">
-                    <h2>Artigos</h2>
-                    <p>Nenhum artigo publicado ainda.</p>
+                    <h2>${i18n.t('nav.articles')}</h2>
+                    <p>${i18n.t('articles.noArticles')}</p>
                 </div>`;
             return;
         }
         // Header + grid
         articlesContainer.innerHTML = `
             <div class="articles-header">
-                <h2>Artigos</h2>
-                <p>Explorações mais extensas, ideias consolidadas e sínteses práticas.</p>
+                <h2>${i18n.t('nav.articles')}</h2>
+                <p>${i18n.t('articles.subtitle')}</p>
             </div>
             <div class="articles-grid" id="articles-grid"></div>
         `;
@@ -436,19 +480,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const sorted = [...articles].sort((a,b)=> new Date(b.date) - new Date(a.date));
         sorted.forEach(article => {
             const d = new Date(article.date);
-            const dateLabel = d.toLocaleDateString('pt-BR',{ day:'2-digit', month:'short', year:'numeric'});
+            const dateLabel = d.toLocaleDateString(i18n.getCurrentLocale(),{ day:'2-digit', month:'short', year:'numeric'});
             const card = document.createElement('article');
             card.className = 'article-card';
             card.innerHTML = `
                 <div class="article-card-inner">
                     <div class="article-card-meta">
-                        <span class="article-badge">ARTIGO</span>
+                        <span class="article-badge">${i18n.t('articles.badge')}</span>
                         <span class="article-date">${dateLabel}</span>
                     </div>
                     <h3 class="article-card-title">${article.title}</h3>
-                    <p class="article-card-desc">${article.description || 'Clique para ler o conteúdo completo.'}</p>
+                    <p class="article-card-desc">${article.description || i18n.t('articles.clickToRead')}</p>
                     <div class="article-card-footer">
-                        <span class="article-open">Ler →</span>
+                        <span class="article-open">${i18n.t('code.read')}</span>
                     </div>
                 </div>`;
             card.addEventListener('click', ()=> showArticle(article));
@@ -461,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cria a timeline de publicações na página inicial
     function createTimeline() {
         // Placeholder enquanto carrega
-        homeContainer.innerHTML = `<div class="home-hero loading">Carregando...</div>`;
+        homeContainer.innerHTML = `<div class="home-hero loading">${i18n.t('loading')}</div>`;
 
         if (!languagesData) return;
 
@@ -505,35 +549,35 @@ document.addEventListener('DOMContentLoaded', () => {
         homeContainer.innerHTML = `
             <section class="home-hero">
                 <div class="hero-content">
-                    <h1><span class="hero-highlight">Commit</span>ToLearn</h1>
-                    <p class="hero-sub">Eu commito minhas experiências aqui para que acelerem as suas.</p>
+                    <h1><span class="hero-highlight">${i18n.t('home.hero.title')}</span></h1>
+                    <p class="hero-sub">${i18n.t('home.hero.subtitle')}</p>
                     <div class="hero-actions">
-                        <button class="hero-btn primary" onclick="showStudies()">Explorar Estudos →</button>
-                        <button class="hero-btn ghost" onclick="showArticles()">Ler Artigos</button>
+                        <button class="hero-btn primary" onclick="showStudies()">${i18n.t('home.hero.cta')}</button>
+                        <button class="hero-btn ghost" onclick="showArticles()">${i18n.t('nav.articles')}</button>
                     </div>
                     <div class="hero-stats">
-                        <div class="stat"><span class="stat-value">${totalNotes}</span><span class="stat-label">Anotações</span></div>
-                        <div class="stat"><span class="stat-value">${totalArticles}</span><span class="stat-label">Artigos</span></div>
-                        <div class="stat"><span class="stat-value">${distinctLanguages}</span><span class="stat-label">Áreas</span></div>
-                        <div class="stat"><span class="stat-value">${daysSinceStart}</span><span class="stat-label">Dias</span></div>
+                        <div class="stat"><span class="stat-value">${totalNotes}</span><span class="stat-label">${i18n.isEnglish() ? 'Notes' : 'Anotações'}</span></div>
+                        <div class="stat"><span class="stat-value">${totalArticles}</span><span class="stat-label">${i18n.isEnglish() ? 'Articles' : 'Artigos'}</span></div>
+                        <div class="stat"><span class="stat-value">${distinctLanguages}</span><span class="stat-label">${i18n.isEnglish() ? 'Areas' : 'Áreas'}</span></div>
+                        <div class="stat"><span class="stat-value">${daysSinceStart}</span><span class="stat-label">${i18n.isEnglish() ? 'Days' : 'Dias'}</span></div>
                     </div>
                 </div>
                 <div class="hero-aside">
                     <div class="hero-aside-inner">
-                        <h3>Filosofia</h3>
-                        <p>Cada commit aqui é um pedaço da minha história de aprendizado — um registro público das minhas anotações que amanhã pode ajudar outra pessoa (ou o meu eu do futuro).</p>
+                        <h3>${i18n.t('home.philosophy.title')}</h3>
+                        <p>${i18n.t('home.philosophy.description')}</p>
                         <ul class="hero-principles">
-                            <li>🧩 Commits que contam a história do estudo</li>
-                            <li>🗂️ Anotações versionadas e recuperáveis</li>
-                            <li>🔁 Experimentos reprodutíveis e rastreáveis</li>
+                            <li>${i18n.t('home.philosophy.principle1')}</li>
+                            <li>${i18n.t('home.philosophy.principle2')}</li>
+                            <li>${i18n.t('home.philosophy.principle3')}</li>
                         </ul>
                     </div>
                 </div>
             </section>
             <section class="home-latest">
                 <div class="latest-header">
-                    <h2>Últimas Publicações</h2>
-                    <button class="see-all-btn" onclick="showStudies()">Ver tudo →</button>
+                    <h2>${i18n.t('home.latest.title')}</h2>
+                    <button class="see-all-btn" onclick="showStudies()">${i18n.t('home.latest.seeAll')}</button>
                 </div>
                 <div class="latest-grid" id="latest-grid"></div>
             </section>
@@ -543,19 +587,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function buildLatestCard(item){
             const d = new Date(item.date);
-            const dateLabel = d.toLocaleDateString('pt-BR',{day:'2-digit',month:'short'});
+            const dateLabel = d.toLocaleDateString(i18n.getCurrentLocale(),{day:'2-digit',month:'short'});
             const isArticle = item.type==='article';
             // Escapa apenas aspas duplas para uso em atributo com aspas duplas (permite títulos com ' sem quebrar)
             const payload = JSON.stringify(item).replace(/\"/g,'&quot;');
+            const badgeText = isArticle ? i18n.t('articles.badge') : i18n.t('notes.badge');
+            const readText = i18n.t('code.read');
             return `<article class="latest-card ${isArticle?'article':''}" onclick="${isArticle?`showArticle(${payload})`:`showNote(${payload})`}">
                 <div class="latest-meta">
-                    <span class="latest-badge ${isArticle?'badge-article':'badge-note'}">${isArticle?'ARTIGO':'NOTA'}</span>
+                    <span class="latest-badge ${isArticle?'badge-article':'badge-note'}">${badgeText}</span>
                     <span class="latest-date">${dateLabel}</span>
                 </div>
                 <h3 class="latest-title">${item.title}</h3>
                 <div class="latest-bottom">
                     <span class="latest-lang">${item.languageIcon} ${item.language}</span>
-                    <span class="latest-open">Ler →</span>
+                    <span class="latest-open">${readText}</span>
                 </div>
             </article>`;
         }
@@ -569,17 +615,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // HTML da estrutura da página de estudos com barra de controle
         languagesContainer.innerHTML = `
             <div class="studies-header studies-languages-header">
-                <h2>Área de Estudos</h2>
-                <p>Explore conceitos e anotações organizados por linguagem</p>
+                <h2>${i18n.t('studies.title')}</h2>
+                <p>${i18n.t('studies.subtitle')}</p>
                 <div class="languages-controls">
                     <div class="languages-search-wrapper">
-                        <input type="text" id="languages-search" placeholder="Buscar linguagem ou anotação..." aria-label="Buscar linguagem">
+                        <input type="text" id="languages-search" placeholder="${i18n.t('studies.searchPlaceholder')}" aria-label="${i18n.t('studies.searchLabel')}">
                         <span class="search-icon">🔍</span>
                     </div>
                     <div class="languages-sorting">
-                        <button class="sort-btn active" data-sort="notes">Mais anotações</button>
-                        <button class="sort-btn" data-sort="az">A → Z</button>
-                        <button class="sort-btn" data-sort="recent">Recentes</button>
+                        <button class="sort-btn active" data-sort="notes">${i18n.t('studies.sortMostNotes')}</button>
+                        <button class="sort-btn" data-sort="az">${i18n.t('studies.sortAZ')}</button>
+                        <button class="sort-btn" data-sort="recent">${i18n.t('studies.sortRecent')}</button>
                     </div>
                 </div>
             </div>
@@ -622,14 +668,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="language-meta">
                         <h3 class="language-name">${language.name}</h3>
                         <div class="language-info-line">
-                            <span class="language-notes-count">${language.notes.length} anotação(ões)</span>
-                            <span class="language-last-date" title="Última atualização">🗓 ${recentLabel}</span>
+                            <span class="language-notes-count">${language.notes.length} ${i18n.t('studies.notesCount')}</span>
+                            <span class="language-last-date" title="${i18n.t('studies.lastUpdate')}">🗓 ${recentLabel}</span>
                         </div>
                     </div>
                 </div>
                 <div class="language-tags">${language.tags ? language.tags.map(t=>`<span class='lang-tag'>${t}</span>`).join('') : ''}</div>
                 <div class="language-card-footer">
-                    <button class="open-language-btn" aria-label="Abrir ${language.name}">Ver anotações →</button>
+                    <button class="open-language-btn" aria-label="${i18n.t('studies.openLabel')} ${language.name}">${i18n.t('studies.viewNotes')}</button>
                 </div>
             `;
             card.addEventListener('click', () => showLanguageNotes(language));
@@ -647,7 +693,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentSort === 'notes') {
                 sorted.sort((a,b)=> b.notes.length - a.notes.length);
             } else if (currentSort === 'az') {
-                sorted.sort((a,b)=> a.name.localeCompare(b.name,'pt-BR'));
+                sorted.sort((a,b)=> a.name.localeCompare(b.name, i18n.getCurrentLocale()));
             } else if (currentSort === 'recent') {
                 // Usa data mais recente de nota
                 function latest(l){
@@ -661,7 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
             languagesGrid.innerHTML='';
             applySort(currentList).forEach(language => languagesGrid.appendChild(buildLanguageCard(language)));
             if (languagesGrid.children.length===0) {
-                languagesGrid.innerHTML = `<div class='no-languages-results'>Nenhuma linguagem encontrada para sua busca.</div>`;
+                languagesGrid.innerHTML = `<div class='no-languages-results'>${i18n.t('studies.noResults')}</div>`;
             }
         }
 
@@ -707,7 +753,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Cria a estrutura da página de anotações
         notesContainer.innerHTML = `
-            <button class="back-button" onclick="window.showStudies()">← Voltar para Estudos</button>
+            <button class="back-button" onclick="window.showStudies()">${i18n.t('notes.backToStudies')}</button>
             <div class="language-notes-header">
                 <h2>${language.icon} ${language.name}</h2>
             </div>
@@ -718,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Verifica se há anotações disponíveis
         if (language.notes.length === 0) {
-            notesList.innerHTML = '<p>Nenhuma anotação disponível ainda para esta linguagem.</p>';
+            notesList.innerHTML = `<p>${i18n.t('notes.noNotes')}</p>`;
             return;
         }
 
@@ -763,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const readingTime = calculateReadingTime(text);
 
                 notesContainer.innerHTML = `
-                    <button class="back-button" onclick="window.showLanguageNotes(${backButtonPayload})">← Voltar para ${language.name}</button>
+                    <button class="back-button" onclick="window.showLanguageNotes(${backButtonPayload})">${i18n.t('notes.backTo')} ${language.name}</button>
                     <div class="note-header">
                         <div class="reading-time">
                             <span class="reading-time-icon">📖</span>
@@ -772,7 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="note">${converter.makeHtml(text)}</div>
                     <div class="comments-section">
-                        <h3 class="comments-title">💬 Comentários</h3>
+                        <h3 class="comments-title">${i18n.t('notes.comments')}</h3>
                         <div id="disqus_thread"></div>
                     </div>
                 `;
@@ -796,12 +842,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Exibe mensagem de erro para o usuário
                 notesContainer.innerHTML = `
-                    <button class="back-button" onclick="window.showLanguageNotes(${JSON.stringify(note.languageObj).replace(/\"/g,'&quot;')})">← Voltar para ${note.languageObj.name}</button>
+                    <button class="back-button" onclick="window.showLanguageNotes(${JSON.stringify(note.languageObj).replace(/\"/g,'&quot;')})">${i18n.t('notes.backTo')} ${note.languageObj.name}</button>
                     <div class="error-message">
-                        <h2>❌ Erro ao carregar nota</h2>
-                        <p><strong>Arquivo:</strong> ${note.file}</p>
-                        <p><strong>Caminho tentado:</strong> ${noteFilePath}</p>
-                        <p><strong>Erro:</strong> ${error.message}</p>
+                        <h2>${i18n.t('notes.loadError')}</h2>
+                        <p><strong>${i18n.t('notes.file')}:</strong> ${note.file}</p>
+                        <p><strong>${i18n.t('notes.pathAttempted')}:</strong> ${noteFilePath}</p>
+                        <p><strong>${i18n.t('notes.error')}:</strong> ${error.message}</p>
                         <p>Verifique se o arquivo existe no caminho correto.</p>
                     </div>
                 `;
@@ -824,7 +870,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const readingTime = calculateReadingTime(text);
                 
                 notesContainer.innerHTML = `
-                    <button class="back-button" onclick="window.showArticles()">← Voltar para Artigos</button>
+                    <button class="back-button" onclick="window.showArticles()">${i18n.t('articles.backToArticles')}</button>
                     <div class="note-header">
                         <div class="reading-time">
                             <span class="reading-time-icon">📖</span>
@@ -833,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="note">${converter.makeHtml(text)}</div>
                     <div class="comments-section">
-                        <h3 class="comments-title">💬 Comentários</h3>
+                        <h3 class="comments-title">${i18n.t('notes.comments')}</h3>
                         <div id="disqus_thread"></div>
                     </div>
                 `;
