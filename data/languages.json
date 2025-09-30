@@ -593,6 +593,34 @@
           "slug": "sql-joins",
           "date": "2025-07-04",
           "description": "Aprenda a combinar dados de múltiplas tabelas usando INNER JOIN, LEFT JOIN e outros tipos de JOIN."
+        },
+        {
+          "title": "Function (Função) - A Calculadora Reutilizável",
+          "file": "notes/SQL/function.md",
+          "slug": "sql-function",
+          "date": "2025-09-29",
+          "description": "Entenda funções armazenadas: retorno de valor único, uso em SELECT/WHERE e exemplo prático em PL/SQL."
+        },
+        {
+          "title": "Stored Procedure - A Receita de Bolo Guardada",
+          "file": "notes/SQL/stored procedure.md",
+          "slug": "sql-stored-procedure",
+          "date": "2025-09-29",
+          "description": "Procedimentos armazenados focados em ações (DML), parâmetros IN/OUT e controle de transações."
+        },
+        {
+          "title": "Trigger (Gatilho) - O Sensor de Alarme",
+          "file": "notes/SQL/Trigger.md",
+          "slug": "sql-trigger",
+          "date": "2025-09-29",
+          "description": "Execução automática BEFORE/AFTER em INSERT/UPDATE/DELETE para auditoria, validação e integridade."
+        },
+        {
+          "title": "Bloco Anônimo (PL/SQL) - Execução Ad Hoc",
+          "file": "notes/SQL/bloco anonimo.md",
+          "slug": "sql-bloco-anonimo",
+          "date": "2025-09-29",
+          "description": "Blocos PL/SQL sem nome para executar lógicas pontuais com declarações, exceções e controle de fluxo."
         }
       ]
     },
