@@ -25,6 +25,10 @@
             <nav class="main-nav" aria-label="Navegação principal">
                 <a href="#" onclick="showStudies()" id="nav-estudos">Estudos</a>
                 <a href="#" onclick="showArticles()" id="nav-artigos">Artigos</a>
+                <button id="language-toggle" class="language-toggle" aria-label="Trocar idioma">
+                    <span class="lang-icon">🌐</span>
+                    <span class="lang-text">EN</span>
+                </button>
             </nav>
         </div>
     </header>
@@ -97,6 +101,9 @@
             }
         });
     </script>
+    
+    <!-- Sistema de internacionalização (i18n) -->
+    <script src="i18n.js"></script>
     
     <!-- Script principal da aplicação -->
     <script src="script.js"></script>
