@@ -8,28 +8,28 @@
       "notes": [
         {
           "title": "CALMS - Pilares do DevOps",
-          "file": "notes/devops/calms.md",
+          "file": "notes/pt-BR/devops/calms.md",
           "slug": "devops-calms",
           "date": "2025-07-21",
           "description": "Entenda os cinco pilares fundamentais do DevOps: Culture, Automation, Lean, Measurement e Sharing."
         },
         {
           "title": "Docker Compose - Orquestração de Ambientes Locais",
-          "file": "notes/devops/docker-compose.md",
+          "file": "notes/pt-BR/devops/docker-compose.md",
           "slug": "devops-docker-compose",
           "date": "2025-09-10",
           "description": "O maestro de uma orquestra de containers: centraliza aplicações multi-container em um arquivo declarativo YAML."
         },
         {
           "title": "Infrastructure as Code (IaC) - O Princípio da Automação",
-          "file": "notes/devops/iac.md",
+          "file": "notes/pt-BR/devops/iac.md",
           "slug": "devops-iac",
           "date": "2025-09-10",
           "description": "Gerencie infraestrutura através de código: elimine ClickOps, garanta consistência e automatize provisionamento."
         },
         {
           "title": "GitOps - A Governança da Infraestrutura como Código",
-          "file": "notes/devops/gitops.md",
+          "file": "notes/pt-BR/devops/gitops.md",
           "slug": "devops-gitops",
           "date": "2025-09-10",
           "description": "Metodologia que usa Git como fonte da verdade para IaC: fluxo automatizado, auditável e seguro via Pull Requests."
@@ -44,14 +44,14 @@
       "notes": [
         {
           "title": "Idempotência REST",
-          "file": "notes/apis/idempotencia-rest.md",
+          "file": "notes/pt-BR/apis/idempotencia-rest.md",
           "slug": "apis-idempotencia-rest",
           "date": "2025-07-25",
           "description": "Conceitos fundamentais de idempotência em APIs REST, métodos HTTP idempotentes e implementações práticas."
         },
         {
           "title": "Idempotency Key",
-          "file": "notes/apis/idempotency-key.md",
+          "file": "notes/pt-BR/apis/idempotency-key.md",
           "slug": "apis-idempotency-key",
           "date": "2025-07-25",
           "description": "Implementação de chaves de idempotência para tornar operações não idempotentes seguras contra duplicação."
@@ -66,56 +66,56 @@
       "notes": [
         {
           "title": "Docker",
-          "file": "notes/containerizacao/docker.md",
+          "file": "notes/pt-BR/containerizacao/docker.md",
           "slug": "containerizacao-docker",
           "date": "2025-07-21",
           "description": "Aprenda Docker para containerizar aplicações, incluindo Dockerfile, Docker Compose e boas práticas."
         },
         {
           "title": "Kubernetes",
-          "file": "notes/containerizacao/kubernetes.md",
+          "file": "notes/pt-BR/containerizacao/kubernetes.md",
           "slug": "containerizacao-kubernetes",
           "date": "2025-07-21",
           "description": "Domine a orquestração de containers com Kubernetes, desde conceitos básicos até deployment em produção."
         },
         {
           "title": "Docker Network",
-          "file": "notes/containerizacao/docker-network.md",
+          "file": "notes/pt-BR/containerizacao/docker-network.md",
           "slug": "containerizacao-docker-network",
           "date": "2025-07-23",
           "description": "Entenda as redes Docker para comunicação entre containers e isolamento de serviços."
         },
         {
           "title": "Comandos Básicos Docker",
-          "file": "notes/containerizacao/comandos-basicos-docker.md",
+          "file": "notes/pt-BR/containerizacao/comandos-basicos-docker.md",
           "slug": "containerizacao-comandos-basicos-docker",
           "date": "2025-07-23",
           "description": "Referência completa dos comandos essenciais do Docker para desenvolvimento e operações diárias."
         },
         {
           "title": "Alpine vs Slim",
-          "file": "notes/containerizacao/alpine-vs-slim.md",
+          "file": "notes/pt-BR/containerizacao/alpine-vs-slim.md",
           "slug": "containerizacao-alpine-vs-slim",
           "date": "2025-07-29",
           "description": "Comparação entre imagens Alpine e Slim para escolher a base ideal considerando tamanho, compatibilidade e segurança."
         },
         {
           "title": "Yarn vs NPM vs PNPM",
-          "file": "notes/containerizacao/yarn-vs-npm.md",
+          "file": "notes/pt-BR/containerizacao/yarn-vs-npm.md",
           "slug": "containerizacao-yarn-vs-npm",
           "date": "2025-07-29",
           "description": "Análise comparativa de gerenciadores de pacotes Node.js em containers Docker com foco em performance e cache."
         },
         {
           "title": "Multi-Process Docker Builds",
-          "file": "notes/containerizacao/multi-process-builds.md",
+          "file": "notes/pt-BR/containerizacao/multi-process-builds.md",
           "slug": "containerizacao-multi-process-builds",
           "date": "2025-07-29",
           "description": "Otimização de builds Docker usando processos paralelos e multi-stage builds para reduzir tempo de criação."
         },
         {
           "title": "Docker com Banco de Dados",
-          "file": "notes/containerizacao/docker-com-banco-dados.md",
+          "file": "notes/pt-BR/containerizacao/docker-com-banco-dados.md",
           "slug": "containerizacao-docker-banco-dados",
           "date": "2025-07-29",
           "description": "Integração completa entre aplicações Docker e bancos de dados, incluindo persistência, networking e arquiteturas complexas."
@@ -130,35 +130,35 @@
       "notes": [
         {
           "title": "Namespaces",
-          "file": "notes/sistemas/namespaces.md",
+          "file": "notes/pt-BR/sistemas/namespaces.md",
           "slug": "sistemas-namespaces",
           "date": "2025-07-21",
           "description": "Entenda os namespaces do Linux para isolamento de recursos e base para containerização."
         },
         {
           "title": "Cgroups (Control Groups)",
-          "file": "notes/sistemas/cgroups.md",
+          "file": "notes/pt-BR/sistemas/cgroups.md",
           "slug": "sistemas-cgroups",
           "date": "2025-07-21",
           "description": "Aprenda sobre cgroups para controle e limitação de recursos em sistemas Linux."
         },
         {
           "title": "Cache Redis",
-          "file": "notes/sistemas/cache-redis.md",
+          "file": "notes/pt-BR/sistemas/cache-redis.md",
           "slug": "sistemas-cache-redis",
           "date": "2025-07-25",
           "description": "Implementação de cache com Redis: estruturas de dados, padrões de cache, rate limiting e otimizações."
         },
         {
           "title": "Unshare",
-          "file": "notes/sistemas/unshare.md",
+          "file": "notes/pt-BR/sistemas/unshare.md",
           "slug": "sistemas-unshare",
           "date": "2025-07-21",
           "description": "Domine o comando unshare para criação de novos namespaces e isolamento de processos."
         },
         {
           "title": "Máquinas Virtuais (VMs)",
-          "file": "notes/sistemas/vm.md",
+          "file": "notes/pt-BR/sistemas/vm.md",
           "slug": "sistemas-vm",
           "date": "2025-07-21",
           "description": "Compreenda virtualização completa com VMs, hypervisors e casos de uso em infraestrutura."
@@ -173,56 +173,56 @@
       "notes": [
         {
           "title": "Tokens",
-          "file": "notes/deep-learning/tokens.md",
+          "file": "notes/pt-BR/deep-learning/tokens.md",
           "slug": "deep-learning-tokens",
           "date": "2025-07-23",
           "description": "Entenda tokens como unidades básicas de processamento em modelos de linguagem e sistemas de NLP."
         },
         {
           "title": "Self Attention",
-          "file": "notes/deep-learning/self-attention.md",
+          "file": "notes/pt-BR/deep-learning/self-attention.md",
           "slug": "deep-learning-self-attention",
           "date": "2025-07-23",
           "description": "Domine o mecanismo central dos Transformers que permite capturar dependências de longo alcance."
         },
         {
           "title": "Attention Allocation",
-          "file": "notes/deep-learning/attention-allocation.md",
+          "file": "notes/pt-BR/deep-learning/attention-allocation.md",
           "slug": "deep-learning-attention-allocation",
           "date": "2025-07-23",
           "description": "Aprenda como modelos distribuem recursos de atenção entre tokens, camadas e cabeças."
         },
         {
           "title": "Transformers",
-          "file": "notes/deep-learning/transformers.md",
+          "file": "notes/pt-BR/deep-learning/transformers.md",
           "slug": "deep-learning-transformers",
           "date": "2025-07-23",
           "description": "Explore a arquitetura que revolucionou o processamento de linguagem natural e deep learning."
         },
         {
           "title": "Early vs High Layers",
-          "file": "notes/deep-learning/early-vs-high-layers.md",
+          "file": "notes/pt-BR/deep-learning/early-vs-high-layers.md",
           "slug": "deep-learning-early-vs-high-layers",
           "date": "2025-07-23",
           "description": "Analise as diferenças entre camadas iniciais e finais em redes neurais profundas."
         },
         {
           "title": "Pesos entre Tokens e Attention Vectors",
-          "file": "notes/deep-learning/pesos-tokens-attention-vectors.md",
+          "file": "notes/pt-BR/deep-learning/pesos-tokens-attention-vectors.md",
           "slug": "deep-learning-pesos-tokens-attention-vectors",
           "date": "2025-07-23",
           "description": "Entenda como pesos de atenção determinam importância relativa e formam representações."
         },
         {
           "title": "Loss Functions e Proximidade Semântica",
-          "file": "notes/deep-learning/loss-function-proximidade-semantica.md",
+          "file": "notes/pt-BR/deep-learning/loss-function-proximidade-semantica.md",
           "slug": "deep-learning-loss-function-proximidade-semantica",
           "date": "2025-07-23",
           "description": "Explore a relação entre loss functions, proximidade vetorial e singularidade semântica."
         },
         {
           "title": "Assimétricos",
-          "file": "notes/deep-learning/assimetricos.md",
+          "file": "notes/pt-BR/deep-learning/assimetricos.md",
           "slug": "deep-learning-assimetricos",
           "date": "2025-07-23",
           "description": "Compreenda estruturas assimétricas em arquiteturas, atenção e loss functions."
@@ -237,112 +237,112 @@
       "notes": [
         {
           "title": "O Operador de Declaração Curta (:=)",
-          "file": "notes/go/go-operador-declaracao-curta.md",
+          "file": "notes/pt-BR/go/go-operador-declaracao-curta.md",
           "slug": "go-operador-declaracao-curta",
           "date": "2025-07-02",
           "description": "Entenda o atalho de criação de variáveis em Go e quando usar := vs var, com exemplos práticos e regras importantes."
         },
         {
           "title": "Slices em Go",
-          "file": "notes/go/slice.md",
+          "file": "notes/pt-BR/go/slice.md",
           "slug": "go-slice",
           "date": "2025-07-03",
           "description": "Aprenda a usar slices em Go, uma estrutura de dados flexível para trabalhar com sequências."
         },
         {
           "title": "Pesquisa Binária em Go",
-          "file": "notes/go/binary-search-go.md",
+          "file": "notes/pt-BR/go/binary-search-go.md",
           "slug": "go-binary-search",
           "date": "2025-07-03",
           "description": "Uma implementação prática da pesquisa binária em Go, com exemplos de código e explicações."
         },
         {
           "title": "Funções em Go - Chamando com e sem Parâmetros",
-          "file": "notes/go/como-chamar-uma-funcao.md",
+          "file": "notes/pt-BR/go/como-chamar-uma-funcao.md",
           "slug": "go-como-chamar-uma-funcao",
           "date": "2025-07-04",
           "description": "Aprenda como definir e chamar funções em Go, com e sem parâmetros, incluindo funções que retornam valores."
         },
         {
           "title": "Biblioteca fmt em Go",
-          "file": "notes/go/biblioteca_fmt.md",
+          "file": "notes/pt-BR/go/biblioteca_fmt.md",
           "slug": "go-biblioteca-fmt",
           "date": "2025-07-04",
           "description": "Explore a biblioteca fmt do Go para formatação e impressão de dados."
         },
         {
           "title": "Package main em Go",
-          "file": "notes/go/package_main.md",
+          "file": "notes/pt-BR/go/package_main.md",
           "slug": "go-package-main",
           "date": "2025-07-04",
           "description": "Entenda o conceito de package main e como estruturar programas em Go."
         },
         {
           "title": "Blank Identifier (_) em Go",
-          "file": "notes/go/blank-identifier.md",
+          "file": "notes/pt-BR/go/blank-identifier.md",
           "slug": "go-blank-identifier",
           "date": "2025-07-06",
           "description": "Aprenda a usar o identificador em branco (_) para ignorar valores e melhorar a legibilidade do código."
         },
         {
           "title": "Funções Math em Go",
-          "file": "notes/go/funcoes-math.md",
+          "file": "notes/pt-BR/go/funcoes-math.md",
           "slug": "go-funcoes-math",
           "date": "2025-07-06",
           "description": "Explore o pacote math do Go com funções trigonométricas, logarítmicas, estatísticas e operações matemáticas avançadas."
         },
         {
           "title": "Ponteiros em Go - Referenciando Memória Diretamente",
-          "file": "notes/go/ponteiros.md",
+          "file": "notes/pt-BR/go/ponteiros.md",
           "slug": "go-ponteiros",
           "date": "2025-07-08",
           "description": "Aprenda ponteiros em Go: referenciamento, dereferenciamento, passagem por referência e uso com structs."
         },
         {
           "title": "Interfaces em Go",
-          "file": "notes/go/interfaces.md",
+          "file": "notes/pt-BR/go/interfaces.md",
           "slug": "go-interfaces",
           "date": "2025-07-17",
           "description": "Entenda o conceito de interfaces em Go, como defini-las e implementá-las com exemplos práticos."
         },
         {
           "title": "Goroutines em Go",
-          "file": "notes/go/goroutines.md",
+          "file": "notes/pt-BR/go/goroutines.md",
           "slug": "go-goroutines",
           "date": "2025-07-17",
           "description": "Aprenda sobre goroutines em Go para execução concorrente e como sincronizá-las com WaitGroup."
         },
         {
           "title": "Pacotes em Go",
-          "file": "notes/go/pacotes.md",
+          "file": "notes/pt-BR/go/pacotes.md",
           "slug": "go-pacotes",
           "date": "2025-07-17",
           "description": "Saiba como organizar e reutilizar código em Go usando pacotes."
         },
         {
           "title": "Canais em Go",
-          "file": "notes/go/canais.md",
+          "file": "notes/pt-BR/go/canais.md",
           "slug": "go-canais",
           "date": "2025-07-17",
           "description": "Descubra como usar canais para comunicação entre goroutines em Go."
         },
         {
           "title": "Testes em Go",
-          "file": "notes/go/testes.md",
+          "file": "notes/pt-BR/go/testes.md",
           "slug": "go-testes",
           "date": "2025-07-17",
           "description": "Aprenda a escrever e executar testes em Go usando o pacote testing."
         },
         {
           "title": "Reflection em Go",
-          "file": "notes/go/reflection.md",
+          "file": "notes/pt-BR/go/reflection.md",
           "slug": "go-reflection",
           "date": "2025-07-17",
           "description": "Explore o uso de reflection em Go para inspecionar e manipular tipos e valores em tempo de execução."
         },
         {
           "title": "Trabalhando com JSON em Go",
-          "file": "notes/go/json.md",
+          "file": "notes/pt-BR/go/json.md",
           "slug": "go-json",
           "date": "2025-07-17",
           "description": "Aprenda a codificar e decodificar dados JSON em Go usando o pacote encoding/json."
@@ -357,168 +357,168 @@
       "notes": [
         {
           "title": "Two Pointers (Dois Ponteiros)",
-          "file": "notes/algoritmos/two-pointers.md",
+          "file": "notes/pt-BR/algoritmos/two-pointers.md",
           "slug": "algoritmos-two-pointers",
           "date": "2025-07-18",
           "description": "Aprenda a técnica de dois ponteiros para resolver problemas de forma eficiente em arrays e listas ligadas."
         },
         {
           "title": "Backtracking",
-          "file": "notes/algoritmos/backtracking.md",
+          "file": "notes/pt-BR/algoritmos/backtracking.md",
           "slug": "algoritmos-backtracking",
           "date": "2025-07-18",
           "description": "Entenda a técnica de backtracking para resolver problemas recursivamente, retrocedendo quando encontra caminhos inválidos."
         },
         {
           "title": "Sliding Window (Janela Deslizante)",
-          "file": "notes/algoritmos/sliding-window.md",
+          "file": "notes/pt-BR/algoritmos/sliding-window.md",
           "slug": "algoritmos-sliding-window",
           "date": "2025-07-18",
           "description": "Explore a técnica de janela deslizante para otimizar problemas que envolvem subarrays ou substrings."
         },
         {
           "title": "Pesquisa Binária (Binary Search)",
-          "file": "notes/algoritmos/binary-search.md",
+          "file": "notes/pt-BR/algoritmos/binary-search.md",
           "slug": "algoritmos-binary-search",
           "date": "2025-07-03",
           "description": "Um guia sobre o algoritmo de pesquisa binária, sua implementação e complexidade."
         },
         {
           "title": "Notação Big O",
-          "file": "notes/algoritmos/big-o.md",
+          "file": "notes/pt-BR/algoritmos/big-o.md",
           "slug": "algoritmos-big-o",
           "date": "2025-07-03",
           "description": "Entenda a notação Big O para analisar a eficiência e o desempenho de algoritmos."
         },
         {
           "title": "Recursão - A Arte de Resolver Problemas se Chamando",
-          "file": "notes/algoritmos/recursao.md",
+          "file": "notes/pt-BR/algoritmos/recursao.md",
           "slug": "algoritmos-recursao",
           "date": "2025-07-05",
           "description": "Aprenda recursão do zero: casos base, casos recursivos, exemplos práticos e quando usar esta poderosa técnica."
         },
         {
           "title": "Pilha (Stack) - Estrutura de Dados LIFO",
-          "file": "notes/algoritmos/pilha.md",
+          "file": "notes/pt-BR/algoritmos/pilha.md",
           "slug": "algoritmos-pilha",
           "date": "2025-07-05",
           "description": "Domine a estrutura de dados pilha: operações fundamentais, implementações e aplicações práticas."
         },
         {
           "title": "QuickSort - O Algoritmo de Ordenação Elegante",
-          "file": "notes/algoritmos/quicksort.md",
+          "file": "notes/pt-BR/algoritmos/quicksort.md",
           "slug": "algoritmos-quicksort",
           "date": "2025-07-05",
           "description": "Aprenda o algoritmo QuickSort: funcionamento, implementações, otimizações e análise de complexidade."
         },
         {
           "title": "Análise de Casos: Médio vs Pior Caso",
-          "file": "notes/algoritmos/analise-casos.md",
+          "file": "notes/pt-BR/algoritmos/analise-casos.md",
           "slug": "algoritmos-analise-casos",
           "date": "2025-07-06",
           "description": "Entenda a diferença entre caso médio e pior caso, análise amortizada e quando usar cada tipo de análise."
         },
         {
           "title": "Tabela Hash - Estrutura de Dados de Acesso Rápido",
-          "file": "notes/algoritmos/tabela-hash.md",
+          "file": "notes/pt-BR/algoritmos/tabela-hash.md",
           "slug": "algoritmos-tabela-hash",
           "date": "2025-07-06",
           "description": "Domine tabelas hash: funções hash, resolução de colisões, fator de carga e análise de desempenho."
         },
         {
           "title": "Grafos - A Base das Conexões",
-          "file": "notes/algoritmos/grafos.md",
+          "file": "notes/pt-BR/algoritmos/grafos.md",
           "slug": "algoritmos-grafos",
           "date": "2025-07-07",
           "description": "Entenda grafos: estrutura fundamental para modelar relacionamentos, com implementações e algoritmos básicos."
         },
         {
           "title": "BFS - Busca em Largura (Breadth-First Search)",
-          "file": "notes/algoritmos/bfs.md",
+          "file": "notes/pt-BR/algoritmos/bfs.md",
           "slug": "algoritmos-bfs",
           "date": "2025-07-07",
           "description": "Domine a busca em largura: algoritmo essencial para encontrar caminhos mínimos e explorar grafos por níveis."
         },
         {
           "title": "Filas - Estrutura de Dados FIFO",
-          "file": "notes/algoritmos/filas.md",
+          "file": "notes/pt-BR/algoritmos/filas.md",
           "slug": "algoritmos-filas",
           "date": "2025-07-07",
           "description": "Aprenda filas (FIFO): implementações eficientes, aplicações práticas e uso em algoritmos como BFS."
         },
         {
           "title": "Algoritmo de Dijkstra - Menor Caminho em Grafos Ponderados",
-          "file": "notes/algoritmos/dijkstra.md",
+          "file": "notes/pt-BR/algoritmos/dijkstra.md",
           "slug": "algoritmos-dijkstra",
           "date": "2025-07-08",
           "description": "Domine o algoritmo de Dijkstra: menor caminho em grafos ponderados com implementações em Python, Go e Java."
         },
         {
           "title": "Algoritmos Gulosos (Greedy Algorithms)",
-          "file": "notes/algoritmos/algoritmos-gulosos.md",
+          "file": "notes/pt-BR/algoritmos/algoritmos-gulosos.md",
           "slug": "algoritmos-gulosos",
           "date": "2025-07-10",
           "description": "Entenda o que são algoritmos gulosos, suas características, exemplos clássicos e aplicações práticas."
         },
         {
           "title": "Programação Dinâmica (Dynamic Programming)",
-          "file": "notes/algoritmos/programacao-dinamica.md",
+          "file": "notes/pt-BR/algoritmos/programacao-dinamica.md",
           "slug": "programacao-dinamica",
           "date": "2025-07-11",
           "description": "Domine programação dinâmica: técnica para resolver problemas de otimização com subestrutura ótima e subproblemas sobrepostos."
         },
         {
           "title": "K-Vizinhos Mais Próximos (K-Nearest Neighbors)",
-          "file": "notes/algoritmos/k-vizinhos.md",
+          "file": "notes/pt-BR/algoritmos/k-vizinhos.md",
           "slug": "k-vizinhos",
           "date": "2025-07-11",
           "description": "Aprenda KNN: algoritmo simples e poderoso para classificação e regressão baseado na proximidade entre pontos de dados."
         },
         {
           "title": "OCR (Optical Character Recognition)",
-          "file": "notes/algoritmos/ocr.md",
+          "file": "notes/pt-BR/algoritmos/ocr.md",
           "slug": "algoritmos-ocr",
           "date": "2025-07-13",
           "description": "Tecnologia para reconhecimento óptico de caracteres em imagens e documentos digitalizados."
         },
         {
           "title": "Transformada de Fourier",
-          "file": "notes/algoritmos/transformada-fourier.md",
+          "file": "notes/pt-BR/algoritmos/transformada-fourier.md",
           "slug": "algoritmos-transformada-fourier",
           "date": "2025-07-13",
           "description": "Análise de frequência e processamento de sinais digitais com FFT, aplicações em áudio, imagem e sistemas."
         },
         {
           "title": "Hash Índice Invertido para Busca na Web",
-          "file": "notes/algoritmos/hash-indice-invertido.md",
+          "file": "notes/pt-BR/algoritmos/hash-indice-invertido.md",
           "slug": "algoritmos-hash-indice-invertido",
           "date": "2025-07-13",
           "description": "Estrutura fundamental dos motores de busca web, implementações otimizadas e técnicas de escalabilidade."
         },
         {
           "title": "Filtro de Bloom e HyperLogLog",
-          "file": "notes/algoritmos/filtro-bloom-hyperloglog.md",
+          "file": "notes/pt-BR/algoritmos/filtro-bloom-hyperloglog.md",
           "slug": "algoritmos-filtro-bloom-hyperloglog",
           "date": "2025-07-13",
           "description": "Estruturas de dados probabilísticas para big data, streaming e estimativas eficientes em memória."
         },
         {
           "title": "Algoritmos SHA",
-          "file": "notes/algoritmos/algoritmos-sha.md",
+          "file": "notes/pt-BR/algoritmos/algoritmos-sha.md",
           "slug": "algoritmos-sha",
           "date": "2025-07-13",
           "description": "Funções hash criptográficas seguras SHA-1, SHA-256, SHA-3 com implementações e aplicações práticas."
         },
         {
           "title": "SimHash",
-          "file": "notes/algoritmos/simhash.md",
+          "file": "notes/pt-BR/algoritmos/simhash.md",
           "slug": "algoritmos-simhash",
           "date": "2025-07-13",
           "description": "Algoritmo para detecção de similaridade e near-duplicate detection em documentos e web crawling."
         },
         {
           "title": "Programação Linear",
-          "file": "notes/algoritmos/programacao-linear.md",
+          "file": "notes/pt-BR/algoritmos/programacao-linear.md",
           "slug": "algoritmos-programacao-linear",
           "date": "2025-07-13",
           "description": "Otimização matemática com restrições lineares, método simplex e aplicações em problemas reais."
@@ -533,91 +533,91 @@
       "notes": [
         {
           "title": "SELECT e FROM - Os Fundamentos das Consultas SQL",
-          "file": "notes/SQL/select-from-basico.md",
+          "file": "notes/pt-BR/SQL/select-from-basico.md",
           "slug": "sql-select-from-basico",
           "date": "2025-07-04",
           "description": "Aprenda os comandos básicos SELECT e FROM para fazer suas primeiras consultas SQL."
         },
         {
           "title": "WHERE - Filtrando Dados com Precisão",
-          "file": "notes/SQL/where-filtros.md",
+          "file": "notes/pt-BR/SQL/where-filtros.md",
           "slug": "sql-where-filtros",
           "date": "2025-07-04",
           "description": "Domine a cláusula WHERE para filtrar dados usando operadores de comparação e condições."
         },
         {
           "title": "AND, OR e IN - Combinando Condições",
-          "file": "notes/SQL/and-or-in.md",
+          "file": "notes/pt-BR/SQL/and-or-in.md",
           "slug": "sql-and-or-in",
           "date": "2025-07-04",
           "description": "Combine múltiplas condições usando AND, OR e IN para consultas mais precisas."
         },
         {
           "title": "LIKE % e IS NULL - Busca por Padrões e Valores Ausentes",
-          "file": "notes/SQL/like-is-null.md",
+          "file": "notes/pt-BR/SQL/like-is-null.md",
           "slug": "sql-like-is-null",
           "date": "2025-07-04",
           "description": "Busque por padrões de texto com LIKE e wildcards, e trabalhe com valores NULL."
         },
         {
           "title": "COALESCE - Lidando com Valores NULL",
-          "file": "notes/SQL/coalesce.md",
+          "file": "notes/pt-BR/SQL/coalesce.md",
           "slug": "sql-coalesce",
           "date": "2025-07-04",
           "description": "Use COALESCE para tratar valores NULL de forma elegante e criar consultas mais robustas."
         },
         {
           "title": "Funções de Agregação - SUM, COUNT, MIN, MAX, AVG",
-          "file": "notes/SQL/funcoes-agregacao.md",
+          "file": "notes/pt-BR/SQL/funcoes-agregacao.md",
           "slug": "sql-funcoes-agregacao",
           "date": "2025-07-04",
           "description": "Aprenda as funções de agregação essenciais para análise e sumarização de dados."
         },
         {
           "title": "GROUP BY e HAVING - Agrupando e Filtrando Dados",
-          "file": "notes/SQL/group-by-having.md",
+          "file": "notes/pt-BR/SQL/group-by-having.md",
           "slug": "sql-group-by-having",
           "date": "2025-07-04",
           "description": "Agrupe dados por categorias e filtre grupos usando GROUP BY e HAVING."
         },
         {
           "title": "CASE - Lógica Condicional no SQL",
-          "file": "notes/SQL/case.md",
+          "file": "notes/pt-BR/SQL/case.md",
           "slug": "sql-case",
           "date": "2025-07-04",
           "description": "Implemente lógica condicional nas consultas usando CASE para transformar dados."
         },
         {
           "title": "JOINS - Combinando Dados de Múltiplas Tabelas",
-          "file": "notes/SQL/joins.md",
+          "file": "notes/pt-BR/SQL/joins.md",
           "slug": "sql-joins",
           "date": "2025-07-04",
           "description": "Aprenda a combinar dados de múltiplas tabelas usando INNER JOIN, LEFT JOIN e outros tipos de JOIN."
         },
         {
           "title": "Function (Função) - A Calculadora Reutilizável",
-          "file": "notes/SQL/function.md",
+          "file": "notes/pt-BR/SQL/function.md",
           "slug": "sql-function",
           "date": "2025-09-29",
           "description": "Entenda funções armazenadas: retorno de valor único, uso em SELECT/WHERE e exemplo prático em PL/SQL."
         },
         {
           "title": "Stored Procedure - A Receita de Bolo Guardada",
-          "file": "notes/SQL/stored procedure.md",
+          "file": "notes/pt-BR/SQL/stored procedure.md",
           "slug": "sql-stored-procedure",
           "date": "2025-09-29",
           "description": "Procedimentos armazenados focados em ações (DML), parâmetros IN/OUT e controle de transações."
         },
         {
           "title": "Trigger (Gatilho) - O Sensor de Alarme",
-          "file": "notes/SQL/Trigger.md",
+          "file": "notes/pt-BR/SQL/Trigger.md",
           "slug": "sql-trigger",
           "date": "2025-09-29",
           "description": "Execução automática BEFORE/AFTER em INSERT/UPDATE/DELETE para auditoria, validação e integridade."
         },
         {
           "title": "Bloco Anônimo (PL/SQL) - Execução Ad Hoc",
-          "file": "notes/SQL/bloco anonimo.md",
+          "file": "notes/pt-BR/SQL/bloco anonimo.md",
           "slug": "sql-bloco-anonimo",
           "date": "2025-09-29",
           "description": "Blocos PL/SQL sem nome para executar lógicas pontuais com declarações, exceções e controle de fluxo."
@@ -632,63 +632,63 @@
       "notes": [
         {
           "title": "TCP e UDP - Os Protocolos de Transporte",
-          "file": "notes/redes/tcp-udp.md",
+          "file": "notes/pt-BR/redes/tcp-udp.md",
           "slug": "redes-tcp-udp",
           "date": "2025-07-04",
           "description": "Entenda as diferenças entre TCP e UDP, quando usar cada protocolo e suas características fundamentais."
         },
         {
           "title": "Switching (Comutação) - A Arte de Conectar Dispositivos",
-          "file": "notes/redes/switching-comutacao.md",
+          "file": "notes/pt-BR/redes/switching-comutacao.md",
           "slug": "redes-switching-comutacao",
           "date": "2025-07-04",
           "description": "Aprenda como funcionam os switches, VLANs, Spanning Tree Protocol e as melhores práticas de switching."
         },
         {
           "title": "Routing (Roteamento) - Conectando Redes Diferentes",
-          "file": "notes/redes/routing-roteamento.md",
+          "file": "notes/pt-BR/redes/routing-roteamento.md",
           "slug": "redes-routing-roteamento",
           "date": "2025-07-04",
           "description": "Domine os conceitos de roteamento, protocolos dinâmicos, tabelas de roteamento e NAT."
         },
         {
           "title": "DNS - Domain Name System",
-          "file": "notes/redes/dns.md",
+          "file": "notes/pt-BR/redes/dns.md",
           "slug": "redes-dns",
           "date": "2025-07-04",
           "description": "Entenda como funciona o DNS, hierarquia de domínios, tipos de registros e segurança DNS."
         },
         {
           "title": "HTTP e HTTPS - Protocolos da Web",
-          "file": "notes/redes/http-https.md",
+          "file": "notes/pt-BR/redes/http-https.md",
           "slug": "redes-http-https",
           "date": "2025-07-04",
           "description": "Aprenda os protocolos fundamentais da web, métodos HTTP, códigos de status, autenticação e segurança."
         },
         {
           "title": "FTP - File Transfer Protocol",
-          "file": "notes/redes/ftp.md",
+          "file": "notes/pt-BR/redes/ftp.md",
           "slug": "redes-ftp",
           "date": "2025-07-04",
           "description": "Conheça o protocolo FTP para transferência de arquivos, modos de conexão e alternativas seguras."
         },
         {
           "title": "SMTP - Simple Mail Transfer Protocol",
-          "file": "notes/redes/smtp.md",
+          "file": "notes/pt-BR/redes/smtp.md",
           "slug": "redes-smtp",
           "date": "2025-07-04",
           "description": "Entenda como funciona o email na internet, protocolo SMTP, POP3, IMAP e segurança de email."
         },
         {
           "title": "ICMP - Internet Control Message Protocol",
-          "file": "notes/redes/icmp.md",
+          "file": "notes/pt-BR/redes/icmp.md",
           "slug": "redes-icmp",
           "date": "2025-07-04",
           "description": "Aprenda o protocolo ICMP usado para diagnóstico de rede, comandos ping, traceroute e troubleshooting."
         },
         {
           "title": "Server Hangup - Desconexão Inesperada do Servidor",
-          "file": "notes/redes/server-hangup.md",
+          "file": "notes/pt-BR/redes/server-hangup.md",
           "slug": "redes-server-hangup",
           "date": "2025-09-27",
           "description": "O que é 'socket hang up'/ECONNRESET, causas comuns (timeouts, crashes, recursos, proxies) e como diagnosticar."
@@ -703,7 +703,7 @@
       "notes": [
         {
           "title": "Git Essencial - Controle de Versão para Desenvolvedores",
-          "file": "notes/git/git-essencial.md",
+          "file": "notes/pt-BR/git/git-essencial.md",
           "slug": "git-essencial",
           "date": "2025-07-06",
           "description": "Guia completo sobre Git: terminologias de commit, comandos essenciais, workflow avançado e boas práticas para desenvolvedores."
@@ -718,28 +718,28 @@
       "notes": [
         {
           "title": "Overfitting e Underfitting",
-          "file": "notes/machine-learning/overfitting-underfitting.md",
+          "file": "notes/pt-BR/machine-learning/overfitting-underfitting.md",
           "slug": "ml-overfitting-underfitting",
           "date": "2025-07-11",
           "description": "Entenda os conceitos fundamentais de overfitting e underfitting em machine learning, com estratégias práticas para combater cada problema."
         },
         {
           "title": "K-Vizinhos Mais Próximos (KNN) em Machine Learning",
-          "file": "notes/machine-learning/k-vizinhos-ml.md",
+          "file": "notes/pt-BR/machine-learning/k-vizinhos-ml.md",
           "slug": "ml-k-vizinhos",
           "date": "2025-07-11",
           "description": "Aprenda KNN no contexto de machine learning: aplicações práticas, pipelines de ML, otimizações para produção e comparações com outros algoritmos."
         },
         {
           "title": "Classificador Naive Bayes",
-          "file": "notes/machine-learning/naive-bayes.md",
+          "file": "notes/pt-BR/machine-learning/naive-bayes.md",
           "slug": "ml-naive-bayes",
           "date": "2025-07-13",
           "description": "Algoritmo probabilístico para classificação com tipos Gaussian, Multinomial e Bernoulli, aplicações em spam e sentimento."
         },
         {
           "title": "Tipos de Aprendizado em Machine Learning",
-          "file": "notes/machine-learning/tipos-aprendizado.md",
+          "file": "notes/pt-BR/machine-learning/tipos-aprendizado.md",
           "slug": "ml-tipos-aprendizado",
           "date": "2025-07-15",
           "description": "Notas aprofundadas sobre aprendizado supervisionado, não supervisionado, semissupervisionado, por reforço, online, por lotes, baseado em instâncias e baseado em modelo, com exemplos e diagramas."
@@ -754,98 +754,98 @@
       "notes": [
         {
           "title": "Tipos de Dados em Java",
-          "file": "notes/java/tipos-de-dados.md",
+          "file": "notes/pt-BR/java/tipos-de-dados.md",
           "slug": "java-tipos-de-dados",
           "date": "2025-07-16",
           "description": "Aprenda sobre tipos primitivos, conversões de tipo (casting) e classes wrapper em Java, com exemplos práticos."
         },
         {
           "title": "Variáveis e Constantes em Java",
-          "file": "notes/java/variaveis-constantes.md",
+          "file": "notes/pt-BR/java/variaveis-constantes.md",
           "slug": "java-variaveis-constantes",
           "date": "2025-07-16",
           "description": "Declaração de variáveis, uso de constantes com final, regras de nomenclatura e escopo em Java."
         },
         {
           "title": "Operadores em Java",
-          "file": "notes/java/operadores.md",
+          "file": "notes/pt-BR/java/operadores.md",
           "slug": "java-operadores",
           "date": "2025-07-16",
           "description": "Operadores aritméticos, de comparação, lógicos, de atribuição, ternário e precedência de operadores em Java."
         },
         {
           "title": "Estruturas Condicionais em Java",
-          "file": "notes/java/estruturas-condicionais.md",
+          "file": "notes/pt-BR/java/estruturas-condicionais.md",
           "slug": "java-estruturas-condicionais",
           "date": "2025-07-16",
           "description": "Domine if-else, switch-case, switch expressions e condições aninhadas em Java com exemplos práticos."
         },
         {
           "title": "Estruturas de Repetição em Java",
-          "file": "notes/java/estruturas-repeticao.md",
+          "file": "notes/pt-BR/java/estruturas-repeticao.md",
           "slug": "java-estruturas-repeticao",
           "date": "2025-07-16",
           "description": "Loops for, while, do-while, for-each, controle de fluxo com break e continue, e loops aninhados em Java."
         },
         {
           "title": "Arrays em Java",
-          "file": "notes/java/arrays.md",
+          "file": "notes/pt-BR/java/arrays.md",
           "slug": "java-arrays",
           "date": "2025-07-16",
           "description": "Declaração, inicialização, operações com arrays, arrays multidimensionais e métodos da classe Arrays em Java."
         },
         {
           "title": "Métodos em Java",
-          "file": "notes/java/metodos.md",
+          "file": "notes/pt-BR/java/metodos.md",
           "slug": "java-metodos",
           "date": "2025-07-16",
           "description": "Definição de métodos, parâmetros, retorno, sobrecarga, escopo de variáveis, recursão e boas práticas em Java."
         },
         {
           "title": "Coleções em Java",
-          "file": "notes/java/colecoes.md",
+          "file": "notes/pt-BR/java/colecoes.md",
           "slug": "java-colecoes",
           "date": "2025-07-17",
           "description": "Descubra as principais interfaces de coleções em Java, como List, Set e Map, com exemplos práticos."
         },
         {
           "title": "Threads em Java",
-          "file": "notes/java/threads.md",
+          "file": "notes/pt-BR/java/threads.md",
           "slug": "java-threads",
           "date": "2025-07-17",
           "description": "Aprenda a criar e gerenciar threads em Java para execução paralela de código."
         },
         {
           "title": "Streams em Java",
-          "file": "notes/java/streams.md",
+          "file": "notes/pt-BR/java/streams.md",
           "slug": "java-streams",
           "date": "2025-07-17",
           "description": "Entenda como processar coleções de dados de forma funcional usando streams em Java."
         },
         {
           "title": "Expressões Lambda em Java",
-          "file": "notes/java/lambda.md",
+          "file": "notes/pt-BR/java/lambda.md",
           "slug": "java-lambda",
           "date": "2025-07-17",
           "description": "Explore o uso de expressões lambda para escrever código mais conciso e funcional em Java."
         },
         {
           "title": "Anotações em Java",
-          "file": "notes/java/annotations.md",
+          "file": "notes/pt-BR/java/annotations.md",
           "slug": "java-annotations",
           "date": "2025-07-17",
           "description": "Aprenda a usar e criar anotações em Java para adicionar metadados ao seu código."
         },
         {
           "title": "Reflection em Java",
-          "file": "notes/java/reflection.md",
+          "file": "notes/pt-BR/java/reflection.md",
           "slug": "java-reflection",
           "date": "2025-07-17",
           "description": "Descubra como inspecionar e manipular classes, métodos e atributos em tempo de execução usando reflection em Java."
         },
         {
           "title": "Tratamento de Exceções em Java",
-          "file": "notes/java/exceptions.md",
+          "file": "notes/pt-BR/java/exceptions.md",
           "slug": "java-exceptions",
           "date": "2025-07-17",
           "description": "Aprenda a tratar exceções em Java usando blocos try-catch e a lançar exceções personalizadas."
@@ -860,105 +860,105 @@
       "notes": [
         {
           "title": "Tipos de Dados em Python",
-          "file": "notes/python/tipos-de-dados.md",
+          "file": "notes/pt-BR/python/tipos-de-dados.md",
           "slug": "python-tipos-de-dados",
           "date": "2025-07-16",
           "description": "Tipos básicos, coleções (list, tuple, dict, set), verificação de tipos, conversões e valores falsy em Python."
         },
         {
           "title": "Variáveis e Constantes em Python",
-          "file": "notes/python/variaveis-constantes.md",
+          "file": "notes/pt-BR/python/variaveis-constantes.md",
           "slug": "python-variaveis-constantes",
           "date": "2025-07-16",
           "description": "Declaração de variáveis, atribuição múltipla, convenções de nomenclatura, escopo e simulação de constantes em Python."
         },
         {
           "title": "Operadores em Python",
-          "file": "notes/python/operadores.md",
+          "file": "notes/pt-BR/python/operadores.md",
           "slug": "python-operadores",
           "date": "2025-07-16",
           "description": "Operadores aritméticos, comparação, lógicos, identidade, membro, walrus operator e precedência em Python."
         },
         {
           "title": "Estruturas Condicionais em Python",
-          "file": "notes/python/estruturas-condicionais.md",
+          "file": "notes/pt-BR/python/estruturas-condicionais.md",
           "slug": "python-estruturas-condicionais",
           "date": "2025-07-16",
           "description": "if-elif-else, comparações em cadeia, valores truthy/falsy, match-case (Python 3.10+) e operador ternário."
         },
         {
           "title": "Estruturas de Repetição em Python",
-          "file": "notes/python/estruturas-repeticao.md",
+          "file": "notes/pt-BR/python/estruturas-repeticao.md",
           "slug": "python-estruturas-repeticao",
           "date": "2025-07-16",
           "description": "Loops for, while, enumerate, zip, controle de fluxo, comprehensions e otimizações em Python."
         },
         {
           "title": "Listas em Python",
-          "file": "notes/python/listas.md",
+          "file": "notes/pt-BR/python/listas.md",
           "slug": "python-listas",
           "date": "2025-07-16",
           "description": "Criação, acesso, modificação, métodos, fatiamento, listas aninhadas, list comprehensions e operações avançadas."
         },
         {
           "title": "Funções em Python",
-          "file": "notes/python/funcoes.md",
+          "file": "notes/pt-BR/python/funcoes.md",
           "slug": "python-funcoes",
           "date": "2025-07-16",
           "description": "Definição, parâmetros, *args/**kwargs, lambda, decoradores, recursão, escopo e boas práticas com funções."
         },
         {
           "title": "Decoradores em Python",
-          "file": "notes/python/decorators.md",
+          "file": "notes/pt-BR/python/decorators.md",
           "slug": "python-decorators",
           "date": "2025-07-17",
           "description": "Aprenda a criar e usar decoradores em Python para modificar o comportamento de funções de forma elegante."
         },
         {
           "title": "Gerenciadores de Contexto em Python",
-          "file": "notes/python/context-managers.md",
+          "file": "notes/pt-BR/python/context-managers.md",
           "slug": "python-context-managers",
           "date": "2025-07-17",
           "description": "Descubra como gerenciar recursos de forma eficiente em Python usando gerenciadores de contexto."
         },
         {
           "title": "Metaclasses em Python",
-          "file": "notes/python/metaclasses.md",
+          "file": "notes/pt-BR/python/metaclasses.md",
           "slug": "python-metaclasses",
           "date": "2025-07-17",
           "description": "Entenda o conceito de metaclasses em Python e como elas podem ser usadas para modificar o comportamento de classes."
         },
         {
           "title": "Iteradores e Geradores em Python",
-          "file": "notes/python/iterators-generators.md",
+          "file": "notes/pt-BR/python/iterators-generators.md",
           "slug": "python-iterators-generators",
           "date": "2025-07-17",
           "description": "Aprenda a criar e usar iteradores e geradores em Python para iterar sobre coleções de dados de forma eficiente."
         },
         {
           "title": "Async e Await em Python",
-          "file": "notes/python/async-await.md",
+          "file": "notes/pt-BR/python/async-await.md",
           "slug": "python-async-await",
           "date": "2025-07-17",
           "description": "Explore a programação assíncrona em Python usando async e await para tarefas de I/O."
         },
         {
           "title": "Type Hints em Python",
-          "file": "notes/python/type-hints.md",
+          "file": "notes/pt-BR/python/type-hints.md",
           "slug": "python-type-hints",
           "date": "2025-07-17",
           "description": "Descubra como usar type hints em Python para melhorar a legibilidade e a manutenção do código."
         },
         {
           "title": "Dataclasses em Python",
-          "file": "notes/python/dataclasses.md",
+          "file": "notes/pt-BR/python/dataclasses.md",
           "slug": "python-dataclasses",
           "date": "2025-07-17",
           "description": "Aprenda a usar dataclasses em Python para simplificar a criação de classes que armazenam dados."
         },
         {
           "title": "Flask: O Microframework 'Faça Você Mesmo' para a Web",
-          "file": "notes/python/flask.md",
+          "file": "notes/pt-BR/python/flask.md",
           "slug": "python-flask-microframework",
           "date": "2025-09-26",
           "description": "Introdução prática ao Flask: roteamento com decorators, request/response, Jinja2 e exemplo mínimo de aplicação."
@@ -971,27 +971,27 @@
       "color": "#6F42C1",
       "icon": "📊",
       "notes": [
-          {
-            "title": "Dados Quantitativos e Qualitativos",
-            "file": "notes/dados/quantitativos-qualitativos.md",
-            "slug": "dados-quantitativos-qualitativos",
-            "date": "2025-08-14T12:00:00-03:00",
-            "description": "Entenda a diferença entre dados quantitativos (numéricos) e qualitativos (categorias), com exemplos e aplicações."
-          },
-          {
-            "title": "Dados Primários, Secundários e de Terceiros",
-            "file": "notes/dados/primarios-secundarios-terceiros.md",
-            "slug": "dados-primarios-secundarios-terceiros",
-            "date": "2025-08-14T12:00:00-03:00",
-            "description": "Saiba como identificar e utilizar dados primários, secundários e de terceiros, suas vantagens e desafios."
-          },
-          {
-            "title": "Dados Estruturados, Semi-Estruturados e Não Estruturados",
-            "file": "notes/dados/estruturados-semi-nao-estruturados.md",
-            "slug": "dados-estruturados-semi-nao-estruturados",
-            "date": "2025-08-14T12:00:00-03:00",
-            "description": "Descubra as diferenças entre dados estruturados, semi-estruturados e não estruturados, com exemplos práticos."
-          }
+        {
+          "title": "Dados Quantitativos e Qualitativos",
+          "file": "notes/pt-BR/dados/quantitativos-qualitativos.md",
+          "slug": "dados-quantitativos-qualitativos",
+          "date": "2025-08-14T12:00:00-03:00",
+          "description": "Entenda a diferença entre dados quantitativos (numéricos) e qualitativos (categorias), com exemplos e aplicações."
+        },
+        {
+          "title": "Dados Primários, Secundários e de Terceiros",
+          "file": "notes/pt-BR/dados/primarios-secundarios-terceiros.md",
+          "slug": "dados-primarios-secundarios-terceiros",
+          "date": "2025-08-14T12:00:00-03:00",
+          "description": "Saiba como identificar e utilizar dados primários, secundários e de terceiros, suas vantagens e desafios."
+        },
+        {
+          "title": "Dados Estruturados, Semi-Estruturados e Não Estruturados",
+          "file": "notes/pt-BR/dados/estruturados-semi-nao-estruturados.md",
+          "slug": "dados-estruturados-semi-nao-estruturados",
+          "date": "2025-08-14T12:00:00-03:00",
+          "description": "Descubra as diferenças entre dados estruturados, semi-estruturados e não estruturados, com exemplos práticos."
+        }
       ]
     },
     {
@@ -1002,21 +1002,21 @@
       "notes": [
         {
           "title": "Banco de Dados: Linha vs. Coluna vs. Hadoop",
-          "file": "notes/engenharia-de-software/banco-dados-linha-coluna-hadoop.md",
+          "file": "notes/pt-BR/engenharia-de-software/banco-dados-linha-coluna-hadoop.md",
           "slug": "banco-dados-linha-coluna-hadoop",
           "date": "2025-08-22",
           "description": "Entenda as diferenças entre bancos de dados orientados a linhas, colunas e o ecossistema Hadoop, e quando usar cada um."
         },
         {
           "title": "Os 7 Princípios da Engenharia de Software",
-          "file": "notes/engenharia-de-software/principios-engenharia-software.md",
+          "file": "notes/pt-BR/engenharia-de-software/principios-engenharia-software.md",
           "slug": "principios-engenharia-software",
           "date": "2025-08-22",
           "description": "Uma visão sobre os princípios fundamentais que guiam a construção de software de alta qualidade, baseados nas ideias de Hooker."
         },
         {
           "title": "Fluxos de Processo Ágil: Scrum, XP e Kanban",
-          "file": "notes/engenharia-de-software/fluxos-processo-agil.md",
+          "file": "notes/pt-BR/engenharia-de-software/fluxos-processo-agil.md",
           "slug": "fluxos-processo-agil",
           "date": "2025-08-22",
           "description": "Compare as metodologias ágeis mais populares e entenda qual se adapta melhor ao seu time e projeto."
@@ -1031,14 +1031,14 @@
       "notes": [
         {
           "title": "Test-Driven Development (TDD)",
-          "file": "notes/engenharia-de-software/tdd.md",
+          "file": "notes/pt-BR/engenharia-de-software/tdd.md",
           "slug": "engenharia-software-tdd",
           "date": "2025-09-28",
           "description": "Metodologia de design: escreva testes antes do código. Ciclo Red-Green-Refactor com exemplos práticos."
         },
         {
           "title": "Testes Unitários (TU)",
-          "file": "notes/engenharia-de-software/tu.md",
+          "file": "notes/pt-BR/engenharia-de-software/tu.md",
           "slug": "engenharia-software-testes-unitarios",
           "date": "2025-09-28",
           "description": "Verificação isolada de unidades de código: AAA pattern, mocks/stubs, automação e exemplos com pytest."
