@@ -1020,6 +1020,27 @@
           "slug": "fluxos-processo-agil",
           "date": "2025-08-22",
           "description": "Compare as metodologias ágeis mais populares e entenda qual se adapta melhor ao seu time e projeto."
+        },
+        {
+          "title": "Arquitetura de Microsserviços",
+          "file": "notes/pt-BR/engenharia-de-software/microsservicos.md",
+          "slug": "engenharia-software-microsservicos",
+          "date": "2025-10-03",
+          "description": "Princípios, comunicação síncrona/assíncrona, observabilidade, deploy independente e trade-offs."
+        },
+        {
+          "title": "Arquitetura Monólito Modular",
+          "file": "notes/pt-BR/engenharia-de-software/monolito modular.md",
+          "slug": "engenharia-software-monolito-modular",
+          "date": "2025-10-03",
+          "description": "Monólito modular: boundaries internos, modularização por contexto, deploy único e caminho para extração gradual."
+        },
+        {
+          "title": "Arquitetura Monólito Tradicional",
+          "file": "notes/pt-BR/engenharia-de-software/monolito tradicional.md",
+          "slug": "engenharia-software-monolito-tradicional",
+          "date": "2025-10-03",
+          "description": "Monólito tradicional: aplicação única, acoplamento, quando usar e estratégias de evolução arquitetural."
         }
       ]
     },
