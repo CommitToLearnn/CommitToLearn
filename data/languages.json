@@ -346,6 +346,34 @@
           "slug": "go-json",
           "date": "2025-07-17",
           "description": "Aprenda a codificar e decodificar dados JSON em Go usando o pacote encoding/json."
+        },
+        {
+          "title": "Funções Variádicas em Go",
+          "file": "notes/pt-BR/go/funcoes-variadicas.md",
+          "slug": "go-funcoes-variadicas",
+          "date": "2025-10-6",
+          "description": "Aprenda a criar funções em Go que aceitam um número variável de argumentos usando a sintaxe `...T` para maior flexibilidade."
+        },
+        {
+          "title": "Funções Anônimas em Go",
+          "file": "notes/pt-BR/go/funcoes-anonimas.md",
+          "slug": "go-funcoes-anonimas",
+          "date": "2025-10-6",
+          "description": "Descubra como usar funções anônimas (function literals) para criar lógicas concisas, especialmente com goroutines e defer."
+        },
+        {
+          "title": "Closures em Go: Funções com Memória",
+          "file": "notes/pt-BR/go/closures.md",
+          "slug": "go-closures",
+          "date": "2025-10-6",
+          "description": "Entenda o poderoso conceito de closures em Go, funções que capturam e mantêm o estado de variáveis de seu escopo externo."
+        },
+        {
+          "title": "Funções de Ordem Superior em Go",
+          "file": "notes/pt-BR/go/higher-order-functions.md",
+          "slug": "go-higher-order-functions",
+          "date": "2025-10-6",
+          "description": "Explore como Go trata funções como cidadãs de primeira classe, permitindo passá-las como argumentos e retorná-las de outras funções."
         }
       ]
     },
