@@ -1019,6 +1019,34 @@
           "slug": "dados-estruturados-semi-nao-estruturados",
           "date": "2025-08-14T12:00:00-03:00",
           "description": "Descubra as diferenças entre dados estruturados, semi-estruturados e não estruturados, com exemplos práticos."
+        },
+        {
+          "title": "Gráficos de Comparação",
+          "file": "notes/pt-BR/dados/graficos-de-comparacao.md",
+          "slug": "graficos-de-comparacao",
+          "date": "2025-10-07",
+          "description": "Aprenda a escolher o gráfico certo para comparar valores entre diferentes itens ou ao longo do tempo. Descubra quando usar gráficos de barras, colunas e linhas para destacar tendências e diferenças."
+        },
+        {
+          "title": "Gráficos de Relacionamento",
+          "file": "notes/pt-BR/dados/graficos-de-relacionamento.md",
+          "slug": "graficos-de-relacionamento",
+          "date": "2025-10-07",
+          "description": "Descubra como visualizar a correlação entre variáveis. Aprenda a usar gráficos de dispersão (Scatter) e de bolhas (Bubble) para identificar se existe uma relação entre dois ou mais conjuntos de dados."
+        },
+        {
+          "title": "Gráficos de Distribuição",
+          "file": "notes/pt-BR/dados/graficos-de-distribuicao.md",
+          "slug": "graficos-de-distribuicao",
+          "date": "2025-10-07",
+          "description": "Entenda como seus dados estão distribuídos e identifique concentrações e anomalias. Explore o uso de histogramas e gráficos de dispersão para analisar a frequência e a distribuição de seus dados."
+        },
+        {
+          "title": "Gráficos de Composição",
+          "file": "notes/pt-BR/dados/graficos-de-composicao.md",
+          "slug": "graficos-de-composicao",
+          "date": "2025-10-07",
+          "description": "Aprenda a mostrar como um todo é dividido em partes. Descubra quando usar gráficos de pizza, cascata e gráficos empilhados para visualizar a composição de dados de forma estática ou ao longo do tempo."
         }
       ]
     },
