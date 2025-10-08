@@ -374,6 +374,41 @@
           "slug": "go-higher-order-functions",
           "date": "2025-10-6",
           "description": "Explore como Go trata funções como cidadãs de primeira classe, permitindo passá-las como argumentos e retorná-las de outras funções."
+        },
+        {
+          "title": "A Declaração if em Go",
+          "file": "notes/pt-BR/go/if.md",
+          "slug": "go-if-statement",
+          "date": "2025-10-08",
+          "description": "Aprenda a usar a declaração 'if' em Go, incluindo a poderosa forma de declaração curta para tratar erros e limitar o escopo de variáveis de forma idiomática."
+        },
+        {
+          "title": "O Loop for em Go",
+          "file": "notes/pt-BR/go/for.md",
+          "slug": "go-for-loop",
+          "date": "2025-10-08",
+          "description": "Explore a flexibilidade do loop 'for', desde a sintaxe clássica até o 'for...range', incluindo as atualizações do Go 1.22 para iterar sobre inteiros e a nova semântica de variáveis."
+        },
+        {
+          "title": "Switch em Go",
+          "file": "notes/pt-BR/go/switch.md",
+          "slug": "go-switch-statement",
+          "date": "2025-10-08",
+          "description": "Descubra os recursos avançados do 'switch' em Go, como a ausência de fallthrough automático, múltiplos valores por case, switch sem expressão e o poderoso 'type switch' para interfaces."
+        },
+        {
+          "title": "Defer",
+          "file": "notes/pt-BR/go/defer.md",
+          "slug": "go-defer-statement",
+          "date": "2025-10-08",
+          "description": "Entenda como a declaração 'defer' garante a execução de código de limpeza, como fechar arquivos ou conexões, de forma robusta e confiável, seguindo a ordem LIFO."
+        },
+        {
+          "title": "Arrays em Go",
+          "file": "notes/pt-BR/go/arrays.md",
+          "slug": "go-arrays",
+          "date": "2025-10-08",
+          "description": "Aprenda sobre arrays em Go, uma estrutura de dados de tamanho fixo onde o tamanho é parte do tipo. Entenda por que são tipos de valor e sua relação fundamental com os Slices."
         }
       ]
     },
