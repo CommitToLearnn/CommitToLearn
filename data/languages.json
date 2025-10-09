@@ -409,6 +409,13 @@
           "slug": "go-arrays",
           "date": "2025-10-08",
           "description": "Aprenda sobre arrays em Go, uma estrutura de dados de tamanho fixo onde o tamanho é parte do tipo. Entenda por que são tipos de valor e sua relação fundamental com os Slices."
+        },
+        {
+          "title": "Lendo a Entrada do Usuário em Go com o Pacote bufio",
+          "file": "notes/pt-BR/go/Lendo a Entrada do Usuário.md",
+          "slug": "go-entrada-usuario-bufio",
+          "date": "2025-10-09",
+          "description": "Aprenda a forma otimizada de ler a entrada do usuário em Go com o pacote `bufio`. Entenda o que é um buffer e descubra as diferenças práticas entre `bufio.Reader` e `bufio.Scanner`."
         }
       ]
     },
