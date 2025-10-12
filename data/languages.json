@@ -1089,6 +1089,27 @@
           "slug": "graficos-de-composicao",
           "date": "2025-10-07",
           "description": "Aprenda a mostrar como um todo é dividido em partes. Descubra quando usar gráficos de pizza, cascata e gráficos empilhados para visualizar a composição de dados de forma estática ou ao longo do tempo."
+        },
+        {
+          "title": "DataFrame em Pandas: A sua planilha eletrônica dentro do Python",
+          "file": "notes/pt-BR/dados/dataframe-em-pandas.md",
+          "slug": "dataframe-em-pandas",
+          "date": "2025-10-11",
+          "description": "Entenda o que é um DataFrame do Pandas, a ferramenta fundamental para manipulação de dados em Python. Aprenda seus componentes principais (Series e Index) e como ele funciona como uma planilha turbinada."
+        },
+        {
+          "title": "Queries em Pandas: Como fazer perguntas e filtrar seus dados",
+          "file": "notes/pt-BR/dados/queries-em-pandas.md",
+          "slug": "queries-em-pandas",
+          "date": "2025-10-11",
+          "description": "Aprenda a filtrar e selecionar dados específicos em um DataFrame do Pandas. Descubra como criar 'máscaras booleanas' e usar a função .query() para fazer perguntas aos seus dados de forma eficiente."
+        },
+        {
+          "title": "Persistindo Dados: Como salvar seu DataFrame em um banco de dados SQLite",
+          "file": "notes/pt-BR/dados/persistindo-dados-sqlite.md",
+          "slug": "persistindo-dados-sqlite",
+          "date": "2025-10-11",
+          "description": "Descubra por que e como salvar seu trabalho de análise de dados. Aprenda a persistir um DataFrame do Pandas em um banco de dados SQLite, transformando seus dados voláteis em um arquivo permanente e consultável."
         }
       ]
     },
