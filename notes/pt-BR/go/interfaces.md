@@ -117,8 +117,6 @@ func main() {
 **Armadilha 1: Receptor de Ponteiro vs. Valor**
 Esta é a principal fonte de bugs. Se você implementa um método com um **receptor de ponteiro** (`func (s *SMS) ...`), então apenas um **ponteiro para a struct** (`&SMS{}`) satisfará a interface, não a struct diretamente. Fique muito atento a isso!
 
----
-
 **Armadilha 2 (e Superpoder): A Interface Vazia - `any` (`interface{}`)**
 
 E se quiséssemos um contrato que não exige **nada**?
