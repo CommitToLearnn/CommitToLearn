@@ -103,11 +103,91 @@ func MandarAlertaDeSistema(n Notificador, alerta string) {
     n.Enviar(alerta)
 }
 
-func (r Retangulo) Perimetro() float64 {
-    return 2 * (r.Largura + r.Altura)
-}
+func main() {
+    emailDoAdmin := Email{Endereco: "admin@corp.com"}
+    smsDoPlantao := SMS{NumeroTelefone: "+5511999998888"}
 
-var f Forma = Retangulo{Largura: 10, Altura: 5}
-fmt.Println(f.Area())
-fmt.Println(f.Perimetro())
+    MandarAlertaDeSistema(emailDoAdmin, "Servidor principal está offline!")
+    MandarAlertaDeSistema(smsDoPlantao, "Servidor principal está offline!")
+}
 ```
+
+### Armadilhas Comuns & o Poder do `any`
+
+**Armadilha 1: Receptor de Ponteiro vs. Valor**
+Esta é a principal fonte de bugs. Se você implementa um método com um **receptor de ponteiro** (`func (s *SMS) ...`), então apenas um **ponteiro para a struct** (`&SMS{}`) satisfará a interface, não a struct diretamente. Fique muito atento a isso!
+
+**Armadilha 2 (e Superpoder): A Interface Vazia - `any` (`interface{}`)**
+
+E se quiséssemos um contrato que não exige **nada**?
+
+Isso existe e se chama **interface vazia**: `interface{}`. Recentemente, Go introduziu um "apelido" para ela, que é muito mais legível: **`any`**.
+
+`any` e `interface{}` são a mesma coisa.
+
+**O que é `any`?**
+É um contrato que não tem nenhum método. Como ele não exige nada, **todo e qualquer tipo em Go satisfaz a interface `any`**! Uma `string`, um `int`, uma `struct`, um ponteiro... tudo cabe em uma variável do tipo `any`.
+
+**Por que isso é útil?**
+É a forma de Go lidar com situações onde você não sabe o tipo de dado que vai receber.
+- **Decodificar JSON:** Um campo JSON pode ser um número, um texto ou um booleano. `any` é perfeito para isso.
+- **Funções genéricas:** A função `fmt.Println()` consegue imprimir qualquer coisa porque ela aceita `...any`.
+
+**A Grande Armadilha do `any`:**
+Quando você coloca um valor dentro de uma variável `any`, o compilador "esquece" o tipo original. É como colocar um objeto em uma caixa misteriosa. Você sabe que tem algo lá, mas não sabe mais o que é.
+
+```go
+var caixaMisteriosa any
+caixaMisteriosa = 10
+
+// O código abaixo NÃO funciona e causa pânico!
+// O compilador não sabe que 'caixaMisteriosa' é um int.
+// fmt.Println(caixaMisteriosa + 5) // ERRO DE COMPILAÇÃO!
+```
+
+**Como usar `any` com segurança? Com Type Assertion (Verificação de Tipo)!**
+Para usar o valor dentro da caixa, você precisa verificar o tipo dele.
+
+1.  **Type Assertion com "comma, ok" (O Jeito Seguro):**
+    ```go
+    valor, ok := caixaMisteriosa.(int)
+    if ok {
+        // Deu certo! 'valor' agora é um int e podemos usá-lo.
+        fmt.Println("É um int!", valor + 5)
+    } else {
+        fmt.Println("Não é um int!")
+    }
+    ```
+
+2.  **Type Switch (Para Várias Possibilidades):**
+
+    ```go
+
+    func Descreve(dado any) {
+        switch v := dado.(type) {
+        case int:
+            fmt.Printf("É um inteiro: %d\n", v)
+        case string:
+            fmt.Printf("É uma string: '%s'\n", v)
+        case bool:
+            fmt.Printf("É um booleano: %t\n", v)
+        default:
+            fmt.Printf("É um tipo desconhecido: %T\n", v)
+        }
+    }
+
+    ```
+
+### Boas Práticas
+
+- **Interfaces Pequenas:** O mantra em Go é "quanto menor a interface, melhor". Interfaces com um único método são as mais poderosas e reutilizáveis.
+- **"Aceite Interfaces, Retorne Structs":** Suas funções devem aceitar interfaces como parâmetros para serem flexíveis, mas devem retornar tipos concretos (`structs`) para dar o máximo de informação a quem as chama.
+- **Prefira Interfaces Específicas em Vez de `any`:** `any` é uma ferramenta poderosa, mas remove a segurança do compilador. Sempre que puder, use uma interface específica como `Notificador` ou `io.Reader`. Seu código ficará mais claro, mais seguro e mais fácil de entender. Use `any` apenas quando for estritamente necessário (como ao lidar com dados de fontes externas e não estruturadas).
+
+### Resumo Rápido
+- **Interface**: É um contrato que define um conjunto de comportamentos (métodos).
+- **Implementação Implícita**: Um tipo satisfaz uma interface automaticamente se ele tiver todos os métodos que ela exige.
+- **Poder Principal**: Permite escrever funções genéricas que operam sobre comportamentos, não sobre tipos concretos.
+- **`any` (`interface{}`)**: A interface vazia que aceita **qualquer tipo**. É útil para generalização, mas perigosa porque perde a segurança de tipo.
+- **Type Assertion**: O mecanismo (`valor, ok := variavel.(Tipo)`) para verificar e extrair o tipo original de dentro de uma variável `any` de forma segura.
+- **Boa Prática**: Use interfaces pequenas e específicas. Recorra ao `any` como último recurso, não como primeira opção.
