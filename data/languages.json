@@ -416,6 +416,20 @@
           "slug": "go-entrada-usuario-bufio",
           "date": "2025-10-09",
           "description": "Aprenda a forma otimizada de ler a entrada do usuário em Go com o pacote `bufio`. Entenda o que é um buffer e descubra as diferenças práticas entre `bufio.Reader` e `bufio.Scanner`."
+        },
+        {
+          "title": "Structs em Go: Criando Seus Próprios Tipos de Dados",
+          "file": "notes/pt-BR/go/struct.md",
+          "slug": "structs-em-go",
+          "date": "2025-10-12",
+          "description": "Aprenda o que são structs em Go e como usá-las para criar seus próprios tipos de dados. Entenda como agrupar informações relacionadas em um único molde, a base da organização de dados em Go."
+        },
+        {
+          "title": "Métodos em Go: Dando Superpoderes às Suas Structs",
+          "file": "notes/pt-BR/go/methods.md",
+          "slug": "metodos-em-go",
+          "date": "2025-10-12",
+          "description": "Descubra como adicionar comportamento às suas structs com métodos. Aprenda a diferença vital entre receptores de valor e de ponteiro para modificar dados de forma segura e eficaz em Go."
         }
       ]
     },
