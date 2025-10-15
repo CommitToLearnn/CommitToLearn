@@ -1,428 +1,142 @@
-# Comandos Básicos Docker
+# Comandos Essenciais do Docker: Um Guia Prático
 
-Uma referência completa dos comandos essenciais do Docker para desenvolvimento e operações diárias.
+Uma referência completa dos comandos essenciais do Docker para o dia a dia de desenvolvimento e operações.
 
-## Comandos de Imagens
+Pense no Docker como uma oficina de LEGOs:
+- **Imagens (`docker pull`, `docker build`):** Os manuais de instrução para construir um modelo.
+- **Contêineres (`docker run`, `docker stop`):** Os modelos já montados e em funcionamento.
+- **Volumes (`docker volume create`):** Peças especiais que você guarda em caixas separadas para não perder.
+- **Redes (`docker network create`):** A cidade onde seus modelos se conectam.
 
-### Baixar e Gerenciar Imagens
+## Gerenciamento de Imagens
+
+Comandos para baixar, listar, construir e gerenciar imagens Docker.
+
+| Comando | Descrição |
+| :--- | :--- |
+| `docker pull <imagem>` | Baixa uma imagem de um registry (ex: Docker Hub). |
+| `docker images` ou `docker image ls` | Lista todas as imagens locais. |
+| `docker build -t <nome>:<tag> .` | Constrói uma imagem a partir de um Dockerfile. |
+| `docker rmi <imagem>` | Remove uma imagem local. |
+| `docker image prune` | Remove imagens não utilizadas (dangling). |
+| `docker image prune -a` | Remove todas as imagens não utilizadas. |
+| `docker history <imagem>` | Mostra as camadas (layers) da imagem. |
+| `docker save <imagem> > arquivo.tar` | Salva uma imagem em um arquivo .tar. |
+| `docker load < arquivo.tar` | Carrega uma imagem de um arquivo .tar. |
+
+**Exemplo de Build:**
 ```bash
-# Baixar imagem do registry
-docker pull nginx:latest
-docker pull python:3.9-alpine
-
-# Listar imagens locais
-docker images
-docker image ls
-
-# Buscar imagens no Docker Hub
-docker search nginx
-
-# Ver detalhes da imagem
-docker image inspect nginx:latest
-
-# Ver histórico de layers
-docker image history nginx:latest
-
-# Remover imagem
-docker rmi nginx:latest
-docker image rm python:3.9
-
-# Remover imagens não utilizadas
-docker image prune
-docker image prune -a  # Remove todas não utilizadas
+# Constrói a imagem 'minha-app' com a tag 'v1' a partir do Dockerfile no diretório atual
+docker build -t minha-app:v1 .
 ```
 
-### Construir Imagens
+## Gerenciamento de Contêineres
+
+Comandos para executar, parar, inspecionar e remover contêineres.
+
+| Comando | Descrição |
+| :--- | :--- |
+| `docker run <imagem>` | Cria e inicia um novo contêiner a partir de uma imagem. |
+| `docker ps` | Lista os contêineres em execução. |
+| `docker ps -a` | Lista todos os contêineres (em execução e parados). |
+| `docker stop <container>` | Para um contêiner em execução. |
+| `docker start <container>` | Inicia um contêiner parado. |
+| `docker restart <container>` | Reinicia um contêiner. |
+| `docker rm <container>` | Remove um contêiner parado. |
+| `docker container prune` | Remove todos os contêineres parados. |
+| `docker logs <container>` | Exibe os logs de um contêiner. |
+| `docker exec -it <container> <comando>` | Executa um comando dentro de um contêiner em execução. |
+
+**Exemplo de Execução:**
 ```bash
-# Build com Dockerfile
-docker build -t minha-app:v1.0 .
-
-# Build com context remoto
-docker build -t app https://github.com/user/repo.git
-
-# Build sem cache
-docker build --no-cache -t app .
-
-# Build com argumentos
-docker build --build-arg VERSION=1.0 -t app .
-
-# Multi-stage build
-docker build --target production -t app:prod .
+# Executa um contêiner Nginx em background, mapeando a porta 8080 do host para a 80 do contêiner
+docker run -d --name meu-webserver -p 8080:80 nginx
 ```
 
-### Salvar e Carregar Imagens
+**Exemplo de Acesso Interativo:**
 ```bash
-# Salvar imagem para arquivo
-docker save nginx:latest > nginx.tar
-docker save -o nginx.tar nginx:latest
-
-# Carregar imagem de arquivo
-docker load < nginx.tar
-docker load -i nginx.tar
-
-# Exportar container como imagem
-docker export container-name > container.tar
-
-# Importar como imagem
-docker import container.tar new-image:tag
+# Acessa o terminal de um contêiner Ubuntu
+docker exec -it meu-ubuntu-container /bin/bash
 ```
 
-## Comandos de Containers
+## Gerenciamento de Redes
 
-### Executar Containers
+Comandos para criar e gerenciar as redes que conectam os contêineres.
+
+| Comando | Descrição |
+| :--- | :--- |
+| `docker network ls` | Lista as redes disponíveis. |
+| `docker network create <nome>` | Cria uma nova rede (bridge por padrão). |
+| `docker network rm <nome>` | Remove uma rede. |
+| `docker network inspect <nome>` | Exibe detalhes sobre uma rede. |
+| `docker network connect <rede> <container>` | Conecta um contêiner a uma rede. |
+| `docker network disconnect <rede> <container>` | Desconecta um contêiner de uma rede. |
+
+**Exemplo de Uso:**
 ```bash
-# Executar container básico
-docker run nginx
+# Cria uma rede para a aplicação
+docker network create minha-app-net
 
-# Executar em background (detached)
-docker run -d nginx
+# Inicia o banco de dados na rede
+docker run -d --name db --network minha-app-net postgres
 
-# Executar com nome personalizado
-docker run --name meu-nginx nginx
-
-# Executar com porta mapeada
-docker run -p 8080:80 nginx
-
-# Executar interativo
-docker run -it ubuntu:20.04 /bin/bash
-
-# Executar com variáveis de ambiente
-docker run -e NODE_ENV=production node-app
-
-# Executar com volume montado
-docker run -v /host/path:/container/path nginx
-
-# Executar e remover após parar
-docker run --rm alpine echo "Hello World"
+# Inicia a aplicação na mesma rede para que possam se comunicar pelo nome
+docker run -d --name api --network minha-app-net minha-api-imagem
 ```
 
-### Gerenciar Containers
+## Gerenciamento de Volumes
+
+Comandos para gerenciar a persistência de dados.
+
+| Comando | Descrição |
+| :--- | :--- |
+| `docker volume create <nome>` | Cria um volume nomeado. |
+| `docker volume ls` | Lista os volumes. |
+| `docker volume inspect <nome>` | Mostra detalhes de um volume. |
+| `docker volume rm <nome>` | Remove um volume. |
+| `docker volume prune` | Remove todos os volumes não utilizados. |
+
+**Exemplo de Uso com Volume Nomeado (Recomendado):**
 ```bash
-# Listar containers executando
-docker ps
+# Cria um volume para persistir os dados do PostgreSQL
+docker volume create dados-postgres
 
-# Listar todos containers (incluindo parados)
-docker ps -a
-
-# Ver apenas IDs dos containers
-docker ps -q
-
-# Parar container
-docker stop container-name
-docker stop container-id
-
-# Parar todos containers
-docker stop $(docker ps -q)
-
-# Iniciar container parado
-docker start container-name
-
-# Reiniciar container
-docker restart container-name
-
-# Pausar/despausar container
-docker pause container-name
-docker unpause container-name
-
-# Matar container
-docker kill container-name
+# Inicia o contêiner montando o volume
+docker run -d -v dados-postgres:/var/lib/postgresql/data postgres
 ```
 
-### Remover Containers
+**Exemplo com Bind Mount (Desenvolvimento):**
 ```bash
-# Remover container parado
-docker rm container-name
-
-# Forçar remoção de container executando
-docker rm -f container-name
-
-# Remover múltiplos containers
-docker rm container1 container2 container3
-
-# Remover todos containers parados
-docker container prune
-
-# Remover todos containers (cuidado!)
-docker rm -f $(docker ps -aq)
+# Mapeia um diretório local para dentro do contêiner
+docker run -d -v /caminho/no/host:/app minha-app
 ```
 
-## Comandos de Interação
-
-### Executar Comandos no Container
-```bash
-# Executar comando interativo
-docker exec -it container-name /bin/bash
-docker exec -it container-name /bin/sh
-
-# Executar comando não-interativo
-docker exec container-name ls -la
-
-# Executar como usuário específico
-docker exec -u root -it container-name /bin/bash
-
-# Executar com variáveis de ambiente
-docker exec -e VAR=value container-name env
-```
-
-### Ver Logs
-```bash
-# Ver logs do container
-docker logs container-name
-
-# Seguir logs em tempo real
-docker logs -f container-name
-
-# Ver logs com timestamp
-docker logs -t container-name
-
-# Ver últimas N linhas
-docker logs --tail 50 container-name
-
-# Ver logs desde tempo específico
-docker logs --since="2023-01-01T00:00:00" container-name
-docker logs --since="1h" container-name
-```
-
-### Inspecionar e Monitorar
-```bash
-# Ver detalhes completos do container
-docker inspect container-name
-
-# Ver processos no container
-docker top container-name
-
-# Ver estatísticas em tempo real
-docker stats
-docker stats container-name
-
-# Ver mudanças no filesystem
-docker diff container-name
-
-# Ver portas mapeadas
-docker port container-name
-```
-
-## Comandos de Volume
-
-### Gerenciar Volumes
-```bash
-# Criar volume
-docker volume create meu-volume
-
-# Listar volumes
-docker volume ls
-
-# Inspecionar volume
-docker volume inspect meu-volume
-
-# Remover volume
-docker volume rm meu-volume
-
-# Remover volumes não utilizados
-docker volume prune
-
-# Usar volume em container
-docker run -v meu-volume:/data nginx
-```
-
-### Bind Mounts
-```bash
-# Montar diretório do host
-docker run -v /host/path:/container/path nginx
-
-# Mount somente leitura
-docker run -v /host/path:/container/path:ro nginx
-
-# Mount com propagação
-docker run -v /host/path:/container/path:shared nginx
-```
-
-## Comandos de Rede
-
-### Gerenciar Redes
-```bash
-# Listar redes
-docker network ls
-
-# Criar rede
-docker network create minha-rede
-
-# Inspecionar rede
-docker network inspect minha-rede
-
-# Conectar container à rede
-docker network connect minha-rede container-name
-
-# Desconectar container da rede
-docker network disconnect minha-rede container-name
-
-# Remover rede
-docker network rm minha-rede
-
-# Remover redes não utilizadas
-docker network prune
-```
-
-## Docker Compose
-
-### Comandos Básicos
-```bash
-# Iniciar serviços
-docker-compose up
-docker-compose up -d  # Em background
-
-# Parar serviços
-docker-compose down
-
-# Parar serviços e remover volumes
-docker-compose down -v
-
-# Ver logs
-docker-compose logs
-docker-compose logs -f service-name
-
-# Executar comando em serviço
-docker-compose exec service-name bash
-
-# Scaling de serviços
-docker-compose up --scale web=3
-
-# Rebuild de serviços
-docker-compose build
-docker-compose up --build
-```
-
-### Gerenciamento de Serviços
-```bash
-# Ver status dos serviços
-docker-compose ps
-
-# Parar serviço específico
-docker-compose stop service-name
-
-# Reiniciar serviço
-docker-compose restart service-name
-
-# Ver configuração resolvida
-docker-compose config
-
-# Validar arquivo compose
-docker-compose config --quiet
-```
-
-## Comandos de Sistema
-
-### Limpeza e Manutenção
-```bash
-# Limpar tudo não utilizado
-docker system prune
-
-# Limpeza agressiva (inclui imagens não utilizadas)
-docker system prune -a
-
-# Ver uso de espaço
-docker system df
-
-# Ver eventos do Docker
-docker system events
-
-# Ver informações do sistema
-docker system info
-docker info
-```
-
-### Backup e Restore
-```bash
-# Commit de container para imagem
-docker commit container-name nova-imagem:tag
-
-# Backup de volume
-docker run --rm -v volume-name:/data -v $(pwd):/backup \
-  alpine tar czf /backup/backup.tar.gz -C /data .
-
-# Restore de volume
-docker run --rm -v volume-name:/data -v $(pwd):/backup \
-  alpine tar xzf /backup/backup.tar.gz -C /data
-```
-
-## Comandos de Registry
-
-### Docker Hub e Registries
-```bash
-# Login no registry
-docker login
-docker login registry.example.com
-
-# Push de imagem
-docker push username/image:tag
-
-# Tag de imagem
-docker tag local-image:tag username/image:tag
-
-# Logout
-docker logout
-
-# Pull de registry privado
-docker pull registry.example.com/image:tag
-```
-
-## Comandos Úteis para Debug
-
-### Troubleshooting
-```bash
-# Entrar em container que não tem shell
-docker run --rm -it --pid container:target-container \
-  --net container:target-container \
-  --cap-add SYS_PTRACE \
-  alpine
-
-# Ver processos de todos containers
-docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-
-# Container de debug com ferramentas de rede
-docker run --rm -it --net container:target nicolaka/netshoot
-
-# Ver logs de container que morreu
-docker logs --details container-name
-
-# Copiar arquivos do/para container
-docker cp container:/path/file.txt .
-docker cp file.txt container:/path/
-```
-
-## Aliases Úteis
-
-### Configuração de Aliases
-```bash
-# Adicionar ao ~/.bashrc ou ~/.zshrc
-alias dps='docker ps'
-alias dpsa='docker ps -a'
-alias di='docker images'
-alias drm='docker rm'
-alias drmi='docker rmi'
-alias dexec='docker exec -it'
-alias dlogs='docker logs -f'
-alias dstop='docker stop $(docker ps -q)'
-alias dclean='docker system prune -f'
-alias dcu='docker-compose up -d'
-alias dcd='docker-compose down'
-alias dcl='docker-compose logs -f'
-```
-
-## Dicas de Performance
-
-### Otimização
-```bash
-# Use .dockerignore para acelerar builds
-echo "node_modules" >> .dockerignore
-echo ".git" >> .dockerignore
-
-# Multi-stage builds para imagens menores
-# Use cache de layers eficientemente
-# Ordene comandos do menos para mais propenso a mudanças
-
-# Limpe regularmente
-docker system prune -f
-docker volume prune -f
-docker image prune -f
+## Comandos do Docker Compose
+
+Ferramenta para definir e gerenciar aplicações multi-contêiner.
+
+| Comando | Descrição |
+| :--- | :--- |
+| `docker-compose up` | Cria e inicia os serviços definidos no `docker-compose.yml`. |
+| `docker-compose up -d` | Inicia os serviços em background. |
+| `docker-compose down` | Para e remove os contêineres, redes e volumes. |
+| `docker-compose ps` | Lista os contêineres dos serviços. |
+| `docker-compose logs -f` | Exibe e acompanha os logs de todos os serviços. |
+| `docker-compose build` | Constrói (ou reconstrói) as imagens dos serviços. |
+| `docker-compose exec <serviço> <comando>` | Executa um comando em um serviço. |
+
+**Exemplo de `docker-compose.yml`:**
+```yaml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
 ```
