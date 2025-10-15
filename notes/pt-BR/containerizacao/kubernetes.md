@@ -1,486 +1,128 @@
-# Kubernetes
+# Kubernetes (K8s): O Maestro dos Contêineres
 
-Kubernetes é uma plataforma de orquestração de containers que automatiza o deployment, scaling e gerenciamento de aplicações containerizadas.
+Imagine que você tem uma frota de food trucks (contêineres Docker). No início, com um ou dois, é fácil gerenciá-los manualmente. Mas e se você tivesse centenas?
 
-## Conceito Básico
-- Orquestração de containers em escala
-- Automação de deployment e scaling
-- Self-healing e service discovery
-- Declarative configuration
-- Portabilidade entre clouds
+- Qual food truck está funcionando?
+- Qual precisa de reparos?
+- Como garantir que sempre haverá um food truck em cada bairro (disponibilidade)?
+- Como adicionar mais trucks em um bairro movimentado (escalabilidade)?
 
-## Arquitetura do Kubernetes
+O **Kubernetes** é o gerente geral dessa frota. Ele é o maestro que orquestra todos os contêineres, garantindo que tudo funcione em harmonia, de forma automática. Ele decide onde cada food truck (contêiner) deve estacionar (em qual servidor/nó), monitora a saúde deles, substitui os que quebram e adiciona mais quando a demanda aumenta.
 
-### Control Plane (Master)
-```
-┌─────────────────────────────────────────┐
-│              Control Plane              │
-├─────────────┬─────────────┬─────────────┤
-│  API Server │    etcd     │  Scheduler  │
-├─────────────┼─────────────┼─────────────┤
-│ Controller  │ Cloud Ctrl  │    ...      │
-│  Manager    │  Manager    │             │
-└─────────────┴─────────────┴─────────────┘
-```
+### O que é e por que usar?
 
-### Worker Nodes
-```
-┌─────────────────────────────────────────┐
-│               Worker Node               │
-├─────────────┬─────────────┬─────────────┤
-│   kubelet   │ kube-proxy  │ Container   │
-│             │             │  Runtime    │
-├─────────────┴─────────────┴─────────────┤
-│                 Pods                    │
-└─────────────────────────────────────────┘
-```
+Kubernetes (ou K8s) é uma plataforma de **orquestração de contêineres** de código aberto que automatiza a implantação, o dimensionamento e o gerenciamento de aplicações containerizadas. Ele agrupa os servidores (físicos ou virtuais) em um cluster e gerencia a execução dos seus contêineres de forma eficiente e resiliente.
 
-## Componentes Principais
+**Principais Benefícios:**
 
-### Control Plane
-- **API Server**: Interface central do Kubernetes
-- **etcd**: Banco de dados distribuído para estado do cluster
-- **Scheduler**: Decide onde pods devem executar
-- **Controller Manager**: Executa controllers que regulam estado
-- **Cloud Controller Manager**: Integração com cloud providers
+- **Autocorreção (Self-healing):** Se um contêiner falha, o Kubernetes o reinicia ou o substitui automaticamente.
+- **Escalabilidade Horizontal:** Permite aumentar ou diminuir o número de contêineres em execução com um único comando, ou até mesmo de forma automática com base no uso de CPU.
+- **Descoberta de Serviço e Balanceamento de Carga:** O K8s expõe contêineres na rede e distribui o tráfego entre eles, garantindo que as aplicações estejam sempre acessíveis.
+- **Implantações e Rollbacks Automatizados:** Permite descrever o estado desejado da sua aplicação. O Kubernetes trabalha para que o estado atual corresponda ao estado desejado, facilitando atualizações (rollouts) e reversões (rollbacks).
+- **Independência de Infraestrutura:** Funciona em qualquer lugar: em data centers locais, na nuvem pública (AWS, GCP, Azure) ou em ambientes híbridos.
 
-### Worker Nodes
-- **kubelet**: Agente que executa pods nos nodes
-- **kube-proxy**: Proxy de rede para services
-- **Container Runtime**: Docker, containerd, CRI-O
+### Arquitetura Simplificada
 
-## Objetos Fundamentais
+Um cluster Kubernetes é dividido em duas partes principais:
 
-### Pod
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-pod
-  labels:
-    app: nginx
-spec:
-  containers:
-  - name: nginx
-    image: nginx:1.20
-    ports:
-    - containerPort: 80
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "250m"
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-```
+1.  **Control Plane (O Cérebro):** É o conjunto de componentes que toma as decisões globais sobre o cluster (ex: agendamento de contêineres) e detecta e responde a eventos do cluster.
+    - **API Server:** A "porta de entrada" do Kubernetes. Todas as interações passam por ele.
+    - **etcd:** O "banco de dados" do cluster, armazena todo o estado e configuração.
+    - **Scheduler:** O "agendador", decide em qual nó um novo Pod (contêiner) deve ser executado.
+    - **Controller Manager:** O "gerente", executa controladores que garantem que o estado do cluster corresponda ao estado desejado.
 
-### Deployment
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
+2.  **Worker Nodes (Os Músculos):** São as máquinas (servidores) que efetivamente executam as aplicações.
+    - **Kubelet:** O agente do Kubernetes em cada nó. Garante que os contêineres descritos nos Pods estejam rodando e saudáveis.
+    - **Kube-proxy:** O responsável pela rede, mantendo as regras de comunicação dentro do cluster.
+    - **Container Runtime:** O software que executa os contêineres (ex: Docker, containerd).
+
+### Objetos Fundamentais
+
+Você interage com o Kubernetes declarando o estado desejado através de objetos em arquivos YAML.
+
+| Objeto | Descrição | Analogia do Food Truck |
+| :--- | :--- | :--- |
+| **Pod** | A menor unidade de implantação. É um invólucro para um ou mais contêineres. | O próprio food truck. |
+| **Deployment** | Descreve o estado desejado para um conjunto de Pods. Gerencia a criação de réplicas e as atualizações. | O manual que diz: "Eu quero 3 food trucks de hambúrguer sempre funcionando". |
+| **Service** | Expõe um conjunto de Pods como um serviço de rede, com um único ponto de acesso (um endereço IP e porta estáveis). | O número de telefone único para delivery, que o gerente direciona para o food truck que estiver livre. |
+| **ConfigMap** | Usado para armazenar dados de configuração não sensíveis em pares chave-valor. | O cardápio do food truck. |
+| **Secret** | Similar ao ConfigMap, mas projetado para armazenar dados sensíveis, como senhas e chaves de API (armazenados em base64). | O cofre onde a chave do food truck e o dinheiro são guardados. |
+| **Ingress** | Gerencia o acesso externo aos Services no cluster, tipicamente HTTP/HTTPS. Pode fornecer balanceamento de carga, terminação SSL e roteamento baseado em nome/host. | O atendente da praça de alimentação que direciona os clientes para a fila do food truck correto com base no que eles pediram. |
+
+### Exemplo Prático: Implantando um Nginx
+
+1.  **Crie um arquivo `deployment.yaml`:**
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
-      labels:
-        app: nginx
+      name: nginx-deployment
     spec:
-      containers:
-      - name: nginx
-        image: nginx:1.20
-        ports:
-        - containerPort: 80
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-```
+      replicas: 2 # Queremos 2 instâncias do nosso Nginx
+      selector:
+        matchLabels:
+          app: nginx
+      template:
+        metadata:
+          labels:
+            app: nginx
+        spec:
+          containers:
+          - name: nginx
+            image: nginx:1.21
+            ports:
+            - containerPort: 80
+    ```
 
-### Service
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-service
-spec:
-  selector:
-    app: nginx
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
-```
+2.  **Crie um arquivo `service.yaml` para expor o Deployment:**
 
-### ConfigMap
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-config
-data:
-  database_url: "postgres://db:5432/myapp"
-  debug: "true"
-  config.yaml: |
-    server:
-      port: 8080
-      host: 0.0.0.0
-```
+    ```yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: nginx-service
+    spec:
+      selector:
+        app: nginx # Encontra os Pods com esta label
+      ports:
+        - protocol: TCP
+          port: 80 # Porta do Service
+          targetPort: 80 # Porta dos contêineres
+      type: LoadBalancer # Expõe o serviço externamente usando um load balancer da nuvem
+    ```
 
-### Secret
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: app-secrets
-type: Opaque
-data:
-  username: YWRtaW4=  # base64 encoded
-  password: MWYyZDFlMmU2N2Rm  # base64 encoded
-```
+3.  **Aplique os arquivos no cluster:**
 
-## Comandos kubectl
+    ```bash
+    # Use o kubectl, a ferramenta de linha de comando do K8s
+    kubectl apply -f deployment.yaml
+    kubectl apply -f service.yaml
+    ```
+    O Kubernetes agora garante que 2 Pods Nginx estejam sempre rodando e os expõe através de um IP externo acessível.
 
-### Cluster Management
-```bash
-# Ver informações do cluster
-kubectl cluster-info
+### Armadilhas Comuns
 
-# Ver nodes
-kubectl get nodes -o wide
+1.  **Definir `latest` como tag da imagem:** Usar a tag `:latest` é arriscado, pois não garante qual versão da imagem está sendo executada. Sempre use tags de versão específicas (ex: `nginx:1.21.6`).
+2.  **Não definir limites de recursos:** Sem limites (`limits`) e requisições (`requests`) de CPU e memória, um único Pod pode consumir todos os recursos de um nó e derrubar outras aplicações.
+3.  **Expor o banco de dados publicamente:** Nunca exponha um banco de dados usando um Service do tipo `LoadBalancer` ou `NodePort`. A comunicação com o banco deve ser restrita à rede interna do cluster.
 
-# Descrever node
-kubectl describe node node-name
+### Boas Práticas
 
-# Ver todos os recursos
-kubectl get all --all-namespaces
-```
+- **Use Declarações em YAML:** Em vez de comandos imperativos (`kubectl run`), armazene a definição dos seus objetos em arquivos YAML e versione-os com Git (Infraestrutura como Código).
+- **Health Checks são Essenciais:** Configure `livenessProbe` (para reiniciar contêineres quebrados) e `readinessProbe` (para saber quando um contêiner está pronto para receber tráfego).
+- **RBAC (Role-Based Access Control):** Use o controle de acesso baseado em função para garantir que usuários e serviços tenham apenas as permissões estritamente necessárias.
+- **Use Helm:** Para aplicações complexas, use o Helm (o gerenciador de pacotes do Kubernetes) para gerenciar, versionar e compartilhar suas configurações.
 
-### Pod Management
-```bash
-# Listar pods
-kubectl get pods -o wide
+### Resumo Rápido: Comandos `kubectl` Essenciais
 
-# Descrever pod
-kubectl describe pod pod-name
-
-# Ver logs
-kubectl logs pod-name -f
-
-# Executar comando no pod
-kubectl exec -it pod-name -- /bin/bash
-
-# Port forward
-kubectl port-forward pod-name 8080:80
-
-# Deletar pod
-kubectl delete pod pod-name
-```
-
-### Deployment Management
-```bash
-# Criar deployment
-kubectl create deployment nginx --image=nginx
-
-# Escalar deployment
-kubectl scale deployment nginx --replicas=5
-
-# Atualizar imagem
-kubectl set image deployment/nginx nginx=nginx:1.21
-
-# Ver rollout status
-kubectl rollout status deployment/nginx
-
-# Rollback
-kubectl rollout undo deployment/nginx
-
-# Ver histórico
-kubectl rollout history deployment/nginx
-```
-
-### Service Management
-```bash
-# Expor deployment
-kubectl expose deployment nginx --port=80 --type=LoadBalancer
-
-# Ver services
-kubectl get services
-
-# Ver endpoints
-kubectl get endpoints
-
-# Deletar service
-kubectl delete service nginx
-```
-
-## Configuração e Secrets
-
-### ConfigMaps
-```bash
-# Criar ConfigMap de arquivo
-kubectl create configmap app-config --from-file=config.yaml
-
-# Criar ConfigMap de literal
-kubectl create configmap app-config --from-literal=key1=value1
-
-# Usar ConfigMap em Pod
-spec:
-  containers:
-  - name: app
-    env:
-    - name: CONFIG_KEY
-      valueFrom:
-        configMapKeyRef:
-          name: app-config
-          key: key1
-```
-
-### Secrets
-```bash
-# Criar Secret
-kubectl create secret generic app-secret \
-  --from-literal=username=admin \
-  --from-literal=password=secret
-
-# Usar Secret em Pod
-spec:
-  containers:
-  - name: app
-    env:
-    - name: USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: app-secret
-          key: username
-```
-
-## Networking
-
-### Ingress
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: app-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-  - host: myapp.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: app-service
-            port:
-              number: 80
-```
-
-### Network Policies
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: deny-all
-spec:
-  podSelector: {}
-  policyTypes:
-  - Ingress
-  - Egress
-```
-
-## Storage
-
-### PersistentVolume
-```yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv-storage
-spec:
-  capacity:
-    storage: 10Gi
-  accessModes:
-  - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: fast-ssd
-  hostPath:
-    path: /data/pv-storage
-```
-
-### PersistentVolumeClaim
-```yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-storage
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: fast-ssd
-```
-
-## Helm Package Manager
-
-### Básico do Helm
-```bash
-# Adicionar repositório
-helm repo add stable https://charts.helm.sh/stable
-
-# Atualizar repositórios
-helm repo update
-
-# Buscar charts
-helm search repo nginx
-
-# Instalar chart
-helm install my-nginx stable/nginx-ingress
-
-# Listar releases
-helm list
-
-# Upgrade
-helm upgrade my-nginx stable/nginx-ingress
-
-# Uninstall
-helm uninstall my-nginx
-```
-
-### Chart Structure
-```
-mychart/
-├── Chart.yaml
-├── values.yaml
-├── templates/
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── ingress.yaml
-└── charts/
-```
-
-## Monitoramento e Observabilidade
-
-### Métricas com Prometheus
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: app-metrics
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
-    prometheus.io/path: "/metrics"
-spec:
-  ports:
-  - port: 8080
-    name: metrics
-  selector:
-    app: myapp
-```
-
-### Health Checks
-```yaml
-spec:
-  containers:
-  - name: app
-    livenessProbe:
-      httpGet:
-        path: /health
-        port: 8080
-      initialDelaySeconds: 30
-      periodSeconds: 10
-    readinessProbe:
-      httpGet:
-        path: /ready
-        port: 8080
-      initialDelaySeconds: 5
-      periodSeconds: 5
-```
-
-## Boas Práticas
-
-### Resource Management
-```yaml
-resources:
-  requests:
-    memory: "64Mi"
-    cpu: "250m"
-  limits:
-    memory: "128Mi"
-    cpu: "500m"
-```
-
-### Security
-```yaml
-securityContext:
-  runAsNonRoot: true
-  runAsUser: 1001
-  allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
-```
-
-### Labels e Annotations
-```yaml
-metadata:
-  labels:
-    app: myapp
-    version: v1.0
-    environment: production
-  annotations:
-    deployment.kubernetes.io/revision: "1"
-```
-
-## Troubleshooting
-
-### Debug Commands
-```bash
-# Ver eventos
-kubectl get events --sort-by=.metadata.creationTimestamp
-
-# Debug pod
-kubectl describe pod pod-name
-kubectl logs pod-name --previous
-
-# Debug service
-kubectl get endpoints service-name
-kubectl describe service service-name
-
-# Debug node
-kubectl describe node node-name
-kubectl top node
-kubectl top pod
-```
-
-### Common Issues
-```bash
-# ImagePullBackOff
-kubectl describe pod pod-name
-# Check image name and registry access
-
-# CrashLoopBackOff
-kubectl logs pod-name --previous
-# Check application logs and health checks
-
-# Pending pods
-kubectl describe pod pod-name
-# Check resource constraints and node capacity
-```
-
-## Casos de Uso
-- **Microservices**: Orquestração de arquiteturas distribuídas
-- **CI/CD**: Deployment automatizado
-- **Auto-scaling**: Scaling baseado em métricas
-- **Multi-cloud**: Portabilidade entre providers
-- **Disaster Recovery**: Backup e restore automatizados
-- **Development**: Ambientes efêmeros para desenvolvimento
+| Comando | Descrição |
+| :--- | :--- |
+| `kubectl get <objeto>` | Lista recursos (ex: `kubectl get pods`, `kubectl get services`). |
+| `kubectl describe <objeto> <nome>` | Mostra detalhes de um recurso (ótimo para debug). |
+| `kubectl apply -f <arquivo.yaml>` | Cria ou atualiza um recurso a partir de um arquivo. |
+| `kubectl delete -f <arquivo.yaml>` | Remove um recurso definido em um arquivo. |
+| `kubectl logs <pod_nome>` | Exibe os logs de um Pod. Use `-f` para acompanhar em tempo real. |
+| `kubectl exec -it <pod_nome> -- <comando>` | Executa um comando dentro de um Pod (ex: `sh` para um shell). |
+| `kubectl scale deployment <nome> --replicas=<n>` | Escala um Deployment para o número desejado de réplicas. |
+| `kubectl rollout status deployment/<nome>` | Acompanha o status de uma atualização (rollout). |
