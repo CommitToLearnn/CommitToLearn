@@ -1124,6 +1124,13 @@
           "slug": "persistindo-dados-sqlite",
           "date": "2025-10-11",
           "description": "Descubra por que e como salvar seu trabalho de análise de dados. Aprenda a persistir um DataFrame do Pandas em um banco de dados SQLite, transformando seus dados voláteis em um arquivo permanente e consultável."
+        },
+        {
+          "title": "Fundamentos do NumPy: O Canivete Suíço para Dados Numéricos",
+          "file": "notes/pt-BR/dados/fundamentos-do-numpy.md",
+          "slug": "fundamentos-do-numpy",
+          "date": "2025-10-13",
+          "description": "Aprenda os pilares do NumPy, a biblioteca base para ciência de dados em Python. Descubra o que são arrays, como funcionam suas dimensões, e domine a indexação, o fatiamento e as operações vetorizadas para manipular dados numéricos com velocidade máxima."
         }
       ]
     },
