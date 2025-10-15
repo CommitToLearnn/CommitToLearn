@@ -101,7 +101,7 @@
         },
         {
           "title": "Yarn vs NPM vs PNPM",
-          "file": "notes/pt-BR/containerizacao/yarn-vs-npm.md",
+          "file": "notes/pt-BR/containerizacao/yarn-vs-npm-vs-pnpm.md",
           "slug": "containerizacao-yarn-vs-npm",
           "date": "2025-07-29",
           "description": "Análise comparativa de gerenciadores de pacotes Node.js em containers Docker com foco em performance e cache."
