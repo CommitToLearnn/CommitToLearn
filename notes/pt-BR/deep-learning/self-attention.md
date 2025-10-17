@@ -1,328 +1,94 @@
-# Self Attention
+# Self-Attention: A Reunião de Brainstorming das Palavras
 
-Self Attention é o mecanismo central dos Transformers que permite a cada token "olhar" para todos os outros tokens na sequência e calcular sua importância relativa.
+Imagine que cada palavra em uma frase é um membro de uma equipe em uma reunião de brainstorming. Para que a palavra "ela" na frase "Ela comeu a maçã porque estava com fome" entenda seu próprio papel, ela precisa saber com quem está se relacionando.
 
-## Conceito Básico
-- Cada token pode "atender" a qualquer outro token na sequência
-- Captura dependências de longo alcance
-- Paralelizável (não sequencial como RNNs)
-- Base dos modelos Transformer
+O mecanismo de **Self-Attention** (Autoatenção) permite que "ela" faça três perguntas a cada outra palavra na sala (incluindo a si mesma):
 
-## Matemática da Self Attention
+1.  **Query (Consulta):** "Eu sou um pronome. O que estou procurando?" (No caso, um verbo ou um sujeito).
+2.  **Key (Chave):** Cada outra palavra responde com sua "etiqueta". "Maçã" diz: "Eu sou um substantivo, o objeto da ação". "Comeu" diz: "Eu sou um verbo, a ação".
+3.  **Value (Valor):** Com base na relevância (a combinação Query-Key), "ela" decide quanta "atenção" dar a cada palavra e pega um pouco do "significado" (Valor) de cada uma.
 
-### Fórmula Fundamental
-```python
-# Attention(Q, K, V) = softmax(QK^T / √d_k)V
+No final, a palavra "ela" cria uma nova representação de si mesma que é uma mistura ponderada de todas as outras palavras, entendendo que sua conexão mais forte é com "comeu" (a ação que ela pratica) e "fome" (a razão da ação).
 
-# Onde:
-# Q = Queries (o que estamos procurando)
-# K = Keys (onde procurar)
-# V = Values (o que extrair)
-# d_k = dimensão das keys (para normalização)
-```
+### O que é e por que usar?
 
-### Implementação Passo a Passo
+**Self-Attention** é o mecanismo que permite a um modelo de linguagem, como o Transformer, pesar a importância de diferentes palavras em uma sequência ao processar cada uma delas. Em vez de processar a frase palavra por palavra em ordem (como nas RNNs), a autoatenção permite que cada palavra "olhe" para todas as outras palavras na frase simultaneamente.
+
+A representação de cada palavra é atualizada com base em uma soma ponderada de todas as outras palavras. Os pesos são calculados dinamicamente com base na compatibilidade entre a palavra atual (Query) e as outras (Keys).
+
+**Por que isso é um divisor de águas?**
+-   **Paralelismo Total:** Como cada palavra é processada em relação a todas as outras de uma só vez, o cálculo pode ser massivamente paralelizado em GPUs, tornando o treinamento muito mais rápido que o das RNNs sequenciais.
+-   **Dependências de Longo Alcance:** Resolve um problema crônico das RNNs. Uma palavra no final de um parágrafo pode se conectar diretamente a uma palavra no início, sem que a informação se perca no caminho.
+-   **Contexto Rico:** Cria representações de palavras que são profundamente contextuais, pois são literalmente construídas a partir das outras palavras na sequência.
+
+### Exemplos Práticos
+
+Vamos ver a mágica acontecer com a famosa fórmula: `Attention(Q, K, V) = softmax( (Q @ K.T) / sqrt(d_k) ) @ V`.
+
 ```python
 import torch
-import torch.nn as nn
+import torch.nn.functional as F
 import math
 
-def self_attention(x, d_model):
-    """
-    x: [batch_size, seq_len, d_model]
-    """
-    batch_size, seq_len, d_model = x.shape
-    
-    # 1. Criar matrizes Q, K, V
-    W_q = nn.Linear(d_model, d_model, bias=False)
-    W_k = nn.Linear(d_model, d_model, bias=False)
-    W_v = nn.Linear(d_model, d_model, bias=False)
-    
-    Q = W_q(x)  # [batch, seq_len, d_model]
-    K = W_k(x)  # [batch, seq_len, d_model]
-    V = W_v(x)  # [batch, seq_len, d_model]
-    
-    # 2. Calcular scores de atenção
-    scores = torch.matmul(Q, K.transpose(-2, -1))  # [batch, seq_len, seq_len]
-    
-    # 3. Escalar por √d_k
-    scores = scores / math.sqrt(d_model)
-    
-    # 4. Aplicar softmax
-    attention_weights = torch.softmax(scores, dim=-1)
-    
-    # 5. Aplicar pesos aos valores
-    output = torch.matmul(attention_weights, V)  # [batch, seq_len, d_model]
-    
-    return output, attention_weights
+# Frase de entrada com 3 tokens.
+# Cada token tem um embedding de dimensão 4.
+seq_len = 3
+d_model = 4
+x = torch.randn(seq_len, d_model) # Shape: [3, 4]
+
+# Matrizes de peso para gerar Q, K, V (normalmente aprendidas)
+W_q = torch.randn(d_model, d_model)
+W_k = torch.randn(d_model, d_model)
+W_v = torch.randn(d_model, d_model)
+
+# 1. Gerar Queries, Keys e Values a partir dos embeddings de entrada
+Q = x @ W_q
+K = x @ W_k
+V = x @ W_v
+print(f"Shape de Q, K, V: {Q.shape}")
+
+# 2. Calcular os Scores de Atenção (a compatibilidade entre Q e K)
+# (Q @ K.T) -> [3, 4] @ [4, 3] = [3, 3]
+d_k = K.shape[-1]
+scores = (Q @ K.transpose(0, 1)) / math.sqrt(d_k)
+print("\nMatriz de Scores (antes do softmax):\n", scores.detach().round(2))
+# scores[i, j] é a atenção que o token i presta ao token j.
+
+# 3. Aplicar Softmax para obter os Pesos de Atenção
+# As linhas da matriz agora somam 1.
+attention_weights = F.softmax(scores, dim=-1)
+print("\nMatriz de Pesos de Atenção (depois do softmax):\n", attention_weights.detach().round(2))
+
+# 4. Calcular a Saída (os novos embeddings contextuais)
+# (weights @ V) -> [3, 3] @ [3, 4] = [3, 4]
+output = attention_weights @ V
+print("\nShape da Saída (novos embeddings):", output.shape)
+print("Vetor de entrada do primeiro token:\n", x[0].detach().round(2))
+print("Vetor de saída do primeiro token (contextualizado):\n", output[0].detach().round(2))
 ```
+O `output` contém os novos embeddings para cada token, onde cada um é uma mistura dos `Values` de todos os tokens, ponderada pelos `attention_weights`.
 
-## Intuição do Self Attention
+### Armadilhas Comuns
 
-### Como Funciona
-```python
-# Exemplo conceitual com frase: "O gato subiu no telhado"
-sequence = ["O", "gato", "subiu", "no", "telhado"]
+1.  **Complexidade Quadrática (O(n²)):** A maior limitação. A matriz de atenção cresce com o quadrado do comprimento da sequência (`seq_len * seq_len`). Processar um livro inteiro de uma vez é computacionalmente inviável. É por isso que textos longos são divididos em "janelas" ou "blocos".
+2.  **Não Entende a Posição:** A autoatenção, por si só, não tem noção da ordem das palavras. Para ela, "o gato persegue o rato" e "o rato persegue o gato" são iguais. Isso é resolvido adicionando "Positional Encodings" aos embeddings de entrada.
+3.  **Interpretação Excessiva:** Embora os mapas de calor de atenção sejam ótimos para a intuição, eles não são uma explicação completa de "por que" o modelo tomou uma decisão. Eles mostram correlações, mas não necessariamente causalidade.
 
-# Para cada palavra (query), calculamos:
-# - Quão relacionada está com cada palavra (key)
-# - O que extrair de cada relacionamento (value)
+### Boas Práticas
 
-# Quando processamos "gato":
-# Query("gato") ∙ Key("O") = baixa relevância
-# Query("gato") ∙ Key("gato") = alta relevância  
-# Query("gato") ∙ Key("subiu") = média relevância
-# Query("gato") ∙ Key("no") = baixa relevância
-# Query("gato") ∙ Key("telhado") = baixa relevância
-```
+-   **Use Multi-Head Attention:** Em vez de fazer a atenção uma vez só, os Transformers a fazem várias vezes em paralelo (com diferentes matrizes W_q, W_k, W_v). Cada "cabeça" de atenção pode aprender a focar em diferentes tipos de relações (ex: uma cabeça para relações sintáticas, outra para semânticas). A saída de todas as cabeças é então combinada.
+-   **Adicione Positional Encodings:** É uma etapa **obrigatória**. Sem isso, o modelo perde toda a informação sobre a ordem das palavras.
+-   **Use Otimizações para Sequências Longas:** Se você precisa lidar com textos muito longos, explore variantes como **Flash Attention**, que otimiza o uso da memória da GPU sem alterar a matemática, ou modelos como Longformer e Performer, que usam padrões de atenção esparsos para reduzir a complexidade de O(n²) para algo próximo de O(n).
+-   **Aplique Máscaras Corretamente:**
+    *   **Padding Mask:** Para ignorar os tokens de `[PAD]` no cálculo da atenção.
+    *   **Causal Mask:** Em tarefas de geração de texto (como no GPT), use uma máscara para impedir que uma palavra "veja" as palavras futuras.
 
-### Matriz de Atenção
-```python
-# Matriz simétrica seq_len x seq_len
-# attention_matrix[i][j] = quanta atenção token i dá ao token j
+### Resumo Rápido
 
-# Exemplo visual:
-#           O    gato  subiu   no  telhado
-# O      [0.1   0.2   0.1   0.3    0.3  ]
-# gato   [0.1   0.6   0.2   0.05   0.05 ]
-# subiu  [0.05  0.3   0.4   0.1    0.15 ]
-# no     [0.2   0.1   0.2   0.3    0.2  ]
-# telhado[0.1   0.05  0.15  0.2    0.5  ]
-```
-
-## Multi-Head Attention
-
-### Conceito
-```python
-# Múltiplas "cabeças" de atenção em paralelo
-# Cada cabeça captura diferentes tipos de relacionamentos
-# Cabeça 1: pode focar em sintaxe
-# Cabeça 2: pode focar em semântica
-# Cabeça 3: pode focar em co-referência
-
-class MultiHeadAttention(nn.Module):
-    def __init__(self, d_model, num_heads):
-        super().__init__()
-        self.d_model = d_model
-        self.num_heads = num_heads
-        self.d_k = d_model // num_heads
-        
-        self.W_q = nn.Linear(d_model, d_model)
-        self.W_k = nn.Linear(d_model, d_model)
-        self.W_v = nn.Linear(d_model, d_model)
-        self.W_o = nn.Linear(d_model, d_model)
-        
-    def forward(self, x):
-        batch_size, seq_len, d_model = x.shape
-        
-        # 1. Transformações lineares e reshape para múltiplas cabeças
-        Q = self.W_q(x).view(batch_size, seq_len, self.num_heads, self.d_k)
-        K = self.W_k(x).view(batch_size, seq_len, self.num_heads, self.d_k)
-        V = self.W_v(x).view(batch_size, seq_len, self.num_heads, self.d_k)
-        
-        # 2. Transpose para [batch, num_heads, seq_len, d_k]
-        Q = Q.transpose(1, 2)
-        K = K.transpose(1, 2)
-        V = V.transpose(1, 2)
-        
-        # 3. Scaled dot-product attention para cada cabeça
-        attention_output = self.scaled_dot_product_attention(Q, K, V)
-        
-        # 4. Concatenar cabeças
-        attention_output = attention_output.transpose(1, 2).contiguous()
-        attention_output = attention_output.view(batch_size, seq_len, d_model)
-        
-        # 5. Projeção final
-        output = self.W_o(attention_output)
-        return output
-```
-
-## Tipos de Atenção
-
-### Self Attention (Padrão)
-```python
-# Todos os tokens podem atender a todos os tokens
-# Usado em layers encoder
-
-# Causal Self Attention (GPT)
-# Token só pode atender a tokens anteriores
-mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1)
-scores = scores.masked_fill(mask == 1, -float('inf'))
-```
-
-### Cross Attention
-```python
-# Queries de uma sequência, Keys/Values de outra
-# Usado em decoder para atender ao encoder
-
-def cross_attention(decoder_hidden, encoder_outputs):
-    Q = W_q(decoder_hidden)      # [batch, decoder_len, d_model]
-    K = W_k(encoder_outputs)     # [batch, encoder_len, d_model]
-    V = W_v(encoder_outputs)     # [batch, encoder_len, d_model]
-    
-    # Atenção cruzada entre sequências
-    scores = torch.matmul(Q, K.transpose(-2, -1))
-    attention_weights = torch.softmax(scores, dim=-1)
-    output = torch.matmul(attention_weights, V)
-    return output
-```
-
-### Masked Self Attention
-```python
-# Impede que tokens vejam tokens futuros
-# Usado em modelos de linguagem (GPT)
-
-def create_causal_mask(seq_len):
-    mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1)
-    return mask.bool()
-
-# Aplicar máscara
-mask = create_causal_mask(seq_len)
-scores = scores.masked_fill(mask, -float('inf'))
-```
-
-## Problemas e Limitações
-
-### Complexidade Quadrática
-```python
-# O(n²) em memória e computação
-# Problemático para sequências longas
-
-# Para sequência de 1000 tokens:
-# Matriz de atenção: 1000 x 1000 = 1M elementos
-# Para sequência de 10000 tokens:
-# Matriz de atenção: 10000 x 10000 = 100M elementos
-```
-
-### Falta de Noção Posicional
-```python
-# Self attention é permutation invariant
-# Precisa de positional encodings
-
-# Sem posição: "gato subiu" == "subiu gato"
-# Com posição: consegue distinguir ordem
-```
-
-## Otimizações do Self Attention
-
-### Sparse Attention
-```python
-# Nem todos os tokens precisam atender a todos
-# Patterns específicos de atenção
-
-# Local Attention: apenas janela local
-# Strided Attention: padrão esparso regular
-# Random Attention: conexões aleatórias
-```
-
-### Linear Attention
-```python
-# Aproximações que reduzem complexidade para O(n)
-# Kernelized attention
-# Performer, Linear Transformer
-
-def linear_attention(Q, K, V):
-    # Aplicar kernel trick
-    Q_prime = phi(Q)  # Função de feature map
-    K_prime = phi(K)
-    
-    # O(n) ao invés de O(n²)
-    KV = torch.matmul(K_prime.transpose(-2, -1), V)
-    output = torch.matmul(Q_prime, KV)
-    return output
-```
-
-### Flash Attention
-```python
-# Otimização de memória sem mudar matemática
-# Computa atenção em blocos (tiling)
-# Reduz transferências de memória
-
-# Pseudocódigo conceitual
-for block_i in range(num_blocks):
-    for block_j in range(num_blocks):
-        # Carrega apenas bloco necessário
-        Q_block = load_block(Q, block_i)
-        K_block = load_block(K, block_j)
-        V_block = load_block(V, block_j)
-        
-        # Computa atenção local
-        attention_block = compute_attention(Q_block, K_block, V_block)
-```
-
-## Interpretabilidade
-
-### Visualização de Attention
-```python
-# Attention weights mostram relacionamentos
-# Útil para debugging e interpretação
-
-def plot_attention(attention_weights, tokens):
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(attention_weights, 
-                xticklabels=tokens, 
-                yticklabels=tokens,
-                cmap='Blues')
-    plt.title('Attention Weights')
-    plt.show()
-
-# Padrões comuns observados:
-# - Attention to punctuation
-# - Subject-verb relationships  
-# - Co-reference resolution
-# - Syntactic dependencies
-```
-
-### Attention Rollout
-```python
-# Propagar atenção através de layers
-# Ver fluxo de informação end-to-end
-
-def attention_rollout(attention_matrices):
-    # attention_matrices: lista de matrizes por layer
-    rollout = attention_matrices[0]
-    
-    for layer_attention in attention_matrices[1:]:
-        rollout = torch.matmul(layer_attention, rollout)
-    
-    return rollout
-```
-
-## Aplicações Específicas
-
-### Language Modeling
-```python
-# GPT-style: causal self attention
-# Predição do próximo token
-
-# Máscara triangular superior
-causal_mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1)
-```
-
-### Sentence Classification
-```python
-# BERT-style: bidirectional self attention
-# Token [CLS] acumula informação da sequência
-
-# Representação final = embedding do [CLS]
-cls_representation = output[:, 0, :]  # Primeiro token
-```
-
-### Machine Translation
-```python
-# Encoder-Decoder com cross attention
-# Decoder atende ao encoder e próprio contexto
-
-class TransformerDecoder(nn.Module):
-    def forward(self, tgt, encoder_output):
-        # Self attention (com máscara causal)
-        tgt = self.self_attention(tgt, causal_mask=True)
-        
-        # Cross attention com encoder
-        tgt = self.cross_attention(tgt, encoder_output)
-        
-        return tgt
-```
+| Conceito | Descrição | Analogia |
+| :--- | :--- | :--- |
+| **Self-Attention** | Mecanismo onde cada token de uma sequência calcula sua relação com todos os outros. | Cada membro da equipe avalia a relevância das ideias dos outros. |
+| **Query, Key, Value** | Três vetores gerados para cada token, usados para calcular e aplicar a atenção. | O que você procura (Q), o que os outros oferecem (K), e a informação que eles contêm (V). |
+| **Multi-Head Attention**| Realizar a autoatenção várias vezes em paralelo, cada uma focando em um aspecto diferente. | Ter vários "subgrupos" de brainstorming focados em tópicos diferentes. |
+| **Causal Attention** | Uma forma mascarada de autoatenção que impede um token de ver tokens futuros. | Em uma previsão, você só pode usar informações do passado e presente. |
+| **Complexidade O(n²)** | O custo computacional e de memória cresce quadraticamente com o comprimento da sequência. | O número de conversas individuais em uma sala cresce muito rápido com mais pessoas. |
