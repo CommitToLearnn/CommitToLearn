@@ -1327,6 +1327,213 @@
       "date": "2025-09-11",
       "category": "Inteligência Artificial",
       "description": "Desmistifica como prompts bem estruturados reduzem a entropia das respostas de IA usando o framework R.A.C.E. (Role, Action, Context, Example)."
+    },
+    {
+      "title": "A Síndrome do Projeto 'Inútil': Por Que Você Deveria Postar Seu Código Mesmo Assim",
+      "file": "articles/a_sindrome_do_projeto_inutil.md",
+      "slug": "a-sindrome-do-projeto-inutil",
+      "date": "2024-07-21",
+      "category": "Engenharia de Software",
+      "description": "Como o foco excessivo em projetos paralelos pode se tornar uma armadilha para desenvolvedores e o que fazer para escapar dela.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "The Useless Project Syndrome",
+      "file": "articles/en-US/the_useless_project_syndrome.md",
+      "slug": "the-useless-project-syndrome",
+      "date": "2024-07-21",
+      "category": "Software Engineering",
+      "description": "How the excessive focus on side projects can become a trap for developers and what to do to escape it.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Não é magia, é instrução: o poder de um bom prompt",
+      "file": "articles/nao_e_magia_e_instrucao_bom_prompt.md",
+      "slug": "o-poder-de-um-bom-prompt",
+      "date": "2024-07-20",
+      "category": "IA",
+      "description": "Entenda como a qualidade da sua instrução para uma IA generativa determina o sucesso do resultado e como construir prompts que realmente funcionam.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Sim, o recrutador sabe que você deu Ctrl+C no teste",
+      "file": "articles/sim_o_recrutador_sabe_que_voce_deu_ctrl_c.md",
+      "slug": "recrutador-sabe-ctrl-c",
+      "date": "2024-07-19",
+      "category": "Carreira",
+      "description": "Uma reflexão sobre originalidade, plágio e o que realmente importa ao resolver desafios técnicos em processos seletivos.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "O botão de elevador e sua API: uma analogia sobre feedback",
+      "file": "articles/o_botao_de_elevador_e_sua_api.md",
+      "slug": "botao-elevador-api-feedback",
+      "date": "2024-07-18",
+      "category": "APIs",
+      "description": "Por que o feedback visual em interações de UI/API é tão crucial quanto a luz de um botão de elevador.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Sua conexão caiu no meio do pagamento. E agora?",
+      "file": "articles/sua_conexao_caiu_e_agora.md",
+      "slug": "conexao-caiu-pagamento",
+      "date": "2024-07-17",
+      "category": "Sistemas",
+      "description": "Uma introdução prática ao conceito de idempotência e por que ele é essencial para a confiabilidade de sistemas distribuídos.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Construindo uma API Idempotente",
+      "file": "articles/construindo_uma_API_Idempotente.md",
+      "slug": "construindo-api-idempotente",
+      "date": "2024-07-16",
+      "category": "APIs",
+      "description": "Guia prático sobre como implementar idempotência em APIs REST usando chaves de idempotência, com exemplos e boas práticas.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Building an Idempotent API",
+      "file": "articles/en-US/building_an_idempotent_api.md",
+      "slug": "building-an-idempotent-api",
+      "date": "2024-07-16",
+      "category": "APIs",
+      "description": "A practical guide on how to implement idempotency in REST APIs using idempotency keys, with examples and best practices.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Meus containers não se falam! E agora?",
+      "file": "articles/meus_containers_nao_se_falam.md",
+      "slug": "containers-nao-se-falam",
+      "date": "2024-07-15",
+      "category": "Docker",
+      "description": "Um guia de sobrevivência para diagnosticar e resolver problemas de comunicação entre containers Docker.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Como tornar um post seguro para o banco de dados?",
+      "file": "articles/como_tornar_um_post_seguro.md",
+      "slug": "como-tornar-post-seguro",
+      "date": "2024-07-14",
+      "category": "Segurança",
+      "description": "Entenda os riscos de não tratar as entradas do usuário e aprenda técnicas essenciais como Prepared Statements para prevenir SQL Injection.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "How to Make a POST Safe for the Database?",
+      "file": "articles/en-US/how_to_make_a_post_safe.md",
+      "slug": "how-to-make-a-post-safe",
+      "date": "2024-07-14",
+      "category": "Security",
+      "description": "Understand the risks of not handling user inputs and learn essential techniques like Prepared Statements to prevent SQL Injection.",
+      "lang": "en-US"
+    },
+    {
+      "title": "O App bilíngue: iOS e Android com o mesmo código",
+      "file": "articles/o_app_bilingue_ios_android.md",
+      "slug": "app-bilingue-ios-android",
+      "date": "2024-07-13",
+      "category": "Mobile",
+      "description": "Uma visão geral sobre o desenvolvimento multiplataforma, comparando abordagens e frameworks como React Native, Flutter e Kotlin Multiplatform.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Como as palavras viram matemática?",
+      "file": "articles/como_as_palavras_viram_matematica.md",
+      "slug": "como-palavras-viram-matematica",
+      "date": "2024-07-12",
+      "category": "IA",
+      "description": "Uma introdução aos conceitos de Word Embedding, Word2Vec e como a PNL transforma texto em vetores que as máquinas conseguem entender.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "How Words Become Math?",
+      "file": "articles/en-US/how_words_become_math.md",
+      "slug": "how-words-become-math",
+      "date": "2024-07-12",
+      "category": "AI",
+      "description": "An introduction to the concepts of Word Embedding, Word2Vec, and how NLP transforms text into vectors that machines can understand.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Como a IA 'presta atenção'?",
+      "file": "articles/como_a_ia_presta_atencao.md",
+      "slug": "como-ia-presta-atencao",
+      "date": "2024-07-11",
+      "category": "IA",
+      "description": "Desmistificando o mecanismo de atenção (Attention Mechanism) e sua importância para o desempenho de modelos como os Transformers.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "How AI 'Pays Attention'?",
+      "file": "articles/en-US/how_ai_pays_attention.md",
+      "slug": "how-ai-pays-attention",
+      "date": "2024-07-11",
+      "category": "AI",
+      "description": "Demystifying the Attention Mechanism and its importance for the performance of models like Transformers.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Loss Function: O GPS do seu modelo de IA",
+      "file": "articles/loss_function.md",
+      "slug": "loss-function-gps-ia",
+      "date": "2024-07-10",
+      "category": "IA",
+      "description": "Entenda o que é uma função de perda, por que ela é crucial para o treinamento de modelos e como ela guia o aprendizado de máquina.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Arrays vs. Linked List: Qual a melhor escolha?",
+      "file": "articles/arrays_vs_linked_list.md",
+      "slug": "arrays-vs-linked-list",
+      "date": "2024-07-09",
+      "category": "Estrutura de Dados",
+      "description": "Uma análise comparativa para ajudar você a decidir quando usar Arrays ou Linked Lists em seus projetos, com base em suas operações e uso de memória.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Arrays vs. Linked Lists: What's the Best Choice?",
+      "file": "articles/en-US/arrays_vs_linked_lists.md",
+      "slug": "arrays-vs-linked-lists",
+      "date": "2024-07-09",
+      "category": "Data Structures",
+      "description": "A comparative analysis to help you decide when to use Arrays or Linked Lists in your projects, based on their operations and memory usage.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Dockerfile para Node.js: Um guia prático",
+      "file": "articles/dockerfile_para_nodejs.md",
+      "slug": "dockerfile-para-nodejs",
+      "date": "2024-07-08",
+      "category": "Docker",
+      "description": "Passo a passo para criar um Dockerfile otimizado para aplicações Node.js, com foco em segurança, cache e boas práticas.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Dockerfile for Node.js: A Practical Guide",
+      "file": "articles/en-US/dockerfile_for_nodejs.md",
+      "slug": "dockerfile-for-nodejs",
+      "date": "2024-07-08",
+      "category": "Docker",
+      "description": "A step-by-step guide to creating an optimized Dockerfile for Node.js applications, focusing on security, caching, and best practices.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Estudo Aprofundado: Uma Abordagem Estruturada",
+      "file": "articles/estudo_aprofundado.md",
+      "slug": "estudo-aprofundado-abordagem",
+      "date": "2024-07-07",
+      "category": "Metodologia",
+      "description": "Como organizar seus estudos de forma eficaz, desde a escolha do tema até a aplicação prática do conhecimento adquirido.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "In-depth Study: A Structured Approach",
+      "file": "articles/en-US/in_depth_study.md",
+      "slug": "in-depth-study-approach",
+      "date": "2024-07-07",
+      "category": "Methodology",
+      "description": "How to organize your studies effectively, from choosing a topic to the practical application of the acquired knowledge.",
+      "lang": "en-US"
     }
   ]
 }
