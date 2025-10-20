@@ -458,7 +458,11 @@ document.addEventListener('DOMContentLoaded', () => {
             articlesContainer.innerHTML = `<p class="loading-center">${i18n.t('loading')}</p>`;
             return;
         }
-        const articles = languagesData.articles || [];
+
+        const articles = languagesData.articles 
+            ? languagesData.articles.filter(a => a.lang === i18n.getCurrentLocale())
+            : [];
+
         if (articles.length === 0) {
             articlesContainer.innerHTML = `
                 <div class="articles-header">
@@ -528,7 +532,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         if (languagesData.articles) {
-            languagesData.articles.forEach(article => {
+            const articlesInCurrentLang = languagesData.articles.filter(a => a.lang === i18n.getCurrentLocale());
+            articlesInCurrentLang.forEach(article => {
                 const d = new Date(article.date);
                 if (!earliestDate || d < earliestDate) earliestDate = d;
                 allItems.push({
@@ -540,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         }
-        const totalArticles = languagesData.articles ? languagesData.articles.length : 0;
+        const totalArticles = languagesData.articles ? languagesData.articles.filter(a => a.lang === i18n.getCurrentLocale()).length : 0;
         const distinctLanguages = languagesData.languages.length;
         allItems.sort((a,b)=> new Date(b.date) - new Date(a.date));
         const latest = allItems.slice(0,8);
