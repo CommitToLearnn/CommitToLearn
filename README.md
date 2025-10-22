@@ -31,21 +31,6 @@
 
 </div>
 
-### 📚 Latest Articles | Artigos Mais Recentes
-
-<div align="center">
-
-| 📅 Data | 📖 Artigo | 🏷️ Categoria |
-|:---:|:---|:---:|
-| 2025-07-25 | **Idempotência REST & Idempotency Key** | APIs |
-| 2025-07-23 | **Como a IA Presta Atenção?** (Self-Attention) | Deep Learning |
-| 2025-07-23 | **Como as Palavras Viram Matemática?** (Tokens) | Deep Learning |
-| 2025-07-23 | **Dockerfile Perfeito para Node.js** | DevOps |
-| 2025-07-23 | **Loss Function: O Professor Exigente** | Deep Learning |
-| 2025-07-23 | **Meus Containers não se Falam!** | DevOps |
-
-</div>
-
 ### 🛠️ Technologies | Tecnologias
 
 <div align="center">
