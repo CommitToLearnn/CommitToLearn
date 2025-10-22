@@ -1534,6 +1534,69 @@
       "category": "Methodology",
       "description": "How to organize your studies effectively, from choosing a topic to the practical application of the acquired knowledge.",
       "lang": "en-US"
+    },
+    {
+      "title": "Loss Function: The \"Demanding Teacher\" That Teaches an Artificial Intelligence",
+      "file": "articles/en-US/loss_function.md",
+      "slug": "loss-function-demanding-teacher",
+      "date": "2025-07-23",
+      "category": "Deep Learning",
+      "description": "Understand how Loss Functions guide AI learning through precise error measurement and gradual optimization.",
+      "lang": "en-US"
+    },
+    {
+      "title": "My Containers Don't Talk to Each Other! A Practical Guide to docker network",
+      "file": "articles/en-US/my_containers_dont_talk.md",
+      "slug": "my-containers-dont-talk-docker-network",
+      "date": "2025-07-23",
+      "category": "DevOps",
+      "description": "Solves the classic problem of communication between Docker containers using custom networks and service discovery by name.",
+      "lang": "en-US"
+    },
+    {
+      "title": "It's Not Magic, It's Instruction: Why a Good Prompt Reduces AI Errors",
+      "file": "articles/en-US/its_not_magic_its_instruction_good_prompt.md",
+      "slug": "its-not-magic-its-instruction-good-prompt",
+      "date": "2025-09-11",
+      "category": "Artificial Intelligence",
+      "description": "Demystifies how well-structured prompts reduce the entropy of AI responses using the R.A.C.E. framework (Role, Action, Context, Example).",
+      "lang": "en-US"
+    },
+    {
+      "title": "The Bilingual App: Speaking Fluent iOS and Android Without Losing Your Identity",
+      "file": "articles/en-US/the_bilingual_app_ios_android.md",
+      "slug": "the-bilingual-app-ios-android",
+      "date": "2025-08-23",
+      "category": "UX/UI",
+      "description": "Find the perfect balance between brand consistency and compliance with native iOS and Android conventions.",
+      "lang": "en-US"
+    },
+    {
+      "title": "The Elevator Button and Your API: Unraveling Idempotency in REST APIs",
+      "file": "articles/en-US/the_elevator_button_and_your_api.md",
+      "slug": "the-elevator-button-and-your-api",
+      "date": "2025-07-25",
+      "category": "APIs",
+      "description": "An introduction to the concepts of idempotency in REST APIs using the intuitive analogy of an elevator button and HTTP methods.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Yes, the Recruiter Knows You Ctrl+C'd: The Truth About Pasting in Technical Interviews",
+      "file": "articles/en-US/yes_the_recruiter_knows_you_ctrl_c.md",
+      "slug": "yes-the-recruiter-knows-you-pasted",
+      "date": "2025-08-27",
+      "category": "Career",
+      "description": "How coding platforms detect when you paste code and why honesty is more valuable than the perfect solution.",
+      "lang": "en-US"
+    },
+    {
+      "title": "Your Connection Dropped. Now What? How Idempotency in APIs Saves Your System",
+      "file": "articles/en-US/your_connection_dropped_now_what.md",
+      "slug": "your-connection-dropped-idempotency",
+      "date": "2025-07-25",
+      "category": "APIs",
+      "description": "Demonstrates how network issues can cause duplicate operations and how idempotency protects systems against these scenarios.",
+      "lang": "en-US"
     }
   ]
 }
