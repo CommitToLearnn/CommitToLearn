@@ -1205,6 +1205,49 @@
           "description": "Verificação isolada de unidades de código: AAA pattern, mocks/stubs, automação e exemplos com pytest."
         }
       ]
+    },
+    {
+      "name": "AWS",
+      "id": "aws",
+      "color": "#FF9900",
+      "icon": "☁️",
+      "notes": [
+        {
+          "title": "Amazon API Gateway",
+          "file": "notes/pt-BR/AWS/api-gateway-aws.md",
+          "slug": "aws-api-gateway",
+          "date": "2025-10-22",
+          "description": "Entenda o API Gateway como a recepcionista inteligente da nuvem: roteamento, autenticação, throttling e integração com múltiplos backends."
+        },
+        {
+          "title": "AWS Lambda - Serverless",
+          "file": "notes/pt-BR/AWS/aws-lambda-serverless.md",
+          "slug": "aws-lambda-serverless",
+          "date": "2025-10-22",
+          "description": "Computação orientada a eventos com AWS Lambda: execute código sem gerenciar servidores, pague apenas pelo que usar."
+        },
+        {
+          "title": "Backend Containerizado na AWS",
+          "file": "notes/pt-BR/AWS/backend-containerizado-aws.md",
+          "slug": "aws-backend-containerizado",
+          "date": "2025-10-22",
+          "description": "Dockerize sua aplicação e rode no ECS Fargate: containerização, orquestração e escalabilidade automática na AWS."
+        },
+        {
+          "title": "Banco de Dados - Amazon RDS",
+          "file": "notes/pt-BR/AWS/banco-de-dados-rds-aws.md",
+          "slug": "aws-rds-banco-dados",
+          "date": "2025-10-22",
+          "description": "Amazon RDS: banco de dados gerenciado, seguro e sem dor de cabeça. Segurança em subnets privadas, backups automáticos e alta disponibilidade."
+        },
+        {
+          "title": "CI/CD na AWS - Infrastructure as Code",
+          "file": "notes/pt-BR/AWS/cicd-aws-iac.md",
+          "slug": "aws-cicd-iac",
+          "date": "2025-10-22",
+          "description": "Pipeline de CI/CD com CodePipeline, CodeBuild e deploy automático. Infraestrutura como Código com CloudFormation."
+        }
+      ]
     }
   ],
   "articles": [
