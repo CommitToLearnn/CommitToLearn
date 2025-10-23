@@ -430,6 +430,20 @@
           "slug": "metodos-em-go",
           "date": "2025-10-12",
           "description": "Descubra como adicionar comportamento às suas structs com métodos. Aprenda a diferença vital entre receptores de valor e de ponteiro para modificar dados de forma segura e eficaz em Go."
+        },
+        {
+          "title": "Gin: O Foguete para Construir APIs Web em Go",
+          "file": "notes/pt-BR/go/gin.md",
+          "slug": "go-gin-framework",
+          "date": "2025-10-23",
+          "description": "Framework web extremamente rápido para criar APIs HTTP em Go: roteamento veloz, middlewares, validação de JSON e Context poderoso."
+        },
+        {
+          "title": "GORM: O Tradutor Universal entre seu Código Go e o Banco de Dados",
+          "file": "notes/pt-BR/go/gorm.md",
+          "slug": "go-gorm-orm",
+          "date": "2025-10-23",
+          "description": "ORM completo para Go: trabalhe com banco de dados usando structs, auto-migration, relacionamentos e proteção contra SQL Injection."
         }
       ]
     },
@@ -1053,7 +1067,7 @@
       "name": "Dados",
       "id": "dados",
       "color": "#6F42C1",
-      "icon": "📊",
+      "icon": "🎲",
       "notes": [
         {
           "title": "Dados Quantitativos e Qualitativos",
@@ -1131,6 +1145,35 @@
           "slug": "fundamentos-do-numpy",
           "date": "2025-10-13",
           "description": "Aprenda os pilares do NumPy, a biblioteca base para ciência de dados em Python. Descubra o que são arrays, como funcionam suas dimensões, e domine a indexação, o fatiamento e as operações vetorizadas para manipular dados numéricos com velocidade máxima."
+        }
+      ]
+    },
+    {
+      "name": "Power BI",
+      "id": "power-bi",
+      "color": "#F2C811",
+      "icon": "📊",
+      "notes": [
+        {
+          "title": "Power BI: Fundamentos",
+          "file": "notes/pt-BR/Power BI/fundamentos.md",
+          "slug": "power-bi-fundamentos",
+          "date": "2025-10-23",
+          "description": "Sua máquina de transformar dados brutos em decisões inteligentes: Power Query (preparação), Modelo de Dados (relacionamentos) e Relatórios (visualização)."
+        },
+        {
+          "title": "Power Query: O Mágico que Limpa a Bagunça dos Seus Dados",
+          "file": "notes/pt-BR/Power BI/power-query.md",
+          "slug": "power-bi-power-query",
+          "date": "2025-10-23",
+          "description": "Motor de ETL do Power BI: conecte, transforme e carregue dados com limpeza automatizada, reprodutível e sem código."
+        },
+        {
+          "title": "Modelagem e DAX: O Coração e o Cérebro do seu Power BI",
+          "file": "notes/pt-BR/Power BI/modelagem-dax.md",
+          "slug": "power-bi-modelagem-dax",
+          "date": "2025-10-23",
+          "description": "Modelo Estrela, relacionamentos entre tabelas, e DAX: a linguagem de fórmulas para colunas calculadas e medidas dinâmicas."
         }
       ]
     },
