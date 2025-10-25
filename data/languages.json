@@ -1563,6 +1563,42 @@
       "category": "Artificial Intelligence",
       "description": "Demystifies how well-structured prompts reduce the entropy of AI responses using the R.A.C.E. framework (Role, Action, Context, Example).",
       "lang": "en-US"
+    },
+    {
+      "title": "Aquele 'Jogo' Que Você Jogou em um Anúncio? Foi uma Mentira Brilhante.",
+      "file": "articles/anuncio-jogo.md",
+      "slug": "anuncio-jogo-mentira-brilhante",
+      "date": "2025-10-24",
+      "category": "Marketing",
+      "description": "Uma espiada por trás da cortina na ilusão superotimizada dos anúncios jogáveis (playable ads) que engana seu cérebro e gera bilhões para os desenvolvedores.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "That 'Game' You Played in an Ad? It Was a Brilliant Lie.",
+      "file": "articles/en-US/playable-ad.md",
+      "slug": "playable-ad-brilliant-lie",
+      "date": "2025-10-24",
+      "category": "Marketing",
+      "description": "A peek behind the curtain of the hyper-optimized illusion of playable ads that tricks your brain and makes developers billions.",
+      "lang": "en-US"
+    },
+    {
+      "title": "O SEO Que Você Conhecia Morreu. Bem-vindo à Era da IA.",
+      "file": "articles/seos-e-a-revolucao-da-ia.md",
+      "slug": "seo-era-da-ia",
+      "date": "2025-10-24",
+      "category": "SEO",
+      "description": "Por que 'palavras-chave' e 'backlinks' não são mais os reis e o que a busca do Google realmente quer de você agora na era da Inteligência Artificial.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "The SEO You Knew Is Dead. Welcome to the Age of AI.",
+      "file": "articles/seos-and-the-revolution-ia.md",
+      "slug": "seo-age-of-ai",
+      "date": "2025-10-24",
+      "category": "SEO",
+      "description": "Why 'keywords' and 'backlinks' are no longer king and what Google's search actually wants from you now in the era of Artificial Intelligence.",
+      "lang": "en-US"
     }
   ]
 }
