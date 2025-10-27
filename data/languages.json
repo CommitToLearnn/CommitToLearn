@@ -1599,6 +1599,42 @@
       "category": "SEO",
       "description": "Why 'keywords' and 'backlinks' are no longer king and what Google's search actually wants from you now in the era of Artificial Intelligence.",
       "lang": "en-US"
+    },
+    {
+      "title": "Por Que Seu Vídeo do YouTube Trava (e a Culpa Não é Só da Sua Internet)",
+      "file": "articles/por-que-seu-player-trava.md",
+      "slug": "por-que-seu-video-trava",
+      "date": "2025-10-27",
+      "category": "Redes",
+      "description": "A jornada invisível de um vídeo da Netflix até sua tela, e os 4 vilões silenciosos que causam aquela roda giratória infernal do buffering.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "Why Your YouTube Video Buffers (and It's Not Just Your Internet's Fault)",
+      "file": "articles/en-US/why-does-your-palyer-crash.md",
+      "slug": "why-your-video-buffers",
+      "date": "2025-10-27",
+      "category": "Networks",
+      "description": "The invisible journey a Netflix video takes to your screen, and the 4 silent villains that cause that infernal spinning wheel of buffering.",
+      "lang": "en-US"
+    },
+    {
+      "title": "\"Vamos Usar IA Para Fazer Perguntas, Ela Não Tem Viés.\"",
+      "file": "articles/vamos-usar-IA-para-fazer-perguntas.md",
+      "slug": "ia-nao-tem-vies",
+      "date": "2025-10-27",
+      "category": "Inteligência Artificial",
+      "description": "Por que a crença de que a IA é um oráculo neutro, livre de vieses humanos, é uma das ideias mais perigosas no mundo dos negócios hoje.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "\"Let's Use AI to Ask the Questions. It Has No Bias.\"",
+      "file": "articles/en-US/let's-use-IA-to-ask-questions.md",
+      "slug": "ai-has-no-bias",
+      "date": "2025-10-27",
+      "category": "Artificial Intelligence",
+      "description": "Why the belief that AI is a neutral oracle, free from human biases, is one of the most dangerous ideas in business today.",
+      "lang": "en-US"
     }
   ]
 }
