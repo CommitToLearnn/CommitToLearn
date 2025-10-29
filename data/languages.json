@@ -1291,6 +1291,51 @@
           "description": "Pipeline de CI/CD com CodePipeline, CodeBuild e deploy automático. Infraestrutura como Código com CloudFormation."
         }
       ]
+    },
+    {
+      "name": "Banco de Dados",
+      "id": "banco",
+      "color": "#00758F",
+      "icon": "🗄️",
+      "notes": [
+        {
+          "title": "InfluxDB: O Banco de Dados Feito para Guardar o Histórico do Tempo",
+          "file": "notes/pt-BR/banco/influxdb.md",
+          "slug": "banco-influxdb",
+          "date": "2025-10-28",
+          "description": "Banco de Dados de Série Temporal (TSDB) otimizado para IoT e monitoramento: escreva milhões de registros por segundo e consulte grandes períodos rapidamente."
+        }
+      ]
+    },
+    {
+      "name": "Node-RED",
+      "id": "node-red",
+      "color": "#8F0000",
+      "icon": "🔴",
+      "notes": [
+        {
+          "title": "Node-RED: Sua Linha de Montagem Visual para Automação",
+          "file": "notes/pt-BR/node-red/node-red.md",
+          "slug": "node-red-automacao-visual",
+          "date": "2025-10-28",
+          "description": "Ferramenta de programação visual baseada em fluxos: conecte blocos (nós) para criar automações complexas sem programar. Ideal para IoT e integração de sistemas."
+        }
+      ]
+    },
+    {
+      "name": "Grafana",
+      "id": "grafana",
+      "color": "#F46800",
+      "icon": "📈",
+      "notes": [
+        {
+          "title": "Grafana: O Seu Painel de Comando Universal para Visualizar Dados",
+          "file": "notes/pt-BR/Grafana/grafana-fundamentos.md",
+          "slug": "grafana-painel-comando-dados",
+          "date": "2025-10-28",
+          "description": "Plataforma de visualização e alertas para observabilidade: dashboards interativos conectados a múltiplas fontes de dados (InfluxDB, Prometheus, etc.)."
+        }
+      ]
     }
   ],
   "articles": [
