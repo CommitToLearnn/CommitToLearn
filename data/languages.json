@@ -1304,6 +1304,13 @@
           "slug": "banco-influxdb",
           "date": "2025-10-28",
           "description": "Banco de Dados de Série Temporal (TSDB) otimizado para IoT e monitoramento: escreva milhões de registros por segundo e consulte grandes períodos rapidamente."
+        },
+        {
+          "title": "MongoDB: O Banco de Dados de Documentos",
+          "file": "notes/pt-BR/banco/mongoDB.md",
+          "slug": "banco-mongodb",
+          "date": "2025-10-29",
+          "description": "Banco de dados NoSQL orientado a documentos: esquemas flexíveis, dados em formato JSON (BSON), ideal para aplicações ágeis e escalabilidade horizontal."
         }
       ]
     },
@@ -1334,6 +1341,21 @@
           "slug": "grafana-painel-comando-dados",
           "date": "2025-10-28",
           "description": "Plataforma de visualização e alertas para observabilidade: dashboards interativos conectados a múltiplas fontes de dados (InfluxDB, Prometheus, etc.)."
+        }
+      ]
+    },
+    {
+      "name": "Testes",
+      "id": "testes",
+      "color": "#28A745",
+      "icon": "✅",
+      "notes": [
+        {
+          "title": "JMeter: Teste de Carga e Performance",
+          "file": "notes/pt-BR/Testes/jmeter.md",
+          "slug": "testes-jmeter-performance",
+          "date": "2025-10-29",
+          "description": "Ferramenta open-source para testes de carga e performance: simule milhares de usuários, meça throughput, identifique gargalos e garanta a estabilidade do sistema."
         }
       ]
     }
