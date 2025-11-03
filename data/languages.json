@@ -1358,6 +1358,28 @@
           "description": "Ferramenta open-source para testes de carga e performance: simule milhares de usuários, meça throughput, identifique gargalos e garanta a estabilidade do sistema."
         }
       ]
+    },
+    {
+      "name": "ORM",
+      "id": "orm",
+      "color": "#6F42C1",
+      "icon": "🔗",
+      "notes": [
+        {
+          "title": "ORMs: O Tradutor Universal entre seu Código e o Banco de Dados",
+          "file": "notes/pt-BR/orm/orms.md",
+          "slug": "orms-tradutor-codigo-banco",
+          "date": "2025-11-03",
+          "description": "Mapeamento objeto-relacional: trabalha com objetos em vez de tabelas, facilitando operações CRUD e relacionamentos complexos."
+        },
+        {
+          "title": "Query Builders: O Kit de Montagem Seguro para suas Consultas SQL",
+          "file": "notes/pt-BR/orm/query-builders.md",
+          "slug": "query-builders-kit-montagem-sql",
+          "date": "2025-11-03",
+          "description": "Construtores de consultas programáticas: escreva SQL de forma segura e fluida, evitando injeções e erros de sintaxe."
+        }
+      ]
     }
   ],
   "articles": [
@@ -1701,6 +1723,24 @@
       "date": "2025-10-27",
       "category": "Artificial Intelligence",
       "description": "Why the belief that AI is a neutral oracle, free from human biases, is one of the most dangerous ideas in business today.",
+      "lang": "en-US"
+    },
+    {
+      "title": "A Batalha Silenciosa no Coração do Seu Código: ORM vs. Query Builder",
+      "file": "articles/ORM-vs-QueryBuilder.md",
+      "slug": "batalha-orm-vs-query-builder",
+      "date": "2025-11-03",
+      "category": "ORM",
+      "description": "Quando usar um tradutor automático e quando falar o idioma nativo dos seus dados. E por que a resposta certa pode ser 'ambos'.",
+      "lang": "pt-BR"
+    },
+    {
+      "title": "The Silent Battle at the Heart of Your Code: ORM vs. Query Builder",
+      "file": "articles/en-US/ORM-vs-QueryBuilder.md",
+      "slug": "silent-battle-orm-vs-query-builder",
+      "date": "2025-11-03",
+      "category": "ORM",
+      "description": "When to use an automatic translator and when to speak your data's native language. And why the right answer might be 'both.'",
       "lang": "en-US"
     }
   ]
