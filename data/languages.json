@@ -55,6 +55,34 @@
           "slug": "apis-idempotency-key",
           "date": "2025-07-25",
           "description": "Implementação de chaves de idempotência para tornar operações não idempotentes seguras contra duplicação."
+        },
+        {
+          "title": "APIs REST",
+          "file": "notes/pt-BR/apis/APIs-REST.md",
+          "slug": "apis-rest",
+          "date": "2025-11-04",
+          "description": "Estilo arquitetural para construir APIs com recursos, endpoints e verbos HTTP; previsível e amplamente adotado."
+        },
+        {
+          "title": "GraphQL",
+          "file": "notes/pt-BR/apis/GraphQL.md",
+          "slug": "apis-graphql",
+          "date": "2025-11-04",
+          "description": "Linguagem de consulta para APIs que permite ao cliente requisitar exatamente os dados necessários via um único endpoint."
+        },
+        {
+          "title": "RPC (Remote Procedure Call)",
+          "file": "notes/pt-BR/apis/RPC.md",
+          "slug": "apis-rpc",
+          "date": "2025-11-04",
+          "description": "Estilo de comunicação orientado a ações/funcionalidades: chama procedimentos remotos como se fossem funções locais."
+        },
+        {
+          "title": "gRPC (Google Remote Procedure Call)",
+          "file": "notes/pt-BR/apis/gRPC.md",
+          "slug": "apis-grpc",
+          "date": "2025-11-04",
+          "description": "Implementação de RPC de alta performance usando Protocol Buffers e HTTP/2, ideal para comunicação entre microserviços."
         }
       ]
     },
@@ -1363,7 +1391,7 @@
       "name": "ORM",
       "id": "orm",
       "color": "#6F42C1",
-      "icon": "🔗",
+      "icon": "🧩",
       "notes": [
         {
           "title": "ORMs: O Tradutor Universal entre seu Código e o Banco de Dados",
