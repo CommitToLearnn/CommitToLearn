@@ -1089,6 +1089,14 @@
           "date": "2025-09-26",
           "description": "Introdução prática ao Flask: roteamento com decorators, request/response, Jinja2 e exemplo mínimo de aplicação."
         }
+        ,
+        {
+          "title": "Pydantic",
+          "file": "notes/pt-BR/python/pydantic.md",
+          "slug": "pydantic",
+          "date": "2025-11-05",
+          "description": "Validação e coerção de dados em Python; BaseModel, tipos úteis e integração com FastAPI e ORMs."
+        }
       ]
     },
     {
@@ -1406,6 +1414,14 @@
           "slug": "query-builders-kit-montagem-sql",
           "date": "2025-11-03",
           "description": "Construtores de consultas programáticas: escreva SQL de forma segura e fluida, evitando injeções e erros de sintaxe."
+        }
+        ,
+        {
+          "title": "SQLAlchemy",
+          "file": "notes/pt-BR/orm/SQLAlchemy.md",
+          "slug": "sqlalchemy",
+          "date": "2025-11-05",
+          "description": "ORM e Query Builder para Python: Core vs ORM, Engine, Session, exemplos, armadilhas comuns e boas práticas."
         }
       ]
     }
