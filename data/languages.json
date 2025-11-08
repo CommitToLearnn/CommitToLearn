@@ -1096,6 +1096,13 @@
           "slug": "pydantic",
           "date": "2025-11-05",
           "description": "Validação e coerção de dados em Python; BaseModel, tipos úteis e integração com FastAPI e ORMs."
+        },
+        {
+          "title": "FastAPI",
+          "file": "notes/pt-BR/python/FastAPI.md",
+          "slug": "fastapi",
+          "date": "2025-11-08",
+          "description": "Framework web Python para APIs rápidas e seguras: ASGI, Pydantic, documentação automática e async/await."
         }
       ]
     },
