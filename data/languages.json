@@ -1429,6 +1429,13 @@
           "slug": "sqlalchemy",
           "date": "2025-11-05",
           "description": "ORM e Query Builder para Python: Core vs ORM, Engine, Session, exemplos, armadilhas comuns e boas práticas."
+        },
+        {
+          "title": "Alembic",
+          "file": "notes/pt-BR/orm/alembic.md",
+          "slug": "alembic",
+          "date": "2025-11-11",
+          "description": "Ferramenta de migração de banco de dados para SQLAlchemy; versionamento de schemas, autogenerate e downgrade reversível."
         }
       ]
     }
