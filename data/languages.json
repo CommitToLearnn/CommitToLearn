@@ -254,6 +254,27 @@
           "slug": "deep-learning-assimetricos",
           "date": "2025-07-23",
           "description": "Compreenda estruturas assimétricas em arquiteturas, atenção e loss functions."
+        },
+        {
+          "title": "LLMs (Large Language Models)",
+          "file": "notes/pt-BR/deep-learning/LLMs.md",
+          "slug": "deep-learning-llms",
+          "date": "2025-11-20",
+          "description": "Entenda o conceito de Large Language Models, como funcionam e suas aplicações em processamento de linguagem natural."
+        },
+        {
+          "title": "GPT (Generative Pre-trained Transformer)",
+          "file": "notes/pt-BR/deep-learning/GPT.md",
+          "slug": "deep-learning-gpt",
+          "date": "2025-11-20",
+          "description": "Explore a arquitetura GPT, focada em geração de texto, e seu papel na evolução dos modelos de linguagem."
+        },
+        {
+          "title": "BERT (Bidirectional Encoder Representations from Transformers)",
+          "file": "notes/pt-BR/deep-learning/BERT.md",
+          "slug": "deep-learning-bert",
+          "date": "2025-11-20",
+          "description": "Compreenda o modelo BERT, focado em compreensão de texto bidirecional e tarefas de NLP."
         }
       ]
     },
