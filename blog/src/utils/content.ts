@@ -3,7 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import readingTime from 'reading-time';
 
-const articlesDir = path.join(process.cwd(), '../articles');
+const articlesDir = path.join(process.cwd(), 'articles');
 const notesDir = path.join(process.cwd(), '../notes');
 
 export interface Article {
