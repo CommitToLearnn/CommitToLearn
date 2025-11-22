@@ -275,6 +275,27 @@
           "slug": "deep-learning-bert",
           "date": "2025-11-20",
           "description": "Compreenda o modelo BERT, focado em compreensão de texto bidirecional e tarefas de NLP."
+        },
+        {
+          "title": "Byte Pair Encoding (BPE)",
+          "file": "notes/pt-BR/deep-learning/bpe.md",
+          "slug": "deep-learning-bpe",
+          "date": "2025-11-21",
+          "description": "Aprenda sobre Byte Pair Encoding (BPE), o algoritmo de tokenização usado em modelos de linguagem para dividir texto em subpalavras."
+        },
+        {
+          "title": "Embeddings",
+          "file": "notes/pt-BR/deep-learning/embeddings.md",
+          "slug": "deep-learning-embeddings",
+          "date": "2025-11-21",
+          "description": "Entenda embeddings como representações vetoriais de palavras e tokens que capturam significado semântico."
+        },
+        {
+          "title": "Tokens Especiais",
+          "file": "notes/pt-BR/deep-learning/tokens-especiais.md",
+          "slug": "deep-learning-tokens-especiais",
+          "date": "2025-11-21",
+          "description": "Explore tokens especiais como [CLS], [SEP], [MASK] e seu papel em modelos como BERT e GPT."
         }
       ]
     },
